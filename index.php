@@ -41,12 +41,12 @@
 										</p>
 										<div class="pbmit-button d-flex flex-wrap align-items-center gap-3">
 											<div class="transform-bottom transform-delay-4">
-												<a href="/contact" class="pbmit-btn">
+												<a href="contact" class="pbmit-btn">
 													<span class="pbmit-button-text">Get a Free Solar Quote</span>
 												</a>
 											</div>
 											<div class="transform-bottom transform-delay-5">
-												<a href="/services" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
+												<a href="services" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
 													<span class="pbmit-button-text">Explore Our Services</span>
 												</a>
 											</div>
@@ -255,7 +255,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="/services#solar-installation">Solar Module &amp; System Installation</a>
+									<a href="services#solar-installation">Solar Module &amp; System Installation</a>
 								</h3>
 								<p class="home-service-desc">End-to-end installation for homes, businesses, and
 									industries</p>
@@ -342,7 +342,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="/services#operations-maintenance">Operations &amp; Maintenance</a>
+									<a href="services#operations-maintenance">Operations &amp; Maintenance</a>
 								</h3>
 								<p class="home-service-desc">Expert monitoring and upkeep for peak system performance</p>
 							</div>
@@ -430,7 +430,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="/services#energy-consulting">Energy Efficiency Consulting</a>
+									<a href="services#energy-consulting">Energy Efficiency Consulting</a>
 								</h3>
 								<p class="home-service-desc">Helping businesses adopt cost-effective, eco-friendly energy
 									strategies</p>
@@ -528,7 +528,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="/services#open-access-ppa">Open Access &amp; Power Purchase</a>
+									<a href="services#open-access-ppa">Open Access &amp; Power Purchase</a>
 								</h3>
 								<p class="home-service-desc">Access clean solar energy through parks and power purchase
 									agreements</p>
@@ -545,7 +545,7 @@
 				</article>
 			</div>
 			<div class="text-center mt-5">
-				<a href="/services" class="pbmit-btn">
+				<a href="services" class="pbmit-btn">
 					<span class="pbmit-button-text">View All Services</span>
 				</a>
 			</div>
@@ -581,13 +581,13 @@
 							<div class="pbminfotech-box-content">
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat">
-										<a href="/products#residential" rel="tag">3 kW to 19 kW</a>
+										<a href="products#residential" rel="tag">3 kW to 19 kW</a>
 									</div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="/products#residential">Residential</a>
+										<a href="products#residential">Residential</a>
 									</h3>
 									<div class="home-product-desc">Tailored home solar for lower bills</div>
-									<a class="pbmit-portfolio-btn" href="/products#residential" title="Residential">
+									<a class="pbmit-portfolio-btn" href="products#residential" title="Residential">
 										<span class="pbmit-button-icon-wrapper">
 											<span class="pbmit-button-icon">
 												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
@@ -610,13 +610,13 @@
 							<div class="pbminfotech-box-content">
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat">
-										<a href="/products#commercial" rel="tag">20 kW to 200 kW</a>
+										<a href="products#commercial" rel="tag">20 kW to 200 kW</a>
 									</div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="/products#commercial">Commercial</a>
+										<a href="products#commercial">Commercial</a>
 									</h3>
 									<div class="home-product-desc">Scalable solar for business energy needs</div>
-									<a class="pbmit-portfolio-btn" href="/products#commercial" title="Commercial">
+									<a class="pbmit-portfolio-btn" href="products#commercial" title="Commercial">
 										<span class="pbmit-button-icon-wrapper">
 											<span class="pbmit-button-icon">
 												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
@@ -639,13 +639,13 @@
 							<div class="pbminfotech-box-content">
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat">
-										<a href="/products#ht-consumer" rel="tag">200 kW to 990 kW</a>
+										<a href="products#ht-consumer" rel="tag">200 kW to 990 kW</a>
 									</div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="/products#ht-consumer">HT Consumer Projects</a>
+										<a href="products#ht-consumer">HT Consumer Projects</a>
 									</h3>
 									<div class="home-product-desc">High-capacity industrial solar</div>
-									<a class="pbmit-portfolio-btn" href="/products#ht-consumer"
+									<a class="pbmit-portfolio-btn" href="products#ht-consumer"
 										title="HT Consumer Projects">
 										<span class="pbmit-button-icon-wrapper">
 											<span class="pbmit-button-icon">
@@ -669,13 +669,13 @@
 							<div class="pbminfotech-box-content">
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat">
-										<a href="/products#open-access" rel="tag">1 MW to 20 MW</a>
+										<a href="products#open-access" rel="tag">1 MW to 20 MW</a>
 									</div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="/products#open-access">Open Access Solar</a>
+										<a href="products#open-access">Open Access Solar</a>
 									</h3>
 									<div class="home-product-desc">Large-scale direct power purchase</div>
-									<a class="pbmit-portfolio-btn" href="/products#open-access"
+									<a class="pbmit-portfolio-btn" href="products#open-access"
 										title="Open Access Solar">
 										<span class="pbmit-button-icon-wrapper">
 											<span class="pbmit-button-icon">
@@ -692,7 +692,7 @@
 		</div>
 		<div class="container">
 			<div class="text-center pt-5 home-products-cta">
-				<a href="/products" class="pbmit-btn">
+				<a href="products" class="pbmit-btn">
 					<span class="pbmit-button-text">Explore All Products</span>
 				</a>
 			</div>
@@ -742,7 +742,7 @@
 												maintenance</span>
 										</li>
 									</ul>
-									<a href="/about" class="pbmit-btn">
+									<a href="about" class="pbmit-btn">
 										<span class="pbmit-button-text">Know More About Us</span>
 									</a>
 								</div>
@@ -1965,7 +1965,7 @@
 				</div>
 				<div class="col-lg-4 text-lg-end">
 					<div class="d-flex flex-wrap gap-3 justify-content-lg-end cta-bar">
-						<a href="/contact" class="pbmit-btn outline cta-secondary">
+						<a href="contact" class="pbmit-btn outline cta-secondary">
 							<span class="pbmit-button-text">Get Free Quote</span>
 						</a>
 						<a href="tel:+918686313133" class="pbmit-btn outline cta-secondary">
