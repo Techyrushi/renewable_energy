@@ -2468,7 +2468,7 @@ body {
 	/*=== Title Bar ===*/
 	.pbmit-title-bar-wrapper{
 		border-radius: 20px;
-		margin: -86px 20px 0;
+		margin: 20px 20px 0;
 	}
 	.pbmit-title-bar-content{
 		padding-top: 140px;
@@ -2518,17 +2518,11 @@ body {
 @media screen and (min-width: 992px) {
 	/*=== Footer ===*/
 	.site-footer .pbmit-footer-widget-col-1,
-	.site-footer .pbmit-footer-widget-col-2{
-		flex: 0 0 19%;
-        max-width: 19%;
-	}
-	.site-footer .pbmit-footer-widget-col-3{
-		flex: 0 0 36%;
-        max-width: 36%;
-	}
+	.site-footer .pbmit-footer-widget-col-2,
+	.site-footer .pbmit-footer-widget-col-3,
 	.site-footer .pbmit-footer-widget-col-4{
-		flex: 0 0 26%;
-        max-width: 26%;
+		flex: 0 0 25%;
+        max-width: 25%;
 	}
 }
 
@@ -2575,5 +2569,311 @@ body {
 	}
 	.contact-form-right-col{
 		width: 59%;
+	}
+}
+
+@media (max-width: 991.98px){
+	/* Slider: tablet typography overrides */
+	.pbmit-slider-area .pbmit-slider-title{
+		font-size: 40px !important;
+		line-height: 46px !important;
+	}
+	.pbmit-slider-area .pbmit-slider-subtitle{
+		font-size: 16px !important;
+		line-height: 22px !important;
+	}
+	.pbmit-slider-area .pbmit-slider-content p{
+		font-size: 16px !important;
+		line-height: 26px !important;
+	}
+	.pbmit-slider-two .pbmit-slider-item{
+		height: auto !important;
+		min-height: 640px;
+		align-items: flex-start;
+		padding: 150px 0 90px;
+	}
+	.pbmit-slider-two .pbmit-slider-content{
+		width: 100% !important;
+		max-width: 100% !important;
+		padding: 0 !important;
+		background-color: transparent !important;
+		border-radius: 0 !important;
+		overflow: visible !important;
+	}
+	.pbmit-slider-area .pbmit-slider-content{
+		max-width: 100% !important;
+	}
+	.home-trustbar.fid-section-two{
+		margin-top: -44px;
+		padding: 0 30px 18px;
+	}
+	.home-trustbar:before{
+		background-size: 240px auto;
+		background-position: 92% -16px;
+		opacity: 0.14;
+		animation: bgDriftTR 14s ease-in-out infinite;
+	}
+	.fid-section-two.home-trustbar .fid-style-wrap{
+		padding: 26px 22px 22px;
+	}
+	.home-trustbar .pbminfotech-ele-fid-style-2 .pbmit-fid-inner{
+		font-size: 48px;
+		line-height: 48px;
+	}
+	.home-services-modern .pbmit-service-style-4 .pbminfotech-post-item{
+		padding: 30px 20px 18px 20px;
+	}
+	.home-services-modern .pbmit-service-style-4 .pbmit-featured-wrapper img{
+		height: 160px;
+	}
+	.portfolio-section-two .home-products-cta{
+		padding-bottom: 55px;
+	}
+	.home-about-modern.about-section-two{
+		margin-top: 55px;
+	}
+	.about-section-two.home-about-modern:before{
+		background-size: 280px auto;
+		background-position: 90% 6%;
+		animation: bgDriftTR 16s ease-in-out infinite;
+	}
+	.pbmit-slider-area .slider-logo-overlay{
+		width: 320px;
+		max-width: 46vw;
+		right: 5%;
+		opacity: 0.40;
+	}
+	.pbmit-slider-area .slider-gradient{
+		background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.58) 55%, rgba(0,0,0,0.35) 100%);
+	}
+	.home-services-modern:before{
+		background-size: 280px auto;
+		background-position: 4% 6%;
+		animation: bgDriftTL 16s ease-in-out infinite;
+	}
+	.blog-section-two:before{
+		background-size: 260px auto;
+		background-position: 10% 98%;
+		animation: bgDriftBL 14s ease-in-out infinite;
+	}
+	.error-404-page{
+		padding: 90px 0;
+	}
+	.error-404-card{
+		padding: 36px 28px 30px 28px;
+	}
+	.error-404-code{
+		font-size: 90px;
+	}
+	/* CTA buttons tablet behavior */
+	.cta-bar{
+		justify-content: flex-start;
+	}
+	.cta-bar .pbmit-btn{
+		min-width: 220px;
+	}
+}
+
+@media (max-width: 575.98px){
+	/* Slider: mobile typography overrides */
+	.pbmit-slider-area .pbmit-slider-title{
+		font-size: 34px !important;
+		line-height: 40px !important;
+		white-space: normal !important;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+		margin-bottom: 12px !important;
+	}
+	.pbmit-slider-area .pbmit-slider-subtitle{
+		font-size: 14px !important;
+		line-height: 20px !important;
+		width: auto !important;
+		max-width: 100% !important;
+		white-space: normal !important;
+		text-align: center;
+		margin-bottom: 12px !important;
+	}
+	.pbmit-slider-area .pbmit-slider-content p{
+		font-size: 15px !important;
+		line-height: 24px !important;
+		margin-bottom: 18px !important;
+	}
+	.pbmit-slider-two .pbmit-slider-item{
+		height: auto !important;
+		min-height: 560px;
+		align-items: flex-start;
+		padding: 110px 0 60px;
+	}
+	/* Ensure animated elements are visible instantly on small screens */
+	.pbmit-slider-area .transform-top,
+	.pbmit-slider-area .transform-left,
+	.pbmit-slider-area .transform-bottom,
+	.pbmit-slider-area .transform-center{
+		transform: none !important;
+		opacity: 1 !important;
+		transition: none !important;
+	}
+	.pbmit-slider-area .pbmit-slider-subtitle{
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+	.pbmit-slider-area .pbmit-slider-content{
+		text-align: center;
+		position: relative;
+		z-index: 3;
+	}
+	.pbmit-slider-area .pbmit-button{
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 8px !important;
+		align-items: center !important;
+		justify-content: center;
+	}
+	.pbmit-slider-area .pbmit-button > div{
+		width: auto;
+		flex: 1 1 220px;
+		min-width: 0;
+	}
+	.pbmit-slider-area .pbmit-button .pbmit-btn{
+		width: 100%;
+		justify-content: center;
+		white-space: normal !important;
+		font-size: 12px !important;
+		line-height: 16px !important;
+		padding: 10px 34px 10px 14px !important;
+		min-height: 42px;
+	}
+	.pbmit-slider-area .pbmit-button .pbmit-btn .pbmit-button-text:before{
+		right: 14px;
+		top: 12px;
+		font-size: 14px;
+	}
+	.pbmit-slider-area .slider-logo-overlay{
+		z-index: 1;
+		opacity: 0.45;
+		left: 50%;
+		right: auto;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 260px;
+		max-width: 68vw;
+	}
+	.home-trustbar.fid-section-two{
+		margin-top: 0;
+		padding: 22px 20px 0;
+	}
+	.home-trustbar .row{
+		--bs-gutter-x: 1rem;
+		--bs-gutter-y: 1rem;
+	}
+	.home-trustbar:before{
+		background-size: 200px auto;
+		background-position: 88% -12px;
+		animation: bgDriftTR 12s ease-in-out infinite;
+	}
+	.fid-section-two.home-trustbar .fid-style-wrap{
+		padding: 22px 18px 18px;
+	}
+	.home-trustbar .pbminfotech-ele-fid-style-2 span.pbmit-fid-title{
+		font-size: 13px;
+		line-height: 18px;
+	}
+	/* Stats number: mobile size */
+	.home-trustbar .pbminfotech-ele-fid-style-2 .pbmit-fid-inner{
+		font-size: 36px;
+		line-height: 40px;
+	}
+	.home-services-modern .pbmit-service-style-4 .pbminfotech-post-item{
+		padding: 26px 18px 16px 18px;
+	}
+	.home-services-modern .pbmit-service-style-4 .pbmit-featured-wrapper img{
+		height: 150px;
+	}
+	.portfolio-section-two .home-products-cta{
+		padding-bottom: 42px;
+	}
+	.home-about-modern.about-section-two{
+		margin-top: 40px;
+	}
+	.about-section-two.home-about-modern:before{
+		background-size: 220px auto;
+		background-position: 88% 8%;
+		animation: bgDriftTR 14s ease-in-out infinite;
+	}
+	.home-testimonials{
+		padding-top: 70px;
+		padding-bottom: 50px;
+		background-position: calc(100% - 18px) 12px;
+		background-size: 280px auto;
+	}
+	/* removed duplicate slider-logo-overlay block */
+	.pbmit-slider-area .slider-gradient{
+		background: linear-gradient(90deg, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.40) 100%);
+	}
+	/* CTA buttons: mobile full width single column */
+	.cta-bar{
+		width: 100%;
+		justify-content: center;
+	}
+	.cta-bar .pbmit-btn{
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+	/* WhatsApp position above scroll-to-top on small screens */
+	.whatsapp-float{
+		bottom: 108px;
+		right: 14px;
+		width: 54px;
+		height: 54px;
+	}
+	.home-services-modern:before{
+		background-size: 220px auto;
+		background-position: 4% 4%;
+		animation: bgDriftTL 14s ease-in-out infinite;
+	}
+	.blog-section-two:before{
+		background-size: 200px auto;
+		background-position: 10% 100%;
+		animation: bgDriftBL 12s ease-in-out infinite;
+	}
+	.error-404-page{
+		padding: 76px 0;
+	}
+	.error-404-code{
+		font-size: 78px;
+	}
+	.error-404-text{
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 486px){
+	.pbmit-slider-area .swiper-slider,
+	.pbmit-slider-area .swiper-wrapper,
+	.pbmit-slider-area .swiper-slide{
+		height: auto !important;
+	}
+	.pbmit-slider-two .pbmit-slider-item{
+		min-height: 520px;
+		padding: 100px 0 55px;
+	}
+	.pbmit-slider-area .pbmit-button{
+		flex-direction: column;
+		flex-wrap: wrap;
+		gap: 10px !important;
+	}
+	.pbmit-slider-area .pbmit-button > div{
+		width: 100%;
+		flex: 0 0 auto;
+	}
+	.pbmit-slider-area .pbmit-button .pbmit-btn{
+		width: 100%;
+		font-size: 13px !important;
+		padding: 11px 44px 11px 18px !important;
+	}
+	.pbmit-slider-area .pbmit-button .pbmit-btn .pbmit-button-text:before{
+		right: 18px;
+		top: 12px;
 	}
 }

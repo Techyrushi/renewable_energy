@@ -706,7 +706,7 @@
 											</div>
 											<span>Have any Project in Mind? Call us Today !</span>
 											<h3 class="pbmit-ads-call">
-												<a href="tel:+0(123)456-789">+0(123)456-789</a>
+												<a href="tel:+918686313133">+91 8686 313 133</a>
 											</h3>
 										</div>
 									</div>
@@ -787,8 +787,8 @@
 						<aside class="widget">
 							<h2 class="widget-title">Say Hello</h2>
 							<div class="pbmit-contact-widget-lines">
-								<div class="pbmit-contact-widget-line pbmit-base-icon-phone">+1 840 841 25 69</div>
-								<div class="pbmit-contact-widget-line pbmit-base-icon-email"><a href="https://solaar-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59c9b939ab58c9a8087919a98949c9bdb969a98">[email&#160;protected]</a></div>
+								<div class="pbmit-contact-widget-line pbmit-base-icon-phone">+91 8686 313 133</div>
+								<div class="pbmit-contact-widget-line pbmit-base-icon-email"><a href="mailto:info@shivanjalirenewables.com">info@shivanjalirenewables.com</a></div>
 							</div>
 						</aside>
 					</div>

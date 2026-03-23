@@ -1,0 +1,18 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^about/?$ about-us.php [L]
+RewriteRule ^services/?$ services.php [L]
+RewriteRule ^products/?$ products.php [L]
+RewriteRule ^projects/?$ projects.php [L]
+RewriteRule ^why-us/?$ why-us.php [L]
+RewriteRule ^blog/?$ blog.php [L]
+RewriteRule ^contact/?$ contact-us.php [L]
+RewriteRule ^privacy-policy/?$ privacy-policy.php [L]
+RewriteRule ^terms-of-use/?$ terms.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . 404.php [L]

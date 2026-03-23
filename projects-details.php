@@ -2,47 +2,48 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from solaar-demo.pbminfotech.com/html-demo/portfolio-grid-col-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2026 03:54:49 GMT -->
+<!-- Mirrored from solaar-demo.pbminfotech.com/html-demo/portfolio-detail-style-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2026 03:54:55 GMT -->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Grid Col 2 – Solaar Demo1 HTML Template</title>
-	<meta name="robots" content="noindex, follow">
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png">      
-	<!-- CSS
-	   ============================================ -->
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Fontawesome -->
-	<link rel="stylesheet" href="css/fontawesome.css">
-	<!-- Solaar Icon -->
-	<link rel="stylesheet" href="fonts/pbmit-solaar-icon/pbmit_solaar.css">
-	<!-- Base Icons -->
-	<link rel="stylesheet" href="css/pbminfotech-base-icons.css">
-	<!-- Themify Icons -->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Slick -->
-	<link rel="stylesheet" href="css/swiper.min.css">
-	<!-- Magnific -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- AOS -->
-	<link rel="stylesheet" href="css/aos.css">
-	<!-- Shortcode CSS -->
-	<link rel="stylesheet" href="css/shortcode.css">
-	<!-- Base CSS -->
-	<link rel="stylesheet" href="css/base.css">
-	<!-- Style CSS -->
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="css/responsive.css">
-   </head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Conducting Financial – Solaar Demo1 HTML Template</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png">
 
-   <body>
-	<!-- Page Wrapper -->
-	<div class="page-wrapper">
+    <!-- CSS
+        ============================================ -->
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- Fontawesome -->
+      <link rel="stylesheet" href="css/fontawesome.css">
+      <!-- Solaar Icon -->
+      <link rel="stylesheet" href="fonts/pbmit-solaar-icon/pbmit_solaar.css">
+      <!-- Base Icons -->
+      <link rel="stylesheet" href="css/pbminfotech-base-icons.css"> 
+      <!-- Themify Icons -->
+      <link rel="stylesheet" href="css/themify-icons.css">
+      <!-- Swiper -->
+      <link rel="stylesheet" href="css/swiper.min.css">
+      <!-- Magnific -->
+      <link rel="stylesheet" href="css/magnific-popup.css"> 
+      <!-- Shortcode CSS -->
+      <link rel="stylesheet" href="css/shortcode.css">
+      <!-- Base CSS -->
+      <link rel="stylesheet" href="css/base.css">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Page Wrapper -->
+    <div class="page-wrapper">
 
 		<!-- Header Main Area -->
 		<header class="site-header pbmit-header-style-1" id="masthead">
@@ -118,7 +119,7 @@
 										</div>
 									</div>
 									<div class="pbmit-header-box pbmit-header-box-3">
-										<a href="https://solaar-demo.pbminfotech.com/cdn-cgi/l/email-protection#6f060109002f16001a1d0b00020e0601410c0002">
+										<a href="https://solaar-demo.pbminfotech.com/cdn-cgi/l/email-protection#2940474f466950465c5b4d4644484047074a4644">
 											<div class="pbmit-header-box-icon">
 												<div class="pbmit-icon-type-icon">
 													<div class="pbmit-header-icon-wrap">
@@ -142,7 +143,7 @@
 											</div>
 											<div class="pbmit-header-content-wrap">
 												<span class="pbmit-header-box-title">Mail Us</span>
-												<span class="pbmit-header-box-content"><span class="__cf_email__" data-cfemail="f0999e969fb0899f8582949f9d91999ede939f9d">[email&#160;protected]</span></span>
+												<span class="pbmit-header-box-content"><span class="__cf_email__" data-cfemail="741d1a121b340d1b0106101b19151d1a5a171b19">[email&#160;protected]</span></span>
 											</div>
 										</a>
 									</div>
@@ -194,10 +195,10 @@
 																		<li><a href="portfolio-m-grid-wide.html">M Grid Wide</a></li>
 																	</ul>
 																</li>
-																<li class="dropdown active">
+																<li class="dropdown">
 																	<a href="#">Grid View</a>
 																	<ul class="sub-menu">
-																		<li class="active"><a href="portfolio-grid-col-2.html">Grid Col 2</a></li>
+																		<li><a href="portfolio-grid-col-2.html">Grid Col 2</a></li>
 																		<li><a href="portfolio-grid-col-3.html">Grid Col 3</a></li>
 																		<li><a href="portfolio-grid-col-4.html">Grid Col 4</a></li>
 																		<li><a href="portfolio-grid-no-gap.html">Grid No Gap</a></li>
@@ -211,10 +212,10 @@
 																		<li><a href="portfolio-sortable-grid-col-4.html">Sortable Grid Col 4</a></li>
 																	</ul>
 																</li>
-																<li class="dropdown">
+																<li class="dropdown active">
 																	<a href="#">Single Detail Style</a>
 																	<ul class="sub-menu">
-																		<li><a href="portfolio-detail-style-01.html">Portfolio Detail Style 1</a></li>
+																		<li class="active"><a href="portfolio-detail-style-01.html">Portfolio Detail Style 1</a></li>
 																		<li><a href="portfolio-detail-style-02.html">Portfolio Detail Style 2</a></li>
 																	</ul>
 																</li>
@@ -310,7 +311,8 @@
 					<div class="pbmit-title-bar-content-inner">
 						<div class="pbmit-tbar">
 							<div class="pbmit-tbar-inner container">
-								<h1 class="pbmit-tbar-title"> Grid Col 2</h1>
+								<h1 class="pbmit-tbar-subtitle"> Portfolio</h1>
+								<h1 class="pbmit-tbar-title"> Conducting Financial</h1>
 							</div>
 						</div>
 						<div class="pbmit-breadcrumb">
@@ -319,7 +321,15 @@
 									<a title="" href="#" class="home"><span>Solaar</span></a>
 								</span>
 								<i class="pbmit-base-icon-arrow-right-2"></i>
-								<span><span class="post-root post post-post current-item"> Grid Col 2</span></span>
+								<span>
+									<a title="" href="#"><span>Portfolio</span></a>
+								</span>
+								<i class="pbmit-base-icon-arrow-right-2"></i>
+								<span>
+									<a title="" href="#"><span>Energy</span></a>
+								</span>
+								<i class="pbmit-base-icon-arrow-right-2"></i>
+								<span><span class="post-root post post-post current-item"> Conducting Financial</span></span>
 							</div>
 						</div>
 					</div>
@@ -328,175 +338,196 @@
 		</div>
 		<!-- Title Bar End-->
 
-		<div class="page-content">  
-
-		<!-- Portfolio Grid Col 2 -->
-		<section class="section-md">
-			<div class="container">
-				<div class="row pbmit-element-posts-wrapper">
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-01.jpg" class="img-fluid" alt="">
+        <!-- Page Content -->
+        <div class="page-content">   
+            
+            <!-- Single Detail Style 1 -->
+            <section class="site-content">
+				<div class="container">
+					<article class="pbmit-portfolio-single">
+						<div class="pbmit-single-project-details-list-wrappers">
+							<div class="pbmit-single-project-details-list-wrapper d-lg-flex">
+								<h3 class="pbmit-title"> A solar project involves using solar energy to produce electricity</h3>
+								<div class="pbmit-short-description">
+									The Major Solar Projects List is a database of all ground-mounted solar projects, 1 MW and that are either operating, under construction or under development. The list is for informational purposes only, reflecting projects and completed milestones in the public domain. The information in the list was gathered from public announcements of solar projects in the form of company.
 								</div>
 							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Marketing</a>
+							<div class="pbmit-single-project-details-list">
+								<div class="pbmit-portfolio-lines-wrapper">
+									<ul class="pbmit-portfolio-lines-ul">
+										<li class="pbmit-portfolio-line-li Client"> 
+											<span class="pbmit-portfolio-line-title">Client : </span> 
+											<span class="pbmit-portfolio-line-value">Tom Olson</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Category"> 
+											<span class="pbmit-portfolio-line-title">Category : </span> 
+											<span class="pbmit-portfolio-line-value">Energy</span>
+										</li>
+										<li class="pbmit-portfolio-line-li City"> 
+											<span class="pbmit-portfolio-line-title">City : </span> 
+											<span class="pbmit-portfolio-line-value">New York</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Sector"> 
+											<span class="pbmit-portfolio-line-title">Sector : </span> 
+											<span class="pbmit-portfolio-line-value">Industry Building</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Start Date"> 
+											<span class="pbmit-portfolio-line-title">Start Date : </span> 
+											<span class="pbmit-portfolio-line-value">26 January 2025</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Hand Over Date"> 
+											<span class="pbmit-portfolio-line-title">Hand Over Date : </span> 
+											<span class="pbmit-portfolio-line-value">31 DEC 2025</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Team"> 
+											<span class="pbmit-portfolio-line-title">Team : </span> 
+											<span class="pbmit-portfolio-line-value">Solar Panel Team</span>
+										</li>
+										<li class="pbmit-portfolio-line-li Budget"> 
+											<span class="pbmit-portfolio-line-title">Budget : </span> 
+											<span class="pbmit-portfolio-line-value">$74 Thousands</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="pbmit-featured-img-wrapper">
+								<img src="images/portfolio/portfolio-single-01.jpg" class="img-fluid w-100" alt="">
+							</div>	
+						</div>
+						<div class="pbmit-entry-content">
+							<div class="pt-xl-4 my-5">
+								<div class="row g-0">
+									<div class="col-md-5">
+										<div class="pbmit-custom-heading">
+											<h2 class="pbmit-title"><span>01 - </span>The Assessment</h2>
+										</div>
 									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Solar Techniques</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Solar Techniques">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
+									<div class="col-md-7">
+										<p class="pbmit-firstletter">We are battery charging module in HT45F5Q-2 has built-in OPA and DACs that are needed for the charging of the circuit usin xternal components as like shunt regulators, a depending on</p>
+										<p>solar project is a project that involves the <strong class="pbmit-color-blackish"> installation of solar panels to generate electricity</strong> . Solar projects can be installed on land owned by the developer or on leased land.  the world are beginning to adapt messaging as chatbot platforms to help answer their answers immediately and setting expectations. Standing and can be quite lucrative even as set innovative expanding in wide reaching areas of the world head and a lot of courage.</p>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="pbmit-animation-style7 portfolio-single-img">
+													<img src="images/portfolio/portfolio-single-02.png" class="img-fluid" alt="">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="pbmit-animation-style7 portfolio-single-img pt-md-0 pt-4">
+													<img src="images/portfolio/portfolio-single-03.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row g-0">
+								<div class="col-md-5">
+									<div class="pbmit-custom-heading">
+										<h2 class="pbmit-title"><span>02 - </span>The Solutions & Tips</h2>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<p>With winter fast approaching, it’s time to start thinking about your next yachting vacation getaways first decision you’ll need to make when it comes to <strong class="pbmit-color-blackish">planning your warm weather</strong> charter. The people I meet who service our turbines are special. They`re proud of what they do, and they take their jobs very seriously. It`s not an easy environment to work in.</p>
+									<h2 class="pbmit-custom-title">Solaar missions are made for best performance</h2>
+									<ul class="list-group">
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-solaar-icon pbmit-solaar-icon-verified"></i>						
+											</span>
+											<span class="pbmit-icon-list-text">Solar power is a sustainable energy source that reduces greenhouse gas emissions.</span>
+										</li>
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-solaar-icon pbmit-solaar-icon-verified"></i>						
+											</span>
+											<span class="pbmit-icon-list-text">Installing solar panels can lower electricity bills over time, and there are also incentives.</span>
+										</li>
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-solaar-icon pbmit-solaar-icon-verified"></i>						
+											</span>
+											<span class="pbmit-icon-list-text">Solar systems can be used in remote areas to provide electricity in the absence.</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="pbmit-animation-style7 py-5 portfolio-single-img">
+								<img src="images/portfolio/portfolio-single-04.png" class="img-fluid" alt="">
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="pbmit-custom-heading">
+										<h2 class="pbmit-title"><span>03 - </span>Result & Review</h2>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<p>The solar energy industry is long-standing and can be quite lucrative even as it stays innovative more expanding into wide-reaching areas of the world. If you have an overflowing shopping cart, are dealing with a fussy as child, or simply don’t want to walk to your car through the rain.</p>
+									<div class="pbmit-ihbox-style-7">
+										<div class="pbmit-ihbox-box">
+											<div class="pbmit-icon-wrapper d-flex">
+												<div class="pbmit-ihbox-icon">
+													<div class="pbmit-ihbox-icon-wrapper pbmit-icon-type-icon">
+														<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+															<g>
+																<g id="right_x5F_quote_x5F_alt">
+																	<g>
+																		<polygon points="0,4 0,28 12,16 12,4"></polygon>
+																		<polygon points="20,4 20,28 32,16 32,4"></polygon>
+																	</g>
+																</g>
+															</g>
+														</svg>
+													</div>
+												</div>
+												<div class="pbmit-title-wrap">
+													<h2 class="pbmit-element-title">“Soon, solar energy will be so cheap that it will out-compete all other forms of electricity production, except perhaps.</h2>
+													<div class="pbmit-heading-desc">Satisfied client</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="pt-4">It is the second greatest source of the electricity generation in Ireland after natural gas. Ireland is one of the leading countries in it use wind energy and 3rd place worldwide in 2018, after Denmark.</p>
+								</div>	
+							</div>
+						</div>
+						<nav class="navigation post-navigation" aria-label="Posts">
+							<div class="nav-links">
+								<div class="nav-previous">
+									<a href="#" rel="prev">
+										<i class=" pbmit-base-icon-arrow-right-2"></i>
+										<span>
+											<span class="pbmit-post-nav-icon">
+												<span class="pbmit-post-nav-head">Previous Post</span>
+											</span>
+											<span class="pbmit-post-nav-wrapper">
+												<span class="pbmit-post-nav nav-title">Solar Roof Project</span> 
 											</span>
 										</span>
 									</a>
 								</div>
-							</div>
-						</div>
-					</article>
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-02.jpg" class="img-fluid" alt="">
-								</div>
-							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Electricity</a>
-									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Resource Potential</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Resource Potential">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
+								<div class="nav-next">
+									<a href="#" rel="next">
+										<span>
+											<span class="pbmit-post-nav-icon">
+												<span class="pbmit-post-nav-head">Next Post</span>
+											</span>
+											<span class="pbmit-post-nav-wrapper">
+												<span class="pbmit-post-nav nav-title">Estimating System</span> 
 											</span>
 										</span>
+										<i class=" pbmit-base-icon-arrow-right-2"></i>
 									</a>
 								</div>
 							</div>
-						</div>
-					</article>
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-03.jpg" class="img-fluid" alt="">
-								</div>
-							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Research</a>
-									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Electric Technologies</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Electric Technologies">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-04.jpg" class="img-fluid" alt="">
-								</div>
-							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Innovation</a>
-									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Estimating System</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Estimating System">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-05.jpg" class="img-fluid" alt="">
-								</div>
-							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Energy</a>
-									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Conducting Financial</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Conducting Financial">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article class="pbmit-portfolio-style-1 col-md-6">
-						<div class="pbminfotech-post-content">
-							<div class="pbmit-featured-img-wrapper">
-								<div class="pbmit-featured-wrapper">
-									<img src="images/portfolio/portfolio-06.jpg" class="img-fluid" alt="">
-								</div>
-							</div>
-							<div class="pbminfotech-box-content">
-								<div class="pbminfotech-titlebox">
-									<div class="pbmit-port-cat">
-										<a href="portfolio-grid-col-3.html" rel="tag">Hydrogenium</a>
-									</div>
-									<h3 class="pbmit-portfolio-title">
-										<a href="portfolio-detail-style-01.html">Solar Roof Project</a>
-									</h3>
-									<a class="pbmit-portfolio-btn" href="portfolio-detail-style-01.html" title="Solar Roof Project">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
+						</nav>
 					</article>
 				</div>
-			</div>
-		</section>
-		<!-- Portfolio Grid Col 2 End -->
+			</section>
+            <!-- Single Detail Style 1 End -->
 
-		</div>
-         
+        </div>
+        <!-- Page Content End -->
+
 		<!-- footer -->
         <footer class="site-footer pbmit-bg-color-blackish">
 			<div class="pbmit-footer-big-area-wrapper">
@@ -541,7 +572,7 @@
 							<aside class="widget">
 								<h2 class="widget-title">Our Location</h2>
 								<div class="pbmit-contact-widget-lines">
-									<div class="pbmit-contact-widget-line pbmit-base-icon-location">2972 Westheimer Rd. Santa Ana, Illinois 85486</div>
+									<div class="pbmit-contact-widget-line pbmit-base-icon-location">Office No. 505, ABH Samruddhi, Near Dream Castle Signal, Makhamalabad Road, Nashik – 422003, Maharashtra, India</div>
 								</div>
 							</aside>
 						</div>
@@ -549,8 +580,8 @@
 							<aside class="widget">
 								<h2 class="widget-title">Say Hello</h2>
 								<div class="pbmit-contact-widget-lines">
-									<div class="pbmit-contact-widget-line pbmit-base-icon-phone">+1 840 841 25 69</div>
-									<div class="pbmit-contact-widget-line pbmit-base-icon-email"><a href="https://solaar-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c45424a436c5543595e4843414d4542024f4341">[email&#160;protected]</a></div>
+									<div class="pbmit-contact-widget-line pbmit-base-icon-phone">+91 8686 313 133</div>
+									<div class="pbmit-contact-widget-line pbmit-base-icon-email"><a href="mailto:info@shivanjalirenewables.com">info@shivanjalirenewables.com</a></div>
 								</div>
 							</aside>
 						</div>
@@ -614,12 +645,12 @@
 			</div>
         </footer>
 		<!-- footer End -->
-
+		
     </div>
     <!-- Page Wrapper End -->
 
     <!-- Search Box Start Here -->
-    <div class="pbmit-header-search-form-wrapper">
+	<div class="pbmit-header-search-form-wrapper">
 		<div class="pbmit-search-close">
 			<svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="28.163" height="28.163" viewBox="0 0 26.163 26.163">
 				<rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect>
@@ -633,16 +664,16 @@
 	</div>
     <!-- Search Box End Here -->
 
-    <!-- Scroll To Top -->
+	<!-- Scroll To Top -->
 	<div class="pbmit-progress-wrap">
 		<svg class="pbmit-progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
 			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
 		</svg>
 	</div>
 	<!-- Scroll To Top End -->
-   
-	<!-- JS
-		============================================ -->
+	
+    <!-- JS
+        ============================================ -->
 	<!-- jQuery JS -->
 	<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.min.js"></script>
 	<!-- Sticky-kit JS -->
@@ -667,25 +698,21 @@
 	<script src="js/jquery.countdown.min.js"></script> 
 	<!-- AOS -->
 	<script src="js/aos.js"></script>
-	<!-- Circle Progres -->
-	<script src='js/circle-progress.min.js'></script>   
 	<!-- GSAP -->
 	<script src='js/gsap.js'></script>
 	<!-- Scroll Trigger -->
 	<script src='js/ScrollTrigger.js'></script>
 	<!-- Split Text -->
 	<script src='js/SplitText.js'></script>
-	<!-- Scripts JS -->
-	<script src="js/masonry.min.js"></script>
 	<!-- Theia Sticky Sidebar JS -->
 	<script src='js/theia-sticky-sidebar.js'></script>
 	<!-- GSAP Animation -->
-	<script src='js/gsap-animation.js'></script>        
+	<script src='js/gsap-animation.js'></script>
 	<!-- Scripts JS -->
 	<script src="js/scripts.js"></script>
-         
-   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0a7cbc088cbd55',t:'MTc3NDIzNzk4Nw=='};var a=document.createElement('script');a.src='../cdn-cgi/challenge-platform/h/g/scripts/jsd/ea2d291c0fdc/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"125856bf84ab44059737e93b01aa0fef","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+
+   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0a7cc98f0f71b6',t:'MTc3NDIzNzk4OQ=='};var a=document.createElement('script');a.src='../cdn-cgi/challenge-platform/h/g/scripts/jsd/ea2d291c0fdc/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"125856bf84ab44059737e93b01aa0fef","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from solaar-demo.pbminfotech.com/html-demo/portfolio-grid-col-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2026 03:54:53 GMT -->
+<!-- Mirrored from solaar-demo.pbminfotech.com/html-demo/portfolio-detail-style-01.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2026 03:54:57 GMT -->
 </html>
