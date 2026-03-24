@@ -22,7 +22,7 @@
 				<div class="pbmit-slider-item" style="position: relative;">
 					<div class="pbmit-slider-bg" style="background-image: url(<?php echo htmlspecialchars($rel, ENT_QUOTES); ?>);"></div>
 					<div class="slider-gradient"></div>
-					<img src="images/logo_shivanjali.png" class="slider-logo-overlay" alt="Shivanjali Renewables">
+					<!-- <img src="images/logo_shivanjali.png" class="slider-logo-overlay" alt="Shivanjali Renewables"> -->
 					<div class="container" style="position: relative; z-index: 1;">
 						<div class="row g-0">
 							<div class="col-md-12 col-lg-7">
@@ -342,7 +342,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="services#operations-maintenance">Operations &amp; Maintenance</a>
+									<a href="services/operations-maintenance">Operations &amp; Maintenance</a>
 								</h3>
 								<p class="home-service-desc">Expert monitoring and upkeep for peak system performance</p>
 							</div>
@@ -430,7 +430,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="services#energy-consulting">Energy Efficiency Consulting</a>
+									<a href="services/energy-consulting">Energy Efficiency Consulting</a>
 								</h3>
 								<p class="home-service-desc">Helping businesses adopt cost-effective, eco-friendly energy
 									strategies</p>
@@ -528,7 +528,7 @@
 									</svg>
 								</div>
 								<h3 class="pbmit-service-title">
-									<a href="services#open-access-ppa">Open Access &amp; Power Purchase</a>
+									<a href="services/open-access-ppa">Open Access &amp; Power Purchase</a>
 								</h3>
 								<p class="home-service-desc">Access clean solar energy through parks and power purchase
 									agreements</p>

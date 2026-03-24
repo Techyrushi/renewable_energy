@@ -23,33 +23,249 @@
 	</div>
 </div>
 <div class="page-content products">
-	<section class="section-xl" id="residential">
+	<section class="section-xl products-hero" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Residential (3–19 kW)</h2>
+				<h2 class="pbmit-title">Solar Systems for Every Scale — 3 kW to 20 MW</h2>
+				<p class="mb-0">Whether you are a homeowner, a factory owner, or a large-scale developer, we have the right solar solution to match your energy needs and budget.</p>
 			</div>
 		</div>
 	</section>
-	<section class="section-xl" id="commercial">
+
+	<section class="section-xl pt-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
 		<div class="container">
-			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Commercial (20–200 kW)</h2>
+			<div class="row g-4 sr-product-grid">
+				<div class="col-md-6 col-lg-3" id="residential" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
+					<div class="sr-product-card">
+						<div class="sr-product-media">
+							<img src="images/homepage-1/service/service-img-01.jpg" alt="Residential Solar Systems">
+							<div class="sr-product-icon"><i class="pbmit-base-icon-home"></i></div>
+						</div>
+						<div class="sr-product-badge">FOR HOMES</div>
+						<h3 class="sr-product-title">Residential Solar Systems</h3>
+						<div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> 3 kW – 19 kW</div>
+						<p class="sr-product-desc">Designed for Indian homes, custom-built to match your monthly electricity consumption, rooftop space, and budget.</p>
+						<ul class="sr-product-points">
+							<li><i class="pbmit-base-icon-tick-1"></i>Reduce electricity bill by 70–100%</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Earn from net metering / excess export</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>25-year panel performance warranty</li>
+						</ul>
+						<button type="button" class="pbmit-btn sr-readmore" data-bs-toggle="modal" data-bs-target="#productModal" data-product="residential" data-title="Residential Solar Systems">
+							<span class="pbmit-button-text">Read more</span>
+						</button>
+					</div>
+					<div class="d-none" id="product-detail-residential">
+						<div class="sr-modal-top">
+							<div class="sr-modal-media">
+								<img src="images/homepage-1/service/service-img-01.jpg" alt="Residential Solar Systems">
+							</div>
+							<div class="sr-modal-meta">
+								<div class="sr-product-badge">FOR HOMES</div>
+								<div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity Range: <strong>3 kW – 19 kW</strong></div>
+							</div>
+						</div>
+						<p>Designed for Indian homes, our residential solar systems are custom-built to match your monthly electricity consumption, rooftop space, and budget. With net metering support, you can sell excess energy back to the grid — making your home a small power plant.</p>
+						<div class="sr-modal-section-title">Ideal for</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-check-mark"></i>Independent houses and bungalows</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Row houses and villas</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Housing societies (common areas)</li>
+						</ul>
+						<div class="sr-modal-section-title">Key Benefits</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-tick"></i>Reduce electricity bill by 70–100%</li>
+							<li><i class="pbmit-base-icon-tick"></i>Earn from net metering / excess export</li>
+							<li><i class="pbmit-base-icon-tick"></i>25-year panel performance warranty</li>
+							<li><i class="pbmit-base-icon-tick"></i>Government subsidy eligibility under PM Surya Ghar Muft Bijli Yojana</li>
+						</ul>
+						<div class="sr-modal-cta">
+							<div class="sr-modal-cta-label">Starting From</div>
+							<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Contact us for current pricing</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3" id="commercial" data-aos="fade-up" data-aos-duration="800" data-aos-delay="90">
+					<div class="sr-product-card">
+						<div class="sr-product-media">
+							<img src="images/homepage-1/service/service-img-02.jpg" alt="Commercial Solar Systems">
+							<div class="sr-product-icon"><i class="pbmit-base-icon-city"></i></div>
+						</div>
+						<div class="sr-product-badge sr-product-badge--blue">FOR BUSINESSES</div>
+						<h3 class="sr-product-title">Commercial Solar Systems</h3>
+						<div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> 20 kW – 200 kW</div>
+						<p class="sr-product-desc">Scalable solar systems for offices, hospitals, hotels, schools, and retail with maximum savings on commercial tariff.</p>
+						<ul class="sr-product-points">
+							<li><i class="pbmit-base-icon-tick-1"></i>Reduce high commercial electricity tariff</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Accelerated depreciation benefit (Year 1)</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Monitoring portal for real-time tracking</li>
+						</ul>
+						<button type="button" class="pbmit-btn sr-readmore" data-bs-toggle="modal" data-bs-target="#productModal" data-product="commercial" data-title="Commercial Solar Systems">
+							<span class="pbmit-button-text">Read more</span>
+						</button>
+					</div>
+					<div class="d-none" id="product-detail-commercial">
+						<div class="sr-modal-top">
+							<div class="sr-modal-media">
+								<img src="images/homepage-1/service/service-img-02.jpg" alt="Commercial Solar Systems">
+							</div>
+							<div class="sr-modal-meta">
+								<div class="sr-product-badge sr-product-badge--blue">FOR BUSINESSES</div>
+								<div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity Range: <strong>20 kW – 200 kW</strong></div>
+							</div>
+						</div>
+						<p>Scalable, high-performance solar systems designed for commercial establishments including offices, hotels, hospitals, educational institutions, and retail businesses. Our commercial systems are engineered to align with your load profile and maximise savings on your commercial tariff.</p>
+						<div class="sr-modal-section-title">Ideal for</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-check-mark"></i>Offices, IT parks, and coworking spaces</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Hospitals, hotels, and schools</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Shopping centres and malls</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Warehouses and cold storage facilities</li>
+						</ul>
+						<div class="sr-modal-section-title">Key Benefits</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-tick"></i>Significant reduction in commercial electricity tariff</li>
+							<li><i class="pbmit-base-icon-tick"></i>Accelerated depreciation benefit (40% in Year 1) for businesses</li>
+							<li><i class="pbmit-base-icon-tick"></i>Scalable design — easy to expand as your load grows</li>
+							<li><i class="pbmit-base-icon-tick"></i>Monitoring portal for real-time generation tracking</li>
+						</ul>
+						<div class="sr-modal-cta">
+							<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Talk to our team</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3" id="ht-consumer" data-aos="fade-up" data-aos-duration="800" data-aos-delay="180">
+					<div class="sr-product-card">
+						<div class="sr-product-media">
+							<img src="images/homepage-1/service/service-img-03.jpg" alt="HT Consumer Solar Projects">
+							<div class="sr-product-icon"><i class="pbmit-base-icon-budgeting"></i></div>
+						</div>
+						<div class="sr-product-badge sr-product-badge--teal">FOR INDUSTRY</div>
+						<h3 class="sr-product-title">HT Consumer Solar Projects</h3>
+						<div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> 200 kW – 990 kW</div>
+						<p class="sr-product-desc">Industrial-grade systems for HT consumers to offset demand charges and deliver fast payback with captive consumption.</p>
+						<ul class="sr-product-points">
+							<li><i class="pbmit-base-icon-tick-1"></i>Reduce HT tariff and demand charges</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Captive consumption model</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Dedicated project manager</li>
+						</ul>
+						<button type="button" class="pbmit-btn sr-readmore" data-bs-toggle="modal" data-bs-target="#productModal" data-product="ht" data-title="HT Consumer Solar Projects">
+							<span class="pbmit-button-text">Read more</span>
+						</button>
+					</div>
+					<div class="d-none" id="product-detail-ht">
+						<div class="sr-modal-top">
+							<div class="sr-modal-media">
+								<img src="images/homepage-1/service/service-img-03.jpg" alt="HT Consumer Solar Projects">
+							</div>
+							<div class="sr-modal-meta">
+								<div class="sr-product-badge sr-product-badge--teal">FOR INDUSTRY</div>
+								<div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity Range: <strong>200 kW – 990 kW</strong></div>
+							</div>
+						</div>
+						<p>High-tension electricity consumers — factories, large manufacturing plants, processing units — face the highest power costs. Our HT consumer projects are designed to offset a significant portion of your HT tariff with clean solar energy, delivering payback in as little as 3–5 years.</p>
+						<div class="sr-modal-section-title">Ideal for</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-check-mark"></i>Factories and manufacturing units</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Food processing and agro-industrial plants</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Textile mills and engineering companies</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Large pumping stations and water treatment plants</li>
+						</ul>
+						<div class="sr-modal-section-title">Key Benefits</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-tick"></i>Substantial reduction in HT tariff and demand charges</li>
+							<li><i class="pbmit-base-icon-tick"></i>Captive consumption model — no export dependency</li>
+							<li><i class="pbmit-base-icon-tick"></i>Robust industrial-grade equipment for harsh environments</li>
+							<li><i class="pbmit-base-icon-tick"></i>Dedicated project manager for seamless execution</li>
+						</ul>
+						<div class="sr-modal-cta">
+							<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Request a proposal</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-3" id="open-access" data-aos="fade-up" data-aos-duration="800" data-aos-delay="270">
+					<div class="sr-product-card">
+						<div class="sr-product-media">
+							<img src="images/homepage-1/service/service-img-04.jpg" alt="Open Access Solar Projects">
+							<div class="sr-product-icon"><i class="pbmit-base-icon-location-1"></i></div>
+						</div>
+						<div class="sr-product-badge sr-product-badge--orange">LARGE SCALE</div>
+						<h3 class="sr-product-title">Open Access Solar Projects</h3>
+						<div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> 1 MW – 20 MW</div>
+						<p class="sr-product-desc">Large-scale clean energy through solar parks and direct PPAs with full EPC lifecycle and regulatory handling.</p>
+						<ul class="sr-product-points">
+							<li><i class="pbmit-base-icon-tick-1"></i>Typically 30–50% savings vs grid</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>Long-term fixed PPA rates</li>
+							<li><i class="pbmit-base-icon-tick-1"></i>End-to-end regulatory approvals</li>
+						</ul>
+						<button type="button" class="pbmit-btn sr-readmore" data-bs-toggle="modal" data-bs-target="#productModal" data-product="oa" data-title="Open Access Solar Projects">
+							<span class="pbmit-button-text">Read more</span>
+						</button>
+					</div>
+					<div class="d-none" id="product-detail-oa">
+						<div class="sr-modal-top">
+							<div class="sr-modal-media">
+								<img src="images/homepage-1/service/service-img-04.jpg" alt="Open Access Solar Projects">
+							</div>
+							<div class="sr-modal-meta">
+								<div class="sr-product-badge sr-product-badge--orange">LARGE SCALE</div>
+								<div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity Range: <strong>1 MW – 20 MW</strong></div>
+							</div>
+						</div>
+						<p>For organisations with high power requirements — or developers looking to build solar infrastructure — our Open Access solar projects deliver large-scale, cost-effective clean energy through solar parks and direct Power Purchase Agreements (PPAs). We manage the full EPC lifecycle and regulatory process.</p>
+						<div class="sr-modal-section-title">Ideal for</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-check-mark"></i>Large industrial groups and conglomerates</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Solar park developers seeking land and infrastructure</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Government or institutional bulk energy buyers</li>
+							<li><i class="pbmit-base-icon-check-mark"></i>Real estate developers building green-rated projects</li>
+						</ul>
+						<div class="sr-modal-section-title">Key Benefits</div>
+						<ul class="sr-modal-list sr-icon-list">
+							<li><i class="pbmit-base-icon-tick"></i>Competitive solar power tariff vs. grid — typically 30–50% savings</li>
+							<li><i class="pbmit-base-icon-tick"></i>Long-term energy price certainty through fixed PPA rates</li>
+							<li><i class="pbmit-base-icon-tick"></i>Full regulatory handling — open access approvals, wheeling charges, banking</li>
+							<li><i class="pbmit-base-icon-tick"></i>Shovel-ready infrastructure with grid connectivity</li>
+						</ul>
+						<div class="sr-modal-cta">
+							<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Discuss Open Access</span></a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-	<section class="section-xl" id="ht-consumer">
-		<div class="container">
-			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">HT Consumer (200–990 kW)</h2>
+
+	<div class="modal fade sr-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="productModalLabel">Product</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="productModalBody"></div>
 			</div>
 		</div>
-	</section>
-	<section class="section-xl" id="open-access">
-		<div class="container">
-			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Open Access (1–20 MW)</h2>
-			</div>
-		</div>
-	</section>
+	</div>
+
+	<script>
+		(function () {
+			var modalEl = document.getElementById('productModal');
+			if (!modalEl) return;
+			modalEl.addEventListener('show.bs.modal', function (event) {
+				var btn = event.relatedTarget;
+				if (!btn) return;
+				var key = btn.getAttribute('data-product');
+				var title = btn.getAttribute('data-title') || 'Product';
+				var source = document.getElementById('product-detail-' + key);
+				var body = document.getElementById('productModalBody');
+				var titleEl = document.getElementById('productModalLabel');
+				if (titleEl) titleEl.textContent = title;
+				if (body) body.innerHTML = source ? source.innerHTML : '';
+			});
+		})();
+	</script>
 </div>
 <?php include 'includes/footer.php'; ?>

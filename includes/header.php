@@ -10,6 +10,7 @@
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/renewable/">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/fevicon.png">
     <!-- CSS
@@ -65,8 +66,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        href="https://maps.app.goo.gl/4r1P4qqp36AEcAce8">
+                                    <a href="https://maps.app.goo.gl/4r1P4qqp36AEcAce8">
                                         <i class=" pbmit-base-icon-marker"></i>Shivanjali Renewables
                                     </a>
                                 </li>
@@ -112,19 +112,18 @@
                                                                 <li><a href="about#core-values">Core Values</a></li>
                                                                 <li><a href="about#leadership-team">Leadership Team</a>
                                                                 </li>
+                                                                <li><a
+                                                                        href="about#milestones">Achievements/Milestones</a>
+                                                                </li>
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown">
                                                             <a href="services">Services</a>
                                                             <ul>
-                                                                <li><a href="services#solar-installation">Solar
-                                                                        Installation</a></li>
-                                                                <li><a href="services#operations-maintenance">Operations
-                                                                        &amp; Maintenance</a></li>
-                                                                <li><a href="services#energy-consulting">Energy
-                                                                        Consulting</a></li>
-                                                                <li><a href="services#open-access-ppa">Open Access &amp;
-                                                                        Power Purchase</a></li>
+                                                                <li><a href="services/solar-installation">Solar Module &amp; System Installation</a></li>
+                                                                <li><a href="services/operations-maintenance">Operations &amp; Maintenance</a></li>
+                                                                <li><a href="services/energy-consulting">Energy Efficiency Consulting</a></li>
+                                                                <li><a href="services/open-access-ppa">Open Access &amp; Power Purchase</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown">

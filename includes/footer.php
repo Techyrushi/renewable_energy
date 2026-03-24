@@ -50,10 +50,10 @@
                     <aside class="widget pbmit-two-column-menu">
                         <h2 class="widget-title">Our Services</h2>
                         <ul class="menu">
-                            <li><a href="services#solar-installation">Solar Installation</a></li>
-                            <li><a href="services#operations-maintenance">Operations &amp; Maintenance</a></li>
-                            <li><a href="services#energy-consulting">Energy Consulting</a></li>
-                            <li><a href="services#open-access-ppa">Open Access &amp; Power Purchase</a></li>
+                            <li><a href="services/solar-installation">Solar Module &amp; System Installation</a></li>
+                            <li><a href="services/operations-maintenance">Operations &amp; Maintenance</a></li>
+                            <li><a href="services/energy-consulting">Energy Efficiency Consulting</a></li>
+                            <li><a href="services/open-access-ppa">Open Access &amp; Power Purchase</a></li>
                         </ul>
                     </aside>
                 </div>
