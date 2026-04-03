@@ -59,7 +59,9 @@
 								<p>Monthly yield and uptime indicators help identify and resolve performance issues quickly.</p>
 							</div>
 							<div class="col-md-6">
-								<div class="sr-chart-box"></div>
+								<div class="sr-chart-box">
+									<img src="images/homepage-2/service/service-img-04.jpg" alt="Performance Chart">	
+								</div>
 							</div>
 						</div>
 

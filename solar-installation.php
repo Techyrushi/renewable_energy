@@ -60,7 +60,9 @@
 								<p>Year-on-year payback and ROI trends indicate sustainable savings for typical residential and commercial systems.</p>
 							</div>
 							<div class="col-md-6">
-								<div class="sr-chart-box"></div>
+								<div class="sr-chart-box">
+									<img src="images/homepage-2/service/service-img-01.jpg" alt="Financial Chart">
+								</div>
 							</div>
 						</div>
 

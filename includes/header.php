@@ -1,3 +1,22 @@
+<?php
+ob_start(function ($buffer) {
+	return preg_replace_callback('/<img\\b[^>]*>/i', function ($m) {
+		$tag = $m[0];
+		if (stripos($tag, ' loading=') !== false) {
+			return $tag;
+		}
+		if (preg_match('/class\\s*=\\s*([\'"])[^\\1>]*(logo-img|pbmit-main-logo)[^\\1>]*\\1/i', $tag)) {
+			return $tag;
+		}
+		if (preg_match('/\\/\\>\\s*$/', $tag)) {
+			$tag = preg_replace('/\\s*\\/\\>\\s*$/', ' loading="lazy" decoding="async" />', $tag, 1);
+		} else {
+			$tag = preg_replace('/\\s*>\\s*$/', ' loading="lazy" decoding="async">', $tag, 1);
+		}
+		return $tag;
+	}, $buffer);
+});
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 

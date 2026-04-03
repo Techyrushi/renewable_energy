@@ -159,6 +159,8 @@
 <script src="js/swiper.min.js"></script>
 <!-- Magnific JS -->
 <script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Isotope (Filters) -->
+<script src="js/isotope.pkgd.min.js"></script>
 <!-- Circle Progress JS -->
 <script src="js/circle-progress.js"></script>
 <!-- countdown JS -->
@@ -179,12 +181,74 @@
 <script src="js/jquery-validate/jquery.validate.min.js"></script>
 <!-- Scripts JS -->
 <script src="js/scripts.js"></script>
+<div class="sr-cookie-banner" id="srCookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="sr-cookie-inner">
+        <div class="sr-cookie-text">
+            <div class="sr-cookie-title">We use cookies</div>
+            <div class="sr-cookie-desc">We use cookies to improve your experience and analyze traffic. You can accept
+                or reject non-essential cookies. <a href="privacy-policy">Privacy Policy</a></div>
+        </div>
+        <div class="sr-cookie-actions">
+            <button type="button" class="pbmit-btn outline sr-cookie-btn" onclick="srRejectCookies()"><span
+                    class="pbmit-button-text">Reject</span></button>
+            <button type="button" class="pbmit-btn sr-cookie-btn" onclick="srAcceptCookies()"><span
+                    class="pbmit-button-text">Accept</span></button>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        var KEY = 'sr_cookie_consent';
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
-    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
-    data-cf-beacon='{"version":"2024.11.0","token":"125856bf84ab44059737e93b01aa0fef","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
-    crossorigin="anonymous"></script>
-<script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9e0a7ca7692f71b6',t:'MTc3NDIzNzk4Mw=='};var a=document.createElement('script');a.src='../cdn-cgi/challenge-platform/h/g/scripts/jsd/ea2d291c0fdc/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+        function getConsent() {
+            try { return localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+
+        function setConsent(v) {
+            try { localStorage.setItem(KEY, v); } catch (e) { }
+        }
+
+        function showBanner() {
+            var el = document.getElementById('srCookieBanner');
+            if (el) el.classList.add('is-visible');
+        }
+
+        function hideBanner() {
+            var el = document.getElementById('srCookieBanner');
+            if (el) el.classList.remove('is-visible');
+        }
+
+        function loadAnalytics() {
+            if (window.__srAnalyticsLoaded) return;
+            window.__srAnalyticsLoaded = true;
+            var s = document.createElement('script');
+            s.defer = true;
+            s.src = 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516';
+            s.setAttribute('data-cf-beacon', '{"version":"2024.11.0","token":"125856bf84ab44059737e93b01aa0fef"}');
+            s.crossOrigin = 'anonymous';
+            document.head.appendChild(s);
+        }
+
+        window.srAcceptCookies = function () {
+            setConsent('all');
+            hideBanner();
+            loadAnalytics();
+        };
+
+        window.srRejectCookies = function () {
+            setConsent('essential');
+            hideBanner();
+        };
+
+        var consent = getConsent();
+        if (consent === 'all') {
+            loadAnalytics();
+        }
+        if (!consent) {
+            showBanner();
+        }
+    })();
+</script>
 <a href="https://wa.me/918686313133?text=Hello%20Shivanjali%20Renewables%2C%20I%27m%20interested%20in%20solar%20solutions."
    class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
@@ -196,3 +260,4 @@
 <!-- Mirrored from solaar-demo.pbminfotech.com/html-demo/homepage-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Mar 2026 03:54:30 GMT -->
 
 </html>
+<?php if (ob_get_level()) { ob_end_flush(); } ?>

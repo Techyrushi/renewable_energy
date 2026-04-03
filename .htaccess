@@ -16,9 +16,37 @@ RewriteRule ^products/?$ products.php [L]
 RewriteRule ^projects/?$ projects.php [L]
 RewriteRule ^why-us/?$ why-us.php [L]
 RewriteRule ^blog/?$ blog.php [L]
+RewriteRule ^blog/([a-z0-9-]+)/?$ blog-details.php?post=$1 [L,QSA]
 RewriteRule ^contact/?$ contact-us.php [L]
 RewriteRule ^privacy-policy/?$ privacy-policy.php [L]
 RewriteRule ^terms-of-use/?$ terms.php [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . 404.php [L]
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript application/javascript application/json application/xml application/xhtml+xml image/svg+xml
+	Header always set Vary "Accept-Encoding"
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 7 days"
+	ExpiresByType text/css "access plus 30 days"
+	ExpiresByType application/javascript "access plus 30 days"
+	ExpiresByType text/javascript "access plus 30 days"
+	ExpiresByType image/jpg "access plus 180 days"
+	ExpiresByType image/jpeg "access plus 180 days"
+	ExpiresByType image/png "access plus 180 days"
+	ExpiresByType image/gif "access plus 180 days"
+	ExpiresByType image/webp "access plus 180 days"
+	ExpiresByType image/svg+xml "access plus 180 days"
+	ExpiresByType font/woff2 "access plus 180 days"
+	ExpiresByType font/woff "access plus 180 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|woff|woff2)$">
+		Header set Cache-Control "public, max-age=15552000, immutable"
+	</FilesMatch>
+</IfModule>

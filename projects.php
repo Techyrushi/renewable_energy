@@ -2,7 +2,7 @@
 </header>
 
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper sr-projects-hero">
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
@@ -36,7 +36,7 @@
 		</div>
 	</section>
 
-	<section class="section-xl pt-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
+	<section class="section-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
 		<div class="container">
 			<div class="row g-4">
 				<div class="col-lg-4">
@@ -93,7 +93,7 @@
 		</div>
 	</section>
 
-	<section class="section-xl pt-0" id="gallery" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
+	<section class="section-xl" id="gallery" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
 				<h2 class="pbmit-title">Featured Project Gallery</h2>
@@ -121,36 +121,14 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Rooftop Solar</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p1" data-title="Commercial Warehouse — Nashik">Commercial Warehouse — Nashik</a>
+										Commercial Warehouse - Nashik
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p1" data-title="Commercial Warehouse — Nashik" title="Commercial Warehouse — Nashik">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-location-1"></i><span>Location:</span> Nashik</li>
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 100 kW</li>
+										<li><i class="pbmit-base-icon-budgeting"></i><span>Savings:</span> ~₹8 lakh/year</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p1">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-01.jpg" alt="Commercial Warehouse — Nashik">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge">ROOFTOP</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-location-1"></i> Location: <strong>Nashik</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Project: Commercial warehouse</li>
-								<li><i class="pbmit-base-icon-lightening"></i>Capacity: 100 kW</li>
-								<li><i class="pbmit-base-icon-budgeting"></i>Estimated savings: ~₹8 lakh/year</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Enquire for similar project</span></a>
 							</div>
 						</div>
 					</article>
@@ -168,36 +146,14 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Rooftop Solar</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p2" data-title="Educational Institution — Nashik">Educational Institution — Nashik</a>
+										Educational Institution — Nashik
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p2" data-title="Educational Institution — Nashik" title="Educational Institution — Nashik">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-location-1"></i><span>Location:</span> Nashik</li>
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 50 kW</li>
+										<li><i class="pbmit-base-icon-budgeting"></i><span>Savings:</span> ~₹4 lakh/year</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p2">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-02.jpg" alt="Educational Institution — Nashik">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge">ROOFTOP</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-location-1"></i> Location: <strong>Nashik</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Project: Educational Institution</li>
-								<li><i class="pbmit-base-icon-lightening"></i>Capacity: 50 kW</li>
-								<li><i class="pbmit-base-icon-budgeting"></i>Estimated savings: ~₹4 lakh/year</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Enquire for similar project</span></a>
 							</div>
 						</div>
 					</article>
@@ -215,36 +171,14 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Rooftop Solar</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p3" data-title="Hotel — Maharashtra">Hotel — Maharashtra</a>
+										Hotel — Maharashtra
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p3" data-title="Hotel — Maharashtra" title="Hotel — Maharashtra">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-location-1"></i><span>Location:</span> Maharashtra</li>
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 80 kW</li>
+										<li><i class="pbmit-base-icon-budgeting"></i><span>Savings:</span> ~₹6.5 lakh/year</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p3">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-03.jpg" alt="Hotel — Maharashtra">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge">ROOFTOP</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-location-1"></i> Location: <strong>Maharashtra</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Project: Hotel</li>
-								<li><i class="pbmit-base-icon-lightening"></i>Capacity: 80 kW</li>
-								<li><i class="pbmit-base-icon-budgeting"></i>Estimated savings: ~₹6.5 lakh/year</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Enquire for similar project</span></a>
 							</div>
 						</div>
 					</article>
@@ -262,35 +196,13 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Open Access</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p4" data-title="Varun Agro Food Processing Pvt. Ltd.">Varun Agro Food Processing Pvt. Ltd.</a>
+										Varun Agro Food Processing Pvt. Ltd.
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p4" data-title="Varun Agro Food Processing Pvt. Ltd." title="Varun Agro Food Processing Pvt. Ltd.">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 900 kW</li>
+										<li><i class="pbmit-base-icon-check-mark"></i><span>Outcome:</span> Transformative savings &amp; sustainability</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p4">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-04.jpg" alt="Varun Agro Food Processing Pvt. Ltd.">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge sr-product-badge--blue">OPEN ACCESS</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity: <strong>900 kW</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Client: Varun Agro Food Processing Pvt. Ltd.</li>
-								<li><i class="pbmit-base-icon-budgeting"></i>Outcome: Transformative savings and sustainability</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Discuss Open Access</span></a>
 							</div>
 						</div>
 					</article>
@@ -308,42 +220,14 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Solar Park</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p5" data-title="Utility Solar Park — Maharashtra">Utility Solar Park — Maharashtra</a>
+										Utility Solar Park — Maharashtra
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p5" data-title="Utility Solar Park — Maharashtra" title="Utility Solar Park — Maharashtra">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-location-1"></i><span>Location:</span> Maharashtra</li>
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 5 MW</li>
+										<li><i class="pbmit-base-icon-tick"></i><span>Service:</span> End-to-end EPC &amp; O&amp;M</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p5">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-05.jpg" alt="Utility Solar Park — Maharashtra">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge sr-product-badge--orange">SOLAR PARKS</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-location-1"></i> Location: <strong>Maharashtra</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details (placeholder)</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Category: Solar Farming &amp; Parks</li>
-								<li><i class="pbmit-base-icon-lightening"></i>Capacity: 5 MW</li>
-							</ul>
-							<div class="sr-modal-section-title">What we provide</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-tick"></i>Land identification and acquisition support</li>
-								<li><i class="pbmit-base-icon-tick"></i>Grid connectivity and evacuation planning</li>
-								<li><i class="pbmit-base-icon-tick"></i>End-to-end EPC execution and commissioning</li>
-								<li><i class="pbmit-base-icon-tick"></i>Operations &amp; maintenance support</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Request a solar park plan</span></a>
 							</div>
 						</div>
 					</article>
@@ -361,36 +245,14 @@
 								<div class="pbminfotech-titlebox">
 									<div class="pbmit-port-cat"><a href="projects#gallery" rel="tag">Rooftop Solar</a></div>
 									<h3 class="pbmit-portfolio-title">
-										<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p6" data-title="Industrial Rooftop — Nashik">Industrial Rooftop — Nashik</a>
+										Industrial Rooftop — Nashik
 									</h3>
-									<a class="pbmit-portfolio-btn" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#projectModal" data-project="p6" data-title="Industrial Rooftop — Nashik" title="Industrial Rooftop — Nashik">
-										<span class="pbmit-button-icon-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-											</span>
-										</span>
-									</a>
+									<ul class="sr-project-details">
+										<li><i class="pbmit-base-icon-location-1"></i><span>Location:</span> Nashik</li>
+										<li><i class="pbmit-base-icon-lightening"></i><span>Capacity:</span> 150 kW</li>
+										<li><i class="pbmit-base-icon-budgeting"></i><span>Savings:</span> ~₹10 lakh/year</li>
+									</ul>
 								</div>
-							</div>
-						</div>
-						<div class="d-none" id="project-detail-p6">
-							<div class="sr-modal-top">
-								<div class="sr-modal-media">
-									<img src="images/portfolio/portfolio-06.jpg" alt="Industrial Rooftop — Nashik">
-								</div>
-								<div class="sr-modal-meta">
-									<div class="sr-product-badge">ROOFTOP</div>
-									<div class="sr-modal-range"><i class="pbmit-base-icon-location-1"></i> Location: <strong>Nashik</strong></div>
-								</div>
-							</div>
-							<div class="sr-modal-section-title">Project Details (placeholder)</div>
-							<ul class="sr-modal-list sr-icon-list">
-								<li><i class="pbmit-base-icon-check-mark"></i>Project: Industrial rooftop system</li>
-								<li><i class="pbmit-base-icon-lightening"></i>Capacity: 150 kW</li>
-								<li><i class="pbmit-base-icon-budgeting"></i>Estimated savings: ~₹10 lakh/year</li>
-							</ul>
-							<div class="sr-modal-cta">
-								<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Enquire for similar project</span></a>
 							</div>
 						</div>
 					</article>
@@ -399,43 +261,20 @@
 		</div>
 	</section>
 
-	<div class="modal fade sr-modal" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="projectModalLabel">Project</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	<section class="section-xl sr-projects-cta" data-aos="fade-up" data-aos-duration="800" data-aos-delay="160">
+		<div class="container">
+			<div class="sr-projects-cta-inner">
+				<div class="sr-projects-cta-text">
+					<h2 class="sr-projects-cta-title">Have a project in mind?</h2>
+					<p class="sr-projects-cta-desc mb-0">Tell us about your energy requirements and we will design the
+						perfect solar solution for you. Our team will respond within 24 hours with a preliminary
+						proposal.</p>
 				</div>
-				<div class="modal-body" id="projectModalBody"></div>
+				<a href="contact" class="pbmit-btn sr-projects-cta-btn"><span class="pbmit-button-text">Start Your
+						Project</span></a>
 			</div>
 		</div>
-	</div>
-
-	<script>
-		(function () {
-			var modalEl = document.getElementById('projectModal');
-			if (!modalEl) return;
-			modalEl.addEventListener('show.bs.modal', function (event) {
-				var btn = event.relatedTarget;
-				if (!btn) return;
-				var key = btn.getAttribute('data-project');
-				var title = btn.getAttribute('data-title') || 'Project';
-				var source = document.getElementById('project-detail-' + key);
-				var body = document.getElementById('projectModalBody');
-				var titleEl = document.getElementById('projectModalLabel');
-				if (titleEl) titleEl.textContent = title;
-				if (body) body.innerHTML = source ? source.innerHTML : '';
-			});
-			if (window.jQuery) {
-				jQuery(window).on('load', function () {
-					var grid = jQuery('.projects-page #gallery .pbmit-element-posts-wrapper');
-					if (grid.length && jQuery.fn.isotope) {
-						grid.isotope('layout');
-					}
-				});
-			}
-		})();
-	</script>
+	</section>
 </div>
 
 <?php include 'includes/footer.php'; ?>

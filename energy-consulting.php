@@ -59,7 +59,9 @@
 								<p>Projected savings and ROI curves help you plan investments confidently.</p>
 							</div>
 							<div class="col-md-6">
-								<div class="sr-chart-box"></div>
+								<div class="sr-chart-box">
+									<img src="images/homepage-2/service/service-img-02.jpg" alt="Financial Chart">
+								</div>
 							</div>
 						</div>
 

@@ -1,22 +1,24 @@
 <?php include 'includes/header.php'; ?>
 
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper sr-why-hero">
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Our History</h1>
+						<h1 class="pbmit-tbar-title">The Shivanjali Difference</h1>
+						<p class="pbmit-tbar-subtitle mb-0">We don&#8217;t just install solar panels. We build long-term
+							energy partnerships that deliver measurable results.</p>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
 					<div class="pbmit-breadcrumb-inner">
 						<span>
-							<a title="" href="#" class="home"><span>Solaar</span></a>
+							<a title="" href="./" class="home"><span>Home</span></a>
 						</span>
 						<i class="pbmit-base-icon-arrow-right-2"></i>
-						<span><span class="post-root post post-post current-item"> Our History</span></span>
+						<span><span class="post-root post post-post current-item"> Why Choose Us</span></span>
 					</div>
 				</div>
 			</div>
@@ -27,312 +29,211 @@
 </header>
 
 <!-- Page Content -->
-<div class="page-content">
-
-	<!-- History End -->
-	<section class="our-history">
-		<div class="container-fluid p-0">
-			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Essential Features Of Our <br> History.</h2>
-			</div>
-			<div class="swiper-slider pbmit-column-five pbmit-timeline-style-1" data-autoplay="false" data-loop="false"
-				data-dots="false" data-arrows="false" data-columns="5" data-margin="30" data-effect="slide">
-				<div class="swiper-wrapper">
-					<!-- Slide1 -->
-					<div class="pbmit-timeline-wrapper swiper-slide pbmit-slide-even">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-01.jpg" class="img-fluid" alt="Our Beginning ">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2015</p>
-							<h3 class="pbmit-timeline-title">Our Beginning </h3>
-							<p class="pbmit-timeline-desc">Interior designers are independent business people.</p>
-						</div>
-					</div>
-					<!-- Slide2 -->
-					<div class="pbmit-timeline-wrapper swiper-slide">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-02.jpg" class="img-fluid" alt="Research">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2017</p>
-							<h3 class="pbmit-timeline-title">Research</h3>
-							<p class="pbmit-timeline-desc">We are master of Research & innovation idea.</p>
-						</div>
-					</div>
-					<!-- Slide3 -->
-					<div class="pbmit-timeline-wrapper swiper-slide pbmit-slide-even">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-03.jpg" class="img-fluid" alt="Communication">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2019</p>
-							<h3 class="pbmit-timeline-title">Communication</h3>
-							<p class="pbmit-timeline-desc">We develop the full cycle of project details for clients.</p>
-						</div>
-					</div>
-					<!-- Slide4 -->
-					<div class="pbmit-timeline-wrapper swiper-slide">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-04.jpg" class="img-fluid" alt="budget">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2021</p>
-							<h3 class="pbmit-timeline-title">budget</h3>
-							<p class="pbmit-timeline-desc">The cost of interior decoration is also significant factor.
-							</p>
-						</div>
-					</div>
-					<!-- Slide5 -->
-					<div class="pbmit-timeline-wrapper swiper-slide pbmit-slide-even">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-05.jpg" class="img-fluid" alt="Social Media">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2022</p>
-							<h3 class="pbmit-timeline-title">Social Media</h3>
-							<p class="pbmit-timeline-desc">We do all types of the interior designing, decoration &
-								furnishing.</p>
-						</div>
-					</div>
-					<!-- Slide6 -->
-					<div class="pbmit-timeline-wrapper swiper-slide">
-						<div class="pbmit-same-height steps-media pbmit-feature-image">
-							<img src="images/history/history-img-06.jpg" class="img-fluid" alt="Result">
-						</div>
-						<div class="steps-dot">
-							<i class="steps-dot-line"></i>
-							<span class="dot"></span>
-						</div>
-						<div class="pbmit-same-height steps-content_wrap">
-							<p class="pbmit-timeline-year">2023</p>
-							<h3 class="pbmit-timeline-title">Result</h3>
-							<p class="pbmit-timeline-desc">Our creative 3D artists are always ready to translate your
-								designs</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- History End -->
-
-	<!-- Blog start -->
-	<section class="section-lg">
+<div class="page-content why-us">
+	<section class="section-xl pbmit-bg-color-white sr-why-diff" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
-			<div class="d-md-flex align-items-center justify-content-between">
-				<div class="pbmit-heading-subheading">
-					<h4 class="pbmit-subtitle">Our Blog</h4>
-					<h2 class="pbmit-title">Updated Blogs & News</h2>
+			<div class="pbmit-heading-subheading text-center">
+				<h2 class="pbmit-title">Why Clients Choose Us</h2>
+			</div>
+			<div class="row g-4 pt-3">
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-tick-1"></i></div>
+						<h3 class="sr-diff-title">Proven Experience</h3>
+						<p class="sr-diff-desc">Years of hands-on expertise in solar EPC across Maharashtra with a
+							growing portfolio of successful projects.</p>
+					</div>
 				</div>
-				<div class="mb-xl-0 mb-5 pbmit-blog-btn">
-					<a href="blog-grid-col-4.html" class="pbmit-btn outline">
-						<span class="pbmit-button-text">View All Post</span>
-					</a>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-user-2"></i></div>
+						<h3 class="sr-diff-title">Expert Team</h3>
+						<p class="sr-diff-desc">A multidisciplinary team of certified engineers, experienced
+							technicians, and knowledgeable consultants committed to project excellence.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-fast-delivery"></i></div>
+						<h3 class="sr-diff-title">End-to-End Service</h3>
+						<p class="sr-diff-desc">We manage every step from design and procurement to installation, grid
+							connectivity, and lifetime maintenance.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-check-square-regular"></i></div>
+						<h3 class="sr-diff-title">Certified Quality</h3>
+						<p class="sr-diff-desc">All our products meet stringent national and international quality and
+							safety standards, with Tier-1 certified components only.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-method-draw-image"></i></div>
+						<h3 class="sr-diff-title">Dedicated Project Design Team</h3>
+						<p class="sr-diff-desc">Specialised in solar project design, planning, and architectural
+							integration for optimal performance and aesthetics.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-diff-card">
+						<div class="sr-diff-icon"><i class="pbmit-base-icon-support"></i></div>
+						<h3 class="sr-diff-title">Comprehensive Warranty &amp; Support</h3>
+						<p class="sr-diff-desc">Full after-sales support including preventive maintenance, performance
+							monitoring, and warranty services.</p>
+					</div>
 				</div>
 			</div>
-			<div class="swiper-slider" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
-				data-columns="3" data-margin="30" data-effect="slide">
+		</div>
+	</section>
+
+	<section class="section-xl sr-why-tech" data-aos="fade-up" data-aos-duration="800">
+		<div class="container">
+			<div class="pbmit-heading-subheading text-center">
+				<h2 class="pbmit-title">Backed by Technology</h2>
+			</div>
+			<div class="row g-4 pt-3">
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-tech-card">
+						<div class="sr-tech-icon"><i class="pbmit-base-icon-lightening"></i></div>
+						<h3 class="sr-tech-title">Innovative Solutions</h3>
+						<p class="sr-tech-desc">We leverage the latest advancements in solar technology, including
+							bifacial panels, smart inverters, and energy management systems, to deliver unmatched
+							performance.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-tech-card">
+						<div class="sr-tech-icon"><i class="pbmit-base-icon-search"></i></div>
+						<h3 class="sr-tech-title">R&amp;D Focus</h3>
+						<p class="sr-tech-desc">Continuous investment in research and development to improve system
+							efficiency, reliability, and integration with emerging energy storage technologies.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-tech-card">
+						<div class="sr-tech-icon"><i class="pbmit-base-icon-checked"></i></div>
+						<h3 class="sr-tech-title">Certified Products</h3>
+						<p class="sr-tech-desc">All equipment and installations meet stringent industry certifications
+							for quality, safety, and long-term performance.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-xl sr-why-testimonials" data-aos="fade-up" data-aos-duration="800">
+		<div class="container">
+			<div class="pbmit-heading-subheading text-center">
+				<h2 class="pbmit-title">Client Success Stories</h2>
+			</div>
+			<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
+				data-columns="1" data-margin="30" data-effect="slide">
 				<div class="swiper-wrapper">
-					<!-- Slide1 -->
-					<article class="pbmit-blog-style-4 swiper-slide">
-						<div class="post-item">
-							<div class="pbminfotech-box-content">
-								<div class="pbmit-date-wraper d-flex align-items-center">
-									<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-										<div class="pbmit-meta-category">
-											<a href="blog-classic.html" rel="category tag">Marketing</a>
-										</div>
+					<article class="pbmit-testimonial-style-2 swiper-slide">
+						<div class="pbminfotech-post-item">
+							<div class="pbmit-box-content-wrap">
+								<div class="pbminfotech-box-desc">
+									<div class="pbminfotech-box-star-ratings">
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
 									</div>
-									<div class="pbmit-meta-date pbmit-meta-line">
-										<span class="pbmit-post-date">27 Dec, 2024</span>
-									</div>
+									<blockquote class="pbminfotech-testimonial-text">
+										<p>&#8220;Partnering with Shivanjali Renewables for our 900 kW solar project has
+											been a transformative experience. Their expertise, professionalism, and
+											commitment to quality ensured the successful completion of our project. We
+											are delighted with the energy savings and sustainability impact we&#8217;ve
+											achieved.&#8221;</p>
+									</blockquote>
 								</div>
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-img-wrapper">
-										<div class="pbmit-featured-wrapper">
-											<img src="images/blog/blog-01.jpg" class="img-fluid" alt="">
+								<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+									<div class="pbminfotech-box-author d-flex align-items-center">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/homepage-1/testimonial/testimonial-01.jpg" alt="">
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper">
-									<h3 class="pbmit-post-title">
-										<a href="blog-single-details.html">How to choose the right solar panels for Your
-											Home.</a>
-									</h3>
-									<div class="pbmit-blog-button">
-										<a class="pbmit-button-inner" href="blog-single-details.html"
-											title="How to choose the right solar panels for Your Home.">
-											<span class="pbmit-button-icon">Read More</span>
-											<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-										</a>
+										<div class="pbmit-auther-content">
+											<h3 class="pbminfotech-box-title">Ms. Manisha Dhatrak</h3>
+											<div class="pbminfotech-testimonial-detail">Varun Agro Food Processing Pvt.
+												Ltd.</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</article>
-					<!-- Slide2 -->
-					<article class="pbmit-blog-style-4 swiper-slide">
-						<div class="post-item">
-							<div class="pbminfotech-box-content">
-								<div class="pbmit-date-wraper d-flex align-items-center">
-									<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-										<div class="pbmit-meta-category">
-											<a href="blog-classic.html" rel="category tag">Electricity</a>
-										</div>
+					<article class="pbmit-testimonial-style-2 swiper-slide">
+						<div class="pbminfotech-post-item">
+							<div class="pbmit-box-content-wrap">
+								<div class="pbminfotech-box-desc">
+									<div class="pbminfotech-box-star-ratings">
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
 									</div>
-									<div class="pbmit-meta-date pbmit-meta-line">
-										<span class="pbmit-post-date">27 Dec, 2024</span>
-									</div>
+									<blockquote class="pbminfotech-testimonial-text">
+										<p>&#8220;Smooth execution, transparent communication, and excellent quality of
+											work. The monitoring setup and handover training were especially
+											helpful.&#8221;</p>
+									</blockquote>
 								</div>
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-img-wrapper">
-										<div class="pbmit-featured-wrapper">
-											<img src="images/blog/blog-02.jpg" class="img-fluid" alt="">
+								<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+									<div class="pbminfotech-box-author d-flex align-items-center">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/homepage-1/testimonial/testimonial-02.jpg" alt="">
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper">
-									<h3 class="pbmit-post-title">
-										<a href="blog-single-details.html">How does solar power affect the
-											environment?</a>
-									</h3>
-									<div class="pbmit-blog-button">
-										<a class="pbmit-button-inner" href="blog-single-details.html"
-											title="How does solar power affect the environment?">
-											<span class="pbmit-button-icon">Read More</span>
-											<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-										</a>
+										<div class="pbmit-auther-content">
+											<h3 class="pbminfotech-box-title">Mr. Client Name</h3>
+											<div class="pbminfotech-testimonial-detail">Company Name</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</article>
-					<!-- Slide3 -->
-					<article class="pbmit-blog-style-4 swiper-slide">
-						<div class="post-item">
-							<div class="pbminfotech-box-content">
-								<div class="pbmit-date-wraper d-flex align-items-center">
-									<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-										<div class="pbmit-meta-category">
-											<a href="blog-classic.html" rel="category tag">Hydrogenium</a>
+					<article class="pbmit-testimonial-style-2 swiper-slide">
+						<div class="pbminfotech-post-item">
+							<div class="pbmit-box-content-wrap">
+								<div class="pbminfotech-box-desc">
+									<div class="pbminfotech-box-star-ratings">
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+									</div>
+									<blockquote class="pbminfotech-testimonial-text">
+										<p>&#8220;From design to commissioning, the team was professional and detail
+											oriented. We&#8217;re seeing strong performance and reliable support.&#8221;
+										</p>
+									</blockquote>
+								</div>
+								<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+									<div class="pbminfotech-box-author d-flex align-items-center">
+										<div class="pbminfotech-box-img">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/homepage-1/testimonial/testimonial-03.jpg" alt="">
+												</div>
+											</div>
 										</div>
-									</div>
-									<div class="pbmit-meta-date pbmit-meta-line">
-										<span class="pbmit-post-date">27 Dec, 2024</span>
-									</div>
-								</div>
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-img-wrapper">
-										<div class="pbmit-featured-wrapper">
-											<img src="images/blog/blog-03.jpg" class="img-fluid" alt="">
+										<div class="pbmit-auther-content">
+											<h3 class="pbminfotech-box-title">Ms. Client Name</h3>
+											<div class="pbminfotech-testimonial-detail">Company Name</div>
 										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper">
-									<h3 class="pbmit-post-title">
-										<a href="blog-single-details.html">Do Solar Panels Work on Commercial
-											Buildings</a>
-									</h3>
-									<div class="pbmit-blog-button">
-										<a class="pbmit-button-inner" href="blog-single-details.html"
-											title="Do Solar Panels Work on Commercial Buildings">
-											<span class="pbmit-button-icon">Read More</span>
-											<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<!-- Slide4 -->
-					<article class="pbmit-blog-style-4 swiper-slide">
-						<div class="post-item">
-							<div class="pbminfotech-box-content">
-								<div class="pbmit-date-wraper d-flex align-items-center">
-									<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-										<div class="pbmit-meta-category">
-											<a href="blog-classic.html" rel="category tag">Development</a>
-										</div>
-									</div>
-									<div class="pbmit-meta-date pbmit-meta-line">
-										<span class="pbmit-post-date">27 Dec, 2024</span>
-									</div>
-								</div>
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-img-wrapper">
-										<div class="pbmit-featured-wrapper">
-											<img src="images/blog/blog-04.jpg" class="img-fluid" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper">
-									<h3 class="pbmit-post-title">
-										<a href="blog-single-details.html">Southeast Florida Regional Climate Change
-											Compact</a>
-									</h3>
-									<div class="pbmit-blog-button">
-										<a class="pbmit-button-inner" href="blog-single-details.html"
-											title="Southeast Florida Regional Climate Change Compact">
-											<span class="pbmit-button-icon">Read More</span>
-											<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<!-- Slide5 -->
-					<article class="pbmit-blog-style-4 swiper-slide">
-						<div class="post-item">
-							<div class="pbminfotech-box-content">
-								<div class="pbmit-date-wraper d-flex align-items-center">
-									<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-										<div class="pbmit-meta-category">
-											<a href="blog-classic.html" rel="category tag">Research</a>
-										</div>
-									</div>
-									<div class="pbmit-meta-date pbmit-meta-line">
-										<span class="pbmit-post-date">27 Dec, 2024</span>
-									</div>
-								</div>
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-img-wrapper">
-										<div class="pbmit-featured-wrapper">
-											<img src="images/blog/blog-05.jpg" class="img-fluid" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper">
-									<h3 class="pbmit-post-title">
-										<a href="blog-single-details.html">Are Solar Panels Worth the Investment</a>
-									</h3>
-									<div class="pbmit-blog-button">
-										<a class="pbmit-button-inner" href="blog-single-details.html"
-											title="Are Solar Panels Worth the Investment">
-											<span class="pbmit-button-icon">Read More</span>
-											<i class="demo-icon pbmit-base-icon-arrow-right"></i>
-										</a>
 									</div>
 								</div>
 							</div>
@@ -342,8 +243,64 @@
 			</div>
 		</div>
 	</section>
-	<!-- Blog End -->
 
+	<section class="section-xl sr-why-impact" data-aos="fade-up" data-aos-duration="800">
+		<div class="container">
+			<div class="pbmit-heading-subheading text-center">
+				<h2 class="pbmit-title">Our Environmental Impact</h2>
+			</div>
+			<div class="row g-4 pt-3">
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-impact-card">
+						<div class="sr-impact-top">
+							<div class="sr-impact-icon"><i class="pbmit-base-icon-lightening"></i></div>
+							<div class="sr-impact-label">Solar Capacity Installed</div>
+						</div>
+						<div class="sr-impact-value">
+							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
+								data-from="0" data-to="20" data-interval="1" data-before="" data-before-style="" data-after=""
+								data-after-style="">20</span>
+							<span class="sr-impact-unit">MW+</span>
+						</div>
+						<p class="sr-impact-desc">Harnessing solar energy to reduce dependency on fossil fuels and lower
+							the carbon footprint of our clients across Maharashtra.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-impact-card">
+						<div class="sr-impact-top">
+							<div class="sr-impact-icon"><i class="pbmit-base-icon-check-mark"></i></div>
+							<div class="sr-impact-label">Projects Completed</div>
+						</div>
+						<div class="sr-impact-value">
+							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
+								data-from="0" data-to="500" data-interval="5" data-before="" data-before-style="" data-after=""
+								data-after-style="">500</span>
+							<span class="sr-impact-unit">+</span>
+						</div>
+						<p class="sr-impact-desc">Our installed systems collectively save crores of rupees in electricity
+							bills for residential, commercial, and industrial customers every year.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="sr-impact-card">
+						<div class="sr-impact-top">
+							<div class="sr-impact-icon"><i class="pbmit-base-icon-customer"></i></div>
+							<div class="sr-impact-label">Trusted Customers</div>
+						</div>
+						<div class="sr-impact-value">
+							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
+								data-from="0" data-to="2386" data-interval="5" data-before="" data-before-style="" data-after=""
+								data-after-style="">2386</span>
+							<span class="sr-impact-unit">+</span>
+						</div>
+						<p class="sr-impact-desc">By enabling widespread solar adoption, we play a vital role in
+							India&#8217;s national clean energy transition and Net Zero goals.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
 <!-- Page Content End -->
 

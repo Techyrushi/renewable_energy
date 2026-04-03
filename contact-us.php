@@ -1,12 +1,107 @@
+<?php
+$sr_form_success = false;
+$sr_form_error = '';
+$sr_recaptcha_site_key = getenv('SR_RECAPTCHA_SITE_KEY') ?: '';
+$sr_recaptcha_secret = getenv('SR_RECAPTCHA_SECRET') ?: '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sr_contact_form'])) {
+	$full_name = trim((string)($_POST['full_name'] ?? ''));
+	$phone = trim((string)($_POST['phone'] ?? ''));
+	$email = trim((string)($_POST['email'] ?? ''));
+	$city = trim((string)($_POST['city'] ?? ''));
+	$customer_type = trim((string)($_POST['customer_type'] ?? ''));
+	$system_size = trim((string)($_POST['system_size'] ?? ''));
+	$source = trim((string)($_POST['source'] ?? ''));
+	$message = trim((string)($_POST['message'] ?? ''));
+	$honeypot = trim((string)($_POST['company'] ?? ''));
+
+	if ($honeypot !== '') {
+		$sr_form_error = 'Unable to submit. Please try again.';
+	} elseif ($full_name === '' || $phone === '' || $email === '' || $city === '' || $customer_type === '' || $system_size === '' || $source === '') {
+		$sr_form_error = 'Please fill in all required fields.';
+	} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$sr_form_error = 'Please enter a valid email address.';
+	} else {
+		if ($sr_recaptcha_secret !== '') {
+			$token = trim((string)($_POST['g-recaptcha-response'] ?? ''));
+			if ($token === '') {
+				$sr_form_error = 'Please complete the reCAPTCHA.';
+			} else {
+				$verify_response = '';
+				$verify_payload = http_build_query([
+					'secret' => $sr_recaptcha_secret,
+					'response' => $token,
+					'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+				]);
+
+				if (function_exists('curl_init')) {
+					$ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $verify_payload);
+					curl_setopt($ch, CURLOPT_TIMEOUT, 8);
+					$verify_response = (string)curl_exec($ch);
+					curl_close($ch);
+				} else {
+					$context = stream_context_create([
+						'http' => [
+							'method' => 'POST',
+							'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+							'content' => $verify_payload,
+							'timeout' => 8,
+						]
+					]);
+					$verify_response = (string)@file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+				}
+
+				$verify_json = json_decode($verify_response, true);
+				if (!is_array($verify_json) || empty($verify_json['success'])) {
+					$sr_form_error = 'reCAPTCHA verification failed. Please try again.';
+				}
+			}
+		}
+
+		if ($sr_form_error === '') {
+			$to = 'info@shivanjalirenewables.com';
+		$safe_email = str_replace(["\r", "\n"], '', $email);
+		$subject = 'Free Solar Quote Request - ' . $full_name;
+		$body = "New enquiry received:\n\n"
+			. "Full Name: {$full_name}\n"
+			. "Phone: {$phone}\n"
+			. "Email: {$email}\n"
+			. "City / Location: {$city}\n"
+			. "Customer Type: {$customer_type}\n"
+			. "Approx System Size: {$system_size}\n"
+			. "Heard About Us: {$source}\n"
+			. "Message: " . ($message !== '' ? $message : '(none)') . "\n";
+
+		$headers = [];
+		$headers[] = 'MIME-Version: 1.0';
+		$headers[] = 'Content-type: text/plain; charset=UTF-8';
+		$headers[] = 'From: Shivanjali Renewables <info@shivanjalirenewables.com>';
+		$headers[] = 'Reply-To: ' . $safe_email;
+
+		$sent = @mail($to, $subject, $body, implode("\r\n", $headers));
+		if ($sent) {
+			$sr_form_success = true;
+		} else {
+			$sr_form_error = 'We could not send your enquiry right now. Please call us or try again later.';
+		}
+		}
+	}
+}
+?>
 <?php include 'includes/header.php'; ?>
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper sr-why-hero">
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Contact Us</h1>
+						<h1 class="pbmit-tbar-title">Let&#8217;s Build Your Solar Future Together</h1>
+						<p class="pbmit-tbar-subtitle mb-0">Get in touch with our team for a free consultation, site
+							survey, or project proposal. We respond within 24 hours.</p>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -31,6 +126,9 @@
 	<!-- Ihbox -->
 	<section class="ihbox-section">
 		<div class="container">
+			<div class="pbmit-heading-subheading text-center mb-5">
+				<h2 class="pbmit-title">Reach Us Directly</h2>
+			</div>
 			<div class="row">
 				<div class="col-md-12 col-xl-4 pbmit-column mb-xl-0 mb-4">
 					<div class="pbmit-ihbox-style-3">
@@ -74,7 +172,7 @@
 								</div>
 							</div>
 							<div class="pbmit-ihbox-contents">
-								<h2 class="pbmit-element-title">Mail Us 24/7</h2>
+								<h2 class="pbmit-element-title">Email</h2>
 								<div class="pbmit-heading-desc">
 									<a href="mailto:info@shivanjalirenewables.com">info@shivanjalirenewables.com</a>
 								</div>
@@ -120,7 +218,7 @@
 								</div>
 							</div>
 							<div class="pbmit-ihbox-contents">
-								<h2 class="pbmit-element-title">Our Location</h2>
+								<h2 class="pbmit-element-title">Office Address</h2>
 								<div class="pbmit-heading-desc">Office No. 505, ABH Samruddhi, Near Dream Castle Signal, Makhamalabad Road, Nashik – 422003, Maharashtra, India</div>
 							</div>
 						</div>
@@ -157,8 +255,13 @@
 								</div>
 							</div>
 							<div class="pbmit-ihbox-contents">
-								<h2 class="pbmit-element-title">Contact us 24/7</h2>
-								<div class="pbmit-heading-desc">Phones: <a href="tel:+918686313133">+91 8686 313 133</a> • <a href="tel:+917447777070">+91 7447 777 070</a> • <a href="tel:+918889303303">+91 8889 303 303</a><br>Working Hours: Monday – Saturday, 9:00 AM – 6:00 PM</div>
+								<h2 class="pbmit-element-title">Phone &amp; Working Hours</h2>
+								<div class="pbmit-heading-desc">
+									<div><a href="tel:+918686313133">+91 8686 313 133</a></div>
+									<div><a href="tel:+917447777070">+91 7447 777 070</a></div>
+									<div><a href="tel:+918889303303">+91 8889 303 303</a></div>
+									<div class="mt-2">Monday – Saturday: 9:00 AM – 6:00 PM</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -172,8 +275,7 @@
 	<section>
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h4 class="pbmit-subtitle">contact us</h4>
-				<h2 class="pbmit-title">Let’s Start Working Together.</h2>
+				<h2 class="pbmit-title">Get a Free Solar Quote</h2>
 			</div>
 			<div class="row g-0">
 				<div class="col-md-12 col-xl-4 contact-form-left-col">
@@ -185,29 +287,22 @@
 								</div>
 							</div>
 							<div class="pbmit-heading-title">
-								<h2>Providing Clear Solutions to Common Queries.</h2>
+								<h2>Our Commitment</h2>
 							</div>
-							<div class="pbmit-ihbox-style-15">
-								<div class="pbmit-ihbox-box d-flex">
-									<div class="pbmit-ihbox-icon">
-										<div class="pbmit-ihbox-icon-wrapper pbmit-icon-type-icon">
-											<svg aria-hidden="true" class="e-font-icon-svg e-far-question-circle"
-												viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-												<path
-													d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z">
-												</path>
-											</svg>
-										</div>
-									</div>
-									<div class="pbmit-ihbox-contents">
-										<div class="pbmit-heading-desc">Answers to 100+ Questions.</div>
-										<h2 class="pbmit-element-title">
-											<a class="pbmit-button-inner" href="faq.html">
-												<span class="pbmit-button-icon">Explore Faq’s</span>
-											</a>
-										</h2>
-									</div>
-								</div>
+							<div class="sr-commitment-text">
+								<p class="mb-3">We value your time. Our team will acknowledge your enquiry within 2
+									business hours and schedule a site visit or consultation within 48 hours. No
+									pressure. No obligation. Just clear, honest advice.</p>
+							</div>
+							<div class="sr-social-block">
+								<h3 class="sr-social-title">Follow Us</h3>
+								<ul class="sr-social-links list-unstyled mb-0">
+									<li><a href="https://facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook-f"></i> Facebook</a></li>
+									<li><a href="https://instagram.com/" target="_blank" rel="noopener"><i class="fa fa-instagram"></i> Instagram</a></li>
+									<li><a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+									<li><a href="https://youtube.com/" target="_blank" rel="noopener"><i class="fa fa-youtube-play"></i> YouTube</a></li>
+									<li><a href="https://wa.me/918686313133" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> WhatsApp Business</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -215,45 +310,76 @@
 				<div class="col-md-12 col-xl-8 contact-form-right-col">
 					<div class="contact-form-right-box pbmit-bg-color-white">
 						<div class="pbmit-custom-heading">
-							<h2 class="pbmit-title">Send a message to staff</h2>
+							<h2 class="pbmit-title">Get a Free Solar Quote</h2>
 						</div>
-						<p class="pb-2">Your email address will not be published. Required fields are marked *</p>
-						<form class="contact-form" method="post" id="contact-form"
-							action="https://solaar-demo.pbminfotech.com/html-demo/send-dummy.php">
+						<p class="pb-2">Get in touch with our team for a free consultation, site survey, or project proposal.</p>
+						<?php if ($sr_form_success) { ?>
+							<div class="alert alert-success">Thanks! Your request has been sent. We will contact you shortly.</div>
+						<?php } elseif ($sr_form_error !== '') { ?>
+							<div class="alert alert-danger"><?php echo htmlspecialchars($sr_form_error, ENT_QUOTES, 'UTF-8'); ?></div>
+						<?php } ?>
+						<form class="contact-form" method="post" id="contact-form" action="contact">
+							<input type="hidden" name="sr_contact_form" value="1">
 							<div class="row">
 								<div class="col-md-6">
-									<input type="text" class="form-control" placeholder="Your Name" name="name"
-										required>
+									<input type="text" class="form-control" placeholder="Full Name *" name="full_name" required value="<?php echo htmlspecialchars((string)($_POST['full_name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 								<div class="col-md-6">
-									<input type="email" class="form-control" placeholder="Your Email" name="email"
-										required>
+									<input type="tel" class="form-control" placeholder="Phone Number *" name="phone" required value="<?php echo htmlspecialchars((string)($_POST['phone'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 								<div class="col-md-6">
-									<input type="tel" class="form-control" placeholder="Your Phone" name="phone"
-										required>
+									<input type="email" class="form-control" placeholder="Email Address *" name="email" required value="<?php echo htmlspecialchars((string)($_POST['email'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 								<div class="col-md-6">
-									<input type="text" class="form-control" placeholder="Subject" name="subject"
-										required>
+									<input type="text" class="form-control" placeholder="City / Location *" name="city" required value="<?php echo htmlspecialchars((string)($_POST['city'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+								</div>
+								<div class="col-md-6">
+									<select class="form-select" name="customer_type" required>
+										<option value="" disabled <?php echo (($_POST['customer_type'] ?? '') === '') ? 'selected' : ''; ?>>Type of Customer *</option>
+										<option value="Residential" <?php echo (($_POST['customer_type'] ?? '') === 'Residential') ? 'selected' : ''; ?>>Residential</option>
+										<option value="Commercial" <?php echo (($_POST['customer_type'] ?? '') === 'Commercial') ? 'selected' : ''; ?>>Commercial</option>
+										<option value="Industrial" <?php echo (($_POST['customer_type'] ?? '') === 'Industrial') ? 'selected' : ''; ?>>Industrial</option>
+										<option value="Open Access Developer" <?php echo (($_POST['customer_type'] ?? '') === 'Open Access Developer') ? 'selected' : ''; ?>>Open Access Developer</option>
+										<option value="Other" <?php echo (($_POST['customer_type'] ?? '') === 'Other') ? 'selected' : ''; ?>>Other</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<select class="form-select" name="system_size" required>
+										<option value="" disabled <?php echo (($_POST['system_size'] ?? '') === '') ? 'selected' : ''; ?>>Approximate System Size Needed *</option>
+										<option value="Below 20 kW" <?php echo (($_POST['system_size'] ?? '') === 'Below 20 kW') ? 'selected' : ''; ?>>Below 20 kW</option>
+										<option value="20–200 kW" <?php echo (($_POST['system_size'] ?? '') === '20–200 kW') ? 'selected' : ''; ?>>20–200 kW</option>
+										<option value="200–990 kW" <?php echo (($_POST['system_size'] ?? '') === '200–990 kW') ? 'selected' : ''; ?>>200–990 kW</option>
+										<option value="1 MW and above" <?php echo (($_POST['system_size'] ?? '') === '1 MW and above') ? 'selected' : ''; ?>>1 MW and above</option>
+										<option value="Not Sure" <?php echo (($_POST['system_size'] ?? '') === 'Not Sure') ? 'selected' : ''; ?>>Not Sure</option>
+									</select>
 								</div>
 								<div class="col-md-12">
-									<textarea name="message" cols="40" rows="10" class="form-control"
-										placeholder="Message" required></textarea>
+									<select class="form-select" name="source" required>
+										<option value="" disabled <?php echo (($_POST['source'] ?? '') === '') ? 'selected' : ''; ?>>How did you hear about us? *</option>
+										<option value="Google" <?php echo (($_POST['source'] ?? '') === 'Google') ? 'selected' : ''; ?>>Google</option>
+										<option value="Referral" <?php echo (($_POST['source'] ?? '') === 'Referral') ? 'selected' : ''; ?>>Referral</option>
+										<option value="Social Media" <?php echo (($_POST['source'] ?? '') === 'Social Media') ? 'selected' : ''; ?>>Social Media</option>
+										<option value="Site Board" <?php echo (($_POST['source'] ?? '') === 'Site Board') ? 'selected' : ''; ?>>Site Board</option>
+										<option value="Other" <?php echo (($_POST['source'] ?? '') === 'Other') ? 'selected' : ''; ?>>Other</option>
+									</select>
 								</div>
 								<div class="col-md-12">
-									<div class="form-check">
-										<label class="form-check-label">
-											<input class="form-check-input" type="checkbox">
-											Save my name, email, and website in this browser for the next time I
-											comment.
-										</label>
+									<textarea name="message" cols="40" rows="6" class="form-control" placeholder="Message / Requirements (optional)"><?php echo htmlspecialchars((string)($_POST['message'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></textarea>
+								</div>
+								<div class="col-md-12 d-none">
+									<input type="text" class="form-control" name="company" tabindex="-1" autocomplete="off">
+								</div>
+								<?php if ($sr_recaptcha_site_key !== '') { ?>
+									<div class="col-md-12">
+										<div class="sr-recaptcha">
+											<div class="g-recaptcha" data-sitekey="<?php echo htmlspecialchars($sr_recaptcha_site_key, ENT_QUOTES, 'UTF-8'); ?>"></div>
+										</div>
 									</div>
-								</div>
+								<?php } ?>
 							</div>
 							<div class="pbmit-button-wrapper">
 								<button class="pbmit-btn submit">
-									<span class="pbmit-button-text">Get Cost Estimate</span>
+									<span class="pbmit-button-text">Request Free Consultation</span>
 									<span class="form-btn-loader d-none">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
 											<circle fill="#fff" stroke="#fff" stroke-width="15" r="15" cx="40" cy="50">
@@ -296,15 +422,11 @@
 								<!-- Slide1 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-06.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-12</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-06.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-12.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -313,15 +435,11 @@
 								<!-- Slide2 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-05.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-11</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-05.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-11.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -330,15 +448,11 @@
 								<!-- Slide3 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-04.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-10</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-04.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-10.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -347,15 +461,11 @@
 								<!-- Slide4 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-03.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-09</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-03.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-09.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -364,15 +474,11 @@
 								<!-- Slide5 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-02.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-08</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-02.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-08.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -381,15 +487,89 @@
 								<!-- Slide6 -->
 								<article class="pbmit-client-style-1 swiper-slide">
 									<div class="pbmit-border-wrapper">
-										<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-											<h4 class="pbmit-hide">Client-01</h4>
-											<div class="pbmit-client-hover-img">
-												<img src="images/client/client-global-01.png" alt>
-											</div>
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-07</h4>
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="images/client/client-dark-01.png" class="img-fluid"
-														alt="">
+													<img src="images/client/client-dark-07.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide7 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-06</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-06.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide8 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-05</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-05.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide9 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-04</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-04.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide10 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-03</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-03.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide11 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-02</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-02.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<!-- Slide12 -->
+								<article class="pbmit-client-style-1 swiper-slide">
+									<div class="pbmit-border-wrapper">
+										<div class="pbmit-client-wrapper">
+											<h4 class="pbmit-hide">Client-01</h4>
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="images/client/client-dark-01.png" class="img-fluid" alt="">
 												</div>
 											</div>
 										</div>
@@ -410,6 +590,14 @@
 	<!-- Client End -->
 	<section class="iframe-section">
 		<div class="container-fluid p-0">
+			<div class="container">
+				<div class="sr-map-head">
+					<div class="pbmit-custom-heading">
+						<h2 class="pbmit-title">Map</h2>
+					</div>
+					<a class="pbmit-btn outline sr-directions" href="https://maps.app.goo.gl/4r1P4qqp36AEcAce8" target="_blank" rel="noopener"><span class="pbmit-button-text">Get Directions</span></a>
+				</div>
+			</div>
 			<div class="iframe-area">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.7218552306003!2d73.7840677759519!3d20.02018522165262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb01bf6b4547%3A0xb7f9cea04acc974e!2sABH%20Samruddhi%20Apartment!5e0!3m2!1sen!2sin!4v1774267316950!5m2!1sen!2sin"
@@ -422,4 +610,7 @@
 	<!-- Iframe End -->
 
 	<!-- Contact Us Content End -->
+	<?php if ($sr_recaptcha_site_key !== '') { ?>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<?php } ?>
 	<?php include 'includes/footer.php'; ?>
