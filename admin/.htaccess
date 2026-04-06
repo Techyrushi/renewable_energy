@@ -1,0 +1,13 @@
+<IfModule mod_authz_core.c>
+  <FilesMatch "\.html$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_access_compat.c>
+  <FilesMatch "\.html$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
