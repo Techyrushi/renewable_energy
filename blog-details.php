@@ -1,10 +1,36 @@
 <?php
+require_once __DIR__ . '/includes/cms.php';
+
 $sr_slug = strtolower((string)($_GET['post'] ?? ''));
 if (!preg_match('/^[a-z0-9-]+$/', $sr_slug)) {
 	$sr_slug = '';
 }
 
-$sr_blog_posts = [
+$sr_post = null;
+$sr_db = sr_cms_db_try();
+if ($sr_db instanceof mysqli && $sr_slug !== '') {
+	$stmt = $sr_db->prepare('SELECT slug, title, category, date_label, read_time, cover_image, content FROM cms_blog_posts WHERE slug=? AND published=1 LIMIT 1');
+	if ($stmt) {
+		$stmt->bind_param('s', $sr_slug);
+		$stmt->execute();
+		$stmt->bind_result($rslug, $rtitle, $rcat, $rdate, $rread, $rimg, $rcontent);
+		if ($stmt->fetch()) {
+			$sr_post = [
+				'slug' => (string)$rslug,
+				'category' => (string)$rcat,
+				'date' => (string)$rdate,
+				'read_time' => (string)$rread,
+				'image' => (string)$rimg,
+				'title' => (string)$rtitle,
+				'html' => (string)$rcontent,
+			];
+		}
+		$stmt->close();
+	}
+}
+
+if ($sr_post === null) {
+	$sr_blog_posts = [
 	[
 		'slug' => 'rooftop-solar-nashik-savings',
 		'category' => 'Solar Basics',
@@ -93,11 +119,11 @@ $sr_blog_posts = [
 	],
 ];
 
-$sr_post = null;
-foreach ($sr_blog_posts as $p) {
-	if ($p['slug'] === $sr_slug) {
-		$sr_post = $p;
-		break;
+	foreach ($sr_blog_posts as $p) {
+		if ($p['slug'] === $sr_slug) {
+			$sr_post = $p;
+			break;
+		}
 	}
 }
 

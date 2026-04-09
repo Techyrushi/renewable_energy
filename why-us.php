@@ -1,15 +1,22 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('why-us');
+$sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'The Shivanjali Difference';
+$sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'We don&#8217;t just install solar panels. We build long-term energy partnerships that deliver measurable results.';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+?>
 
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper sr-why-hero">
+<div class="pbmit-title-bar-wrapper sr-why-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">The Shivanjali Difference</h1>
-						<p class="pbmit-tbar-subtitle mb-0">We don&#8217;t just install solar panels. We build long-term
-							energy partnerships that deliver measurable results.</p>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_hero_title, ENT_QUOTES, 'UTF-8'); ?></h1>
+						<?php if (trim($sr_hero_subtitle) !== '') { ?>
+							<p class="pbmit-tbar-subtitle mb-0"><?php echo $sr_hero_subtitle; ?></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">

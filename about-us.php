@@ -1,13 +1,21 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('about');
+$sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Illuminating the Path to a Sustainable Future';
+$sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Born in Nashik. Built for India. Driven by a clean-energy mission.';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+?>
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">Illuminating the Path to a Sustainable Future</h1>
-						<p class="text-white mb-0 mt-2">Born in Nashik. Built for India. Driven by a clean-energy mission.</p>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_hero_title, ENT_QUOTES, 'UTF-8'); ?></h1>
+						<?php if (trim($sr_hero_subtitle) !== '') { ?>
+							<p class="text-white mb-0 mt-2"><?php echo $sr_hero_subtitle; ?></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">

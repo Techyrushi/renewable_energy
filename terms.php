@@ -1,15 +1,19 @@
 <?php include 'includes/header.php'; ?>
 </header>
 <?php
+$sr_page = sr_cms_page_get('terms-of-use');
+$sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Terms of Use';
+$sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'These Terms of Use govern access to and use of the Shivanjali Renewables website. By using this website, you agree to these terms.';
 $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V6h2.5L14 3.5zM7 9h10v1.8H7V9zm0 4h10v1.8H7V13zm0 4h7v1.8H7V17z"/></svg>';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
 ?>
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Terms of Use</h1>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_legal_title, ENT_QUOTES, 'UTF-8'); ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -35,8 +39,8 @@ $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="fal
 							<span class="sr-legal-badge">Legal</span>
 							<span class="sr-legal-updated">Last updated: 03 April 2026</span>
 						</div>
-						<h2 class="pbmit-title mb-2">Terms of Use</h2>
-						<p class="sr-legal-lead mb-0">These Terms of Use govern access to and use of the Shivanjali Renewables website. By using this website, you agree to these terms.</p>
+						<h2 class="pbmit-title mb-2"><?php echo htmlspecialchars($sr_legal_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+						<p class="sr-legal-lead mb-0"><?php echo $sr_legal_lead; ?></p>
 						<div class="sr-legal-highlights">
 							<div class="sr-legal-highlight"><strong>Use responsibly:</strong> don’t misuse the website, content, or forms.</div>
 							<div class="sr-legal-highlight"><strong>Quotes vary:</strong> pricing and timelines depend on site conditions and scope.</div>

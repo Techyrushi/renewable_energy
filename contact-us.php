@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/includes/cms.php';
+
 $sr_form_success = false;
 $sr_form_error = '';
 $sr_recaptcha_site_key = getenv('SR_RECAPTCHA_SITE_KEY') ?: '';
@@ -62,7 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sr_contact_form'])) {
 		}
 
 		if ($sr_form_error === '') {
-			$to = 'info@shivanjalirenewables.com';
+			$sr_db = sr_cms_db_try();
+			if ($sr_db instanceof mysqli) {
+				$stmt = $sr_db->prepare('INSERT INTO cms_enquiries (full_name, phone, email, city, customer_type, system_size, source, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+				if ($stmt) {
+					$stmt->bind_param('ssssssss', $full_name, $phone, $email, $city, $customer_type, $system_size, $source, $message);
+					$stmt->execute();
+					$stmt->close();
+				}
+			}
+			$to = sr_cms_setting_get('company_email', 'info@shivanjalirenewables.com');
 		$safe_email = str_replace(["\r", "\n"], '', $email);
 		$subject = 'Free Solar Quote Request - ' . $full_name;
 		$body = "New enquiry received:\n\n"
@@ -78,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sr_contact_form'])) {
 		$headers = [];
 		$headers[] = 'MIME-Version: 1.0';
 		$headers[] = 'Content-type: text/plain; charset=UTF-8';
-		$headers[] = 'From: Shivanjali Renewables <info@shivanjalirenewables.com>';
+		$headers[] = 'From: Shivanjali Renewables <' . $to . '>';
 		$headers[] = 'Reply-To: ' . $safe_email;
 
 		$sent = @mail($to, $subject, $body, implode("\r\n", $headers));
@@ -92,16 +103,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sr_contact_form'])) {
 }
 ?>
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('contact');
+$sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Let&#8217;s Build Your Solar Future Together';
+$sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Get in touch with our team for a free consultation, site survey, or project proposal. We respond within 24 hours.';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+?>
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper sr-why-hero">
+<div class="pbmit-title-bar-wrapper sr-why-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">Let&#8217;s Build Your Solar Future Together</h1>
-						<p class="pbmit-tbar-subtitle mb-0">Get in touch with our team for a free consultation, site
-							survey, or project proposal. We respond within 24 hours.</p>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_hero_title, ENT_QUOTES, 'UTF-8'); ?></h1>
+						<?php if (trim($sr_hero_subtitle) !== '') { ?>
+							<p class="pbmit-tbar-subtitle mb-0"><?php echo $sr_hero_subtitle; ?></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">

@@ -1,22 +1,69 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_home_page = sr_cms_page_get('home');
+$sr_home_kicker = sr_cms_setting_get('home_kicker', 'Maharashtra’s Trusted Solar EPC Partner');
+$sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== '' ? (string)$sr_home_page['hero_title'] : 'Powering a Greener Tomorrow — One Solar Panel at a Time';
+$sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== '' ? (string)$sr_home_page['hero_subtitle'] : 'Shivanjali Renewables is Maharashtra\'s trusted Solar EPC partner for homes, businesses, industries, and large-scale solar parks. Clean energy. Real savings. Lasting impact.';
+?>
 <div class="pbmit-slider-area pbmit-slider-two">
 	<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false"
 		data-columns="1" data-margin="0" data-effect="fade">
 		<div class="swiper-wrapper">
 			<?php
-			$bannerDir = __DIR__ . '/images/banner-slider-img';
-			$patterns = ['Slider*.jpg','Slider*.jpeg','Slider*.png','Slider*.JPG','Slider*.JPEG','Slider*.PNG'];
-			$files = [];
-			foreach ($patterns as $p) {
-				$files = array_merge($files, glob($bannerDir . '/' . $p, GLOB_BRACE));
+			$slides = [];
+			$sr_db = sr_cms_db_try();
+			if ($sr_db instanceof mysqli) {
+				$res = $sr_db->query("SELECT image, kicker, title, subtitle, primary_label, primary_url, secondary_label, secondary_url
+					FROM cms_banners
+					WHERE is_active = 1
+					ORDER BY sort_order ASC, updated_at DESC
+					LIMIT 10");
+				if ($res) {
+					while ($row = $res->fetch_assoc()) {
+						$slides[] = $row;
+					}
+					$res->free();
+				}
 			}
-			$files = array_unique($files);
-			natsort($files);
-			if (empty($files)) {
-				$files = [__DIR__ . '/images/banner-slider-img/Slider02-1.jpg'];
+
+			if (!$slides) {
+				$bannerDir = __DIR__ . '/images/banner-slider-img';
+				$patterns = ['Slider*.jpg','Slider*.jpeg','Slider*.png','Slider*.JPG','Slider*.JPEG','Slider*.PNG'];
+				$files = [];
+				foreach ($patterns as $p) {
+					$files = array_merge($files, glob($bannerDir . '/' . $p, GLOB_BRACE));
+				}
+				$files = array_unique($files);
+				natsort($files);
+				if (empty($files)) {
+					$files = [__DIR__ . '/images/banner-slider-img/Slider02-1.jpg'];
+				}
+				foreach ($files as $filePath) {
+					$slides[] = [
+						'image' => 'images/banner-slider-img/' . basename($filePath),
+						'kicker' => $sr_home_kicker,
+						'title' => $sr_home_title,
+						'subtitle' => $sr_home_subtitle,
+						'primary_label' => 'Get a Free Solar Quote',
+						'primary_url' => 'contact',
+						'secondary_label' => 'Explore Our Services',
+						'secondary_url' => 'services',
+					];
+				}
 			}
-			foreach ($files as $filePath):
-				$rel = 'images/banner-slider-img/' . basename($filePath);
+
+			foreach ($slides as $slide):
+				$rel = trim((string)($slide['image'] ?? ''));
+				if ($rel === '') {
+					$rel = 'images/banner-slider-img/Slider02-1.jpg';
+				}
+				$kicker = trim((string)($slide['kicker'] ?? '')) !== '' ? (string)$slide['kicker'] : $sr_home_kicker;
+				$title = trim((string)($slide['title'] ?? '')) !== '' ? (string)$slide['title'] : $sr_home_title;
+				$subtitle = trim((string)($slide['subtitle'] ?? '')) !== '' ? (string)$slide['subtitle'] : $sr_home_subtitle;
+				$primaryLabel = trim((string)($slide['primary_label'] ?? '')) !== '' ? (string)$slide['primary_label'] : 'Get a Free Solar Quote';
+				$primaryUrl = trim((string)($slide['primary_url'] ?? '')) !== '' ? (string)$slide['primary_url'] : 'contact';
+				$secondaryLabel = trim((string)($slide['secondary_label'] ?? '')) !== '' ? (string)$slide['secondary_label'] : 'Explore Our Services';
+				$secondaryUrl = trim((string)($slide['secondary_url'] ?? '')) !== '' ? (string)$slide['secondary_url'] : 'services';
 			?>
 			<div class="swiper-slide">
 				<div class="pbmit-slider-item" style="position: relative;">
@@ -29,25 +76,23 @@
 								<div class="pbmit-slider-block" style="background: transparent !important; backdrop-filter: none; padding: 0; width: 100%; opacity: 1; transform: none;">
 									<div class="pbmit-slider-content" style="background: transparent; padding: 0; width: 100%; max-width: 820px;">
 										<h5 class="pbmit-slider-subtitle transform-top transform-delay-1" style="color: var(--pbmit-white-color); border-color: rgba(255,255,255,0.7);">
-											Maharashtra’s Trusted Solar EPC Partner
+											<?php echo htmlspecialchars($kicker, ENT_QUOTES, 'UTF-8'); ?>
 										</h5>
 										<h1 class="pbmit-slider-title transform-left transform-delay-2" style="color: var(--pbmit-white-color); font-size: 62px; line-height: 68px; margin-bottom: 18px;">
-											Powering a Greener Tomorrow — One Solar Panel at a Time
+											<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
 										</h1>
 										<p class="transform-left transform-delay-3" style="color: rgba(255,255,255,0.92); font-size: 18px; line-height: 30px; margin-bottom: 28px; max-width: 720px;">
-											Shivanjali Renewables is Maharashtra's trusted Solar EPC partner for homes,
-											businesses, industries, and large-scale solar parks. Clean energy. Real
-											savings. Lasting impact.
+											<?php echo $subtitle; ?>
 										</p>
 										<div class="pbmit-button d-flex flex-wrap align-items-center gap-3">
 											<div class="transform-bottom transform-delay-4">
-												<a href="contact" class="pbmit-btn">
-													<span class="pbmit-button-text">Get a Free Solar Quote</span>
+												<a href="<?php echo htmlspecialchars($primaryUrl, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn">
+													<span class="pbmit-button-text"><?php echo htmlspecialchars($primaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
 												</a>
 											</div>
 											<div class="transform-bottom transform-delay-5">
-												<a href="services" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
-													<span class="pbmit-button-text">Explore Our Services</span>
+												<a href="<?php echo htmlspecialchars($secondaryUrl, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
+													<span class="pbmit-button-text"><?php echo htmlspecialchars($secondaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
 												</a>
 											</div>
 										</div>

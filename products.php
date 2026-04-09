@@ -1,12 +1,35 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_products_page = sr_cms_page_get('products');
+$sr_products_tbar = $sr_products_page && trim((string)$sr_products_page['title']) !== '' ? (string)$sr_products_page['title'] : 'Products';
+$sr_products_hero_title = $sr_products_page && trim((string)$sr_products_page['hero_title']) !== '' ? (string)$sr_products_page['hero_title'] : 'Solar Systems for Every Scale — 3 kW to 20 MW';
+$sr_products_hero_subtitle = $sr_products_page && trim((string)$sr_products_page['hero_subtitle']) !== '' ? (string)$sr_products_page['hero_subtitle'] : 'Whether you are a homeowner, a factory owner, or a large-scale developer, we have the right solar solution to match your energy needs and budget.';
+$sr_banner_image = $sr_products_page && trim((string)($sr_products_page['banner_image'] ?? '')) !== '' ? (string)$sr_products_page['banner_image'] : '';
+
+$sr_products_items = [];
+$sr_db = sr_cms_db_try();
+if ($sr_db instanceof mysqli) {
+	$res = $sr_db->query("SELECT slug, category_anchor, badge_label, title, range_label, short_desc, bullets, image
+		FROM cms_products
+		WHERE published = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 100");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_products_items[] = $row;
+		}
+		$res->free();
+	}
+}
+?>
 </header>
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Products</h1>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_products_tbar, ENT_QUOTES, 'UTF-8'); ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -26,8 +49,10 @@
 	<section class="section-xl products-hero" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Solar Systems for Every Scale — 3 kW to 20 MW</h2>
-				<p class="mb-0">Whether you are a homeowner, a factory owner, or a large-scale developer, we have the right solar solution to match your energy needs and budget.</p>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_products_hero_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+				<?php if (trim($sr_products_hero_subtitle) !== '') { ?>
+					<p class="mb-0"><?php echo $sr_products_hero_subtitle; ?></p>
+				<?php } ?>
 			</div>
 		</div>
 	</section>
@@ -35,6 +60,57 @@
 	<section class="section-xl pt-0" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
 		<div class="container">
 			<div class="row g-4 sr-product-grid">
+				<?php if ($sr_products_items) { ?>
+					<?php foreach ($sr_products_items as $idx => $p) { ?>
+						<?php
+						$slug = trim((string)($p['slug'] ?? ''));
+						if ($slug === '') continue;
+						$href = 'products/' . rawurlencode($slug);
+						$anchor = trim((string)($p['category_anchor'] ?? 'products'));
+						$badge = trim((string)($p['badge_label'] ?? ''));
+						$title = (string)($p['title'] ?? '');
+						$range = trim((string)($p['range_label'] ?? ''));
+						$desc = (string)($p['short_desc'] ?? '');
+						$image = trim((string)($p['image'] ?? ''));
+						if ($image === '') $image = 'images/homepage-1/service/service-img-01.jpg';
+
+						$badgeClass = 'sr-product-badge';
+						$iconClass = 'pbmit-base-icon-lightening';
+						if (stripos($anchor, 'residential') !== false) $iconClass = 'pbmit-base-icon-home';
+						if (stripos($anchor, 'commercial') !== false) { $iconClass = 'pbmit-base-icon-city'; $badgeClass .= ' sr-product-badge--blue'; }
+						if (stripos($anchor, 'industrial') !== false || stripos($anchor, 'ht') !== false) { $iconClass = 'pbmit-base-icon-budgeting'; $badgeClass .= ' sr-product-badge--teal'; }
+						if (stripos($anchor, 'open') !== false || stripos($anchor, 'utility') !== false) { $iconClass = 'pbmit-base-icon-location-1'; $badgeClass .= ' sr-product-badge--orange'; }
+
+						$points = preg_split('/\\r\\n|\\r|\\n/', (string)($p['bullets'] ?? ''));
+						$points = array_values(array_filter(array_map('trim', $points), function ($x) { return $x !== ''; }));
+						$points = array_slice($points, 0, 3);
+						?>
+						<div class="col-md-6 col-lg-3" id="<?php echo htmlspecialchars($anchor !== '' ? $anchor : ('product-' . (int)$idx), ENT_QUOTES, 'UTF-8'); ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?php echo (int)min(360, $idx * 90); ?>">
+							<div class="sr-product-card">
+								<div class="sr-product-media">
+									<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>">
+										<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
+									</a>
+									<div class="sr-product-icon"><i class="<?php echo htmlspecialchars($iconClass, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+								</div>
+								<?php if ($badge !== '') { ?><div class="<?php echo htmlspecialchars($badgeClass, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($badge, ENT_QUOTES, 'UTF-8'); ?></div><?php } ?>
+								<h3 class="sr-product-title"><a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></a></h3>
+								<?php if ($range !== '') { ?><div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> <?php echo htmlspecialchars($range, ENT_QUOTES, 'UTF-8'); ?></div><?php } ?>
+								<p class="sr-product-desc"><?php echo htmlspecialchars($desc, ENT_QUOTES, 'UTF-8'); ?></p>
+								<?php if ($points) { ?>
+									<ul class="sr-product-points">
+										<?php foreach ($points as $pt) { ?>
+											<li><i class="pbmit-base-icon-tick-1"></i><?php echo htmlspecialchars($pt, ENT_QUOTES, 'UTF-8'); ?></li>
+										<?php } ?>
+									</ul>
+								<?php } ?>
+								<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn sr-readmore">
+									<span class="pbmit-button-text">Read more</span>
+								</a>
+							</div>
+						</div>
+					<?php } ?>
+				<?php } else { ?>
 				<div class="col-md-6 col-lg-3" id="residential" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
 					<div class="sr-product-card">
 						<div class="sr-product-media">
@@ -234,6 +310,7 @@
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>

@@ -1,12 +1,32 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('services');
+$sr_services_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Services';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_services_items = [];
+$sr_db = sr_cms_db_try();
+if ($sr_db instanceof mysqli) {
+	$res = $sr_db->query("SELECT slug, title, short_desc, image, icon_svg
+		FROM cms_services
+		WHERE published = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 50");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_services_items[] = $row;
+		}
+		$res->free();
+	}
+}
+?>
 </header>
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Services</h1>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_services_title, ENT_QUOTES, 'UTF-8'); ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -31,6 +51,47 @@
 					maintenance — Shivanjali Renewables handles it all.</p>
 			</div>
 			<div class="row g-4 pt-3">
+				<?php if ($sr_services_items) { ?>
+					<?php foreach ($sr_services_items as $idx => $s) { ?>
+						<?php
+						$slug = trim((string)($s['slug'] ?? ''));
+						if ($slug === '') continue;
+						$href = 'services/' . rawurlencode($slug);
+						$title = (string)($s['title'] ?? '');
+						$desc = (string)($s['short_desc'] ?? '');
+						$image = trim((string)($s['image'] ?? ''));
+						if ($image === '') $image = 'images/homepage-2/service/service-img-01.jpg';
+						$iconSvg = trim((string)($s['icon_svg'] ?? ''));
+						$cardClass = $idx % 4 === 0 ? 'svc-card--install' : ($idx % 4 === 1 ? 'svc-card--om' : ($idx % 4 === 2 ? 'svc-card--consult' : 'svc-card--ppa'));
+						?>
+						<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?php echo (int)min(360, $idx * 120); ?>">
+							<div class="pbmit-service-style-4 card-elevated svc-card <?php echo $cardClass; ?>">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-box-content-wrap">
+										<div class="pbmit-content-box">
+											<div class="pbminfotech-box-number"><?php echo str_pad((string)($idx + 1), 2, '0', STR_PAD_LEFT); ?></div>
+											<div class="pbmit-service-icon" aria-hidden="true">
+												<?php echo $iconSvg !== '' ? $iconSvg : '<svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z"/></svg>'; ?>
+											</div>
+											<h3 class="pbmit-service-title"><a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></a></h3>
+											<p class="home-service-desc"><?php echo htmlspecialchars($desc, ENT_QUOTES, 'UTF-8'); ?></p>
+											<div class="svc-card-cta">
+												<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline svc-readmore"><span class="pbmit-button-text">Read More</span></a>
+											</div>
+										</div>
+										<div class="pbmit-service-image-wrapper">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php } ?>
+				<?php } else { ?>
 				<div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
 					<div class="pbmit-service-style-4 card-elevated svc-card svc-card--install">
 						<div class="pbminfotech-post-item">
@@ -186,6 +247,7 @@
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>

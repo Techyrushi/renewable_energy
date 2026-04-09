@@ -1,4 +1,9 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('energy-consulting');
+$sr_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Energy Efficiency Consulting';
+$sr_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Before recommending a solar solution, we analyse your current energy consumption patterns, identify inefficiencies, and develop a strategy to reduce your overall energy costs. Our consultants work with your team to deliver an integrated energy plan — often resulting in significantly better ROI than solar alone.';
+?>
 </header>
 <div class="pbmit-title-bar-wrapper">
 	<div class="container">
@@ -6,7 +11,7 @@
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">Energy Efficiency Consulting</h1>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_title, ENT_QUOTES, 'UTF-8'); ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -26,8 +31,10 @@
 	<section class="section-xl service-details" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center mb-5">
-				<h2 class="pbmit-title">Energy Efficiency Consulting</h2>
-				<p class="mb-0">Before recommending a solar solution, we analyse your current energy consumption patterns, identify inefficiencies, and develop a strategy to reduce your overall energy costs. Our consultants work with your team to deliver an integrated energy plan — often resulting in significantly better ROI than solar alone.</p>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+				<?php if (trim($sr_subtitle) !== '') { ?>
+					<p class="mb-0"><?php echo $sr_subtitle; ?></p>
+				<?php } ?>
 			</div>
 			<div class="row">
 				<div class="col-md-9 service-left-col" id="primary">

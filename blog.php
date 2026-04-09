@@ -1,6 +1,6 @@
 <?php include 'includes/header.php'; ?>
 <?php
-$sr_blog_posts = [
+$sr_blog_posts_fallback = [
 	[
 		'slug' => 'rooftop-solar-nashik-savings',
 		'category' => 'Solar Basics',
@@ -56,18 +56,51 @@ $sr_blog_posts = [
 		'excerpt' => 'A clear explanation of PPA models, pricing, contract terms, and when it outperforms CAPEX.',
 	],
 ];
+
+$sr_blog_page = sr_cms_page_get('blog');
+$sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : 'Solar Knowledge Hub';
+$sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : 'Stay informed with the latest news, guides, and insights from India&#8217;s solar industry.';
+$sr_banner_image = $sr_blog_page && trim((string)($sr_blog_page['banner_image'] ?? '')) !== '' ? (string)$sr_blog_page['banner_image'] : '';
+
+$sr_blog_posts = [];
+$sr_db = sr_cms_db_try();
+if ($sr_db instanceof mysqli) {
+	$res = $sr_db->query("SELECT slug, title, category, date_label, read_time, cover_image, excerpt
+		FROM cms_blog_posts
+		WHERE published = 1
+		ORDER BY COALESCE(published_at, updated_at) DESC
+		LIMIT 60");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_blog_posts[] = [
+				'slug' => (string)($row['slug'] ?? ''),
+				'category' => (string)($row['category'] ?? ''),
+				'date' => (string)($row['date_label'] ?? ''),
+				'read_time' => (string)($row['read_time'] ?? ''),
+				'image' => (string)($row['cover_image'] ?? ''),
+				'title' => (string)($row['title'] ?? ''),
+				'excerpt' => (string)($row['excerpt'] ?? ''),
+			];
+		}
+		$res->free();
+	}
+}
+if (!$sr_blog_posts) {
+	$sr_blog_posts = $sr_blog_posts_fallback;
+}
 ?>
 
 <!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper sr-why-hero">
+<div class="pbmit-title-bar-wrapper sr-why-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">Solar Knowledge Hub</h1>
-						<p class="pbmit-tbar-subtitle mb-0">Stay informed with the latest news, guides, and insights from
-							India&#8217;s solar industry.</p>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_blog_hero_title, ENT_QUOTES, 'UTF-8'); ?></h1>
+						<?php if (trim($sr_blog_hero_subtitle) !== '') { ?>
+							<p class="pbmit-tbar-subtitle mb-0"><?php echo $sr_blog_hero_subtitle; ?></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">

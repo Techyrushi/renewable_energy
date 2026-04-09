@@ -1,4 +1,9 @@
 <?php include 'includes/header.php'; ?>
+<?php
+$sr_page = sr_cms_page_get('solar-installation');
+$sr_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Solar Module &amp; System Installation';
+$sr_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'We offer complete end-to-end solar installation services for residential, commercial, and industrial clients. Our turnkey EPC approach means we manage every step — site survey, structural design, equipment procurement, installation, and grid commissioning — so you can switch to solar without any hassle.';
+?>
 </header>
 <div class="pbmit-title-bar-wrapper">
 	<div class="container">
@@ -6,7 +11,7 @@
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title">Solar Module &amp; System Installation</h1>
+						<h1 class="pbmit-tbar-title"><?php echo $sr_title; ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -26,8 +31,10 @@
 	<section class="section-xl service-details" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center mb-5">	
-				<h2 class="pbmit-title">Solar Module &amp; System Installation</h2>
-				<p class="mb-0">We offer complete end-to-end solar installation services for residential, commercial, and industrial clients. Our turnkey EPC approach means we manage every step — site survey, structural design, equipment procurement, installation, and grid commissioning — so you can switch to solar without any hassle.</p>
+				<h2 class="pbmit-title"><?php echo $sr_title; ?></h2>
+				<?php if (trim($sr_subtitle) !== '') { ?>
+					<p class="mb-0"><?php echo $sr_subtitle; ?></p>
+				<?php } ?>
 			</div>
 			<div class="row">
 				<div class="col-md-9 service-left-col" id="primary">

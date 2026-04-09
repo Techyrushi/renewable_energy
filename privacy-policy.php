@@ -1,15 +1,19 @@
 <?php include 'includes/header.php'; ?>
 </header>
 <?php
+$sr_page = sr_cms_page_get('privacy-policy');
+$sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Privacy Policy';
+$sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'This Privacy Policy explains how Shivanjali Renewables (“Shivanjali Renewables”, “we”, “us”, “our”) collects, uses, shares, and protects information when you visit our website, request a quote, or contact our team.';
 $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l7 4v6c0 5-3.6 9.4-7 10-3.4-.6-7-5-7-10V6l7-4zm0 2.2L7 6.8V12c0 3.9 2.7 7.3 5 7.9 2.3-.6 5-4 5-7.9V6.8l-5-2.6zm2.9 5.6l1.2 1.2-4.6 4.6-2.5-2.5 1.2-1.2 1.3 1.3 3.4-3.4z"/></svg>';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
 ?>
-<div class="pbmit-title-bar-wrapper">
+<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
 				<div class="pbmit-tbar">
 					<div class="pbmit-tbar-inner container">
-						<h1 class="pbmit-tbar-title"> Privacy Policy</h1>
+						<h1 class="pbmit-tbar-title"><?php echo htmlspecialchars($sr_legal_title, ENT_QUOTES, 'UTF-8'); ?></h1>
 					</div>
 				</div>
 				<div class="pbmit-breadcrumb">
@@ -35,8 +39,8 @@ $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="fal
 							<span class="sr-legal-badge">Legal</span>
 							<span class="sr-legal-updated">Last updated: 03 April 2026</span>
 						</div>
-						<h2 class="pbmit-title mb-2">Privacy Policy</h2>
-						<p class="sr-legal-lead mb-0">This Privacy Policy explains how Shivanjali Renewables (“Shivanjali Renewables”, “we”, “us”, “our”) collects, uses, shares, and protects information when you visit our website, request a quote, or contact our team.</p>
+						<h2 class="pbmit-title mb-2"><?php echo htmlspecialchars($sr_legal_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+						<p class="sr-legal-lead mb-0"><?php echo $sr_legal_lead; ?></p>
 						<div class="sr-legal-highlights">
 							<div class="sr-legal-highlight"><strong>We collect</strong> contact details and project requirements you share with us.</div>
 							<div class="sr-legal-highlight"><strong>We use it</strong> to respond, provide proposals, and improve our services.</div>
