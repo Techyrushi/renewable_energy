@@ -244,6 +244,18 @@ $sr_dash_csrf = sr_admin_csrf_token();
 <div class="page-body-wrapper">
 	<?php include 'sidebar.php'; ?>
 	<div class="page-body">
+		<style>
+			.sr-dash-card .card { border: 1px solid rgba(10,25,38,.08); box-shadow: 0 18px 50px rgba(10,25,38,.06); border-radius: 18px; overflow: hidden; }
+			.sr-dash-card .card-header { background: rgba(255,255,255,.9); border-bottom: 1px solid rgba(10,25,38,.08); }
+			.sr-kpi-badge { border-radius: 999px; padding: 6px 10px; font-weight: 800; letter-spacing: .1px; }
+			.sr-chart-box { position: relative; border-radius: 18px; background: linear-gradient(180deg, rgba(10,25,38,.02), rgba(10,25,38,0)); border: 1px solid rgba(10,25,38,.08); }
+			.sr-chart-box--line { height: 290px; padding: 12px; }
+			.sr-chart-box--donut { height: 290px; padding: 14px; display: flex; align-items: center; justify-content: center; }
+			.sr-chart-box canvas { width: 100% !important; height: 100% !important; }
+			.sr-donut-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; text-align: center; }
+			.sr-donut-total { font-weight: 950; font-size: 34px; line-height: 1; color: rgba(10,25,38,.94); }
+			.sr-donut-sub { margin-top: 6px; font-weight: 700; color: rgba(10,25,38,.62); }
+		</style>
 		<div class="container-fluid">
 			<div class="page-title">
 				<div class="row">
@@ -253,7 +265,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 					</div>
 					<div class="col-sm-6 col-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index.php"><i data-feather="home"></i></a></li>
+							<li class="breadcrumb-item"><a href="index"><i data-feather="home"></i></a></li>
 							<li class="breadcrumb-item active">Dashboard</li>
 						</ol>
 					</div>
@@ -261,7 +273,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 			</div>
 		</div>
 
-		<div class="container-fluid">
+		<div class="container-fluid sr-dash-card">
 			<div class="row g-4">
 				<div class="col-lg-4 col-md-6">
 					<div class="card">
@@ -271,14 +283,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">New Enquiries</h5>
 									<p class="mb-0 text-title-gray">Today</p>
 								</div>
-								<div class="badge rounded-pill bg-light-primary text-primary">Live</div>
+								<div class="sr-kpi-badge bg-light-primary text-primary">Live</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_enquiries_today, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">Last 24 hours</p>
 								</div>
-								<a class="btn btn-primary" href="enquiries.php">View</a>
+								<a class="btn btn-primary" href="enquiries">View</a>
 							</div>
 						</div>
 					</div>
@@ -292,14 +304,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Open Enquiries</h5>
 									<p class="mb-0 text-title-gray">Needs follow-up</p>
 								</div>
-								<div class="badge rounded-pill bg-light-warning text-warning">Action</div>
+								<div class="sr-kpi-badge bg-light-warning text-warning">Action</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_enquiries_open, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">New + in progress</p>
 								</div>
-								<a class="btn btn-primary" href="enquiries.php">Manage</a>
+								<a class="btn btn-primary" href="enquiries">Manage</a>
 							</div>
 						</div>
 					</div>
@@ -313,14 +325,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Published Content</h5>
 									<p class="mb-0 text-title-gray">Blog posts</p>
 								</div>
-								<div class="badge rounded-pill bg-light-warning text-warning">Content</div>
+								<div class="sr-kpi-badge bg-light-warning text-warning">Content</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_blog_published, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">Published posts</p>
 								</div>
-								<a class="btn btn-primary" href="blog-posts.php">View</a>
+								<a class="btn btn-primary" href="blog-posts">View</a>
 							</div>
 						</div>
 					</div>
@@ -334,7 +346,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Active Banners</h5>
 									<p class="mb-0 text-title-gray">Homepage slider</p>
 								</div>
-								<div class="badge rounded-pill bg-light-success text-success">Website</div>
+								<div class="sr-kpi-badge bg-light-success text-success">Website</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
@@ -355,14 +367,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Products</h5>
 									<p class="mb-0 text-title-gray">Total items</p>
 								</div>
-								<div class="badge rounded-pill bg-light-primary text-primary">Catalog</div>
+								<div class="sr-kpi-badge bg-light-primary text-primary">Catalog</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_products_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="products.php">Open</a>
+								<a class="btn btn-primary" href="products">Open</a>
 							</div>
 						</div>
 					</div>
@@ -376,14 +388,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Services</h5>
 									<p class="mb-0 text-title-gray">Total items</p>
 								</div>
-								<div class="badge rounded-pill bg-light-primary text-primary">Offerings</div>
+								<div class="sr-kpi-badge bg-light-primary text-primary">Offerings</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_services_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="services.php">Open</a>
+								<a class="btn btn-primary" href="services">Open</a>
 							</div>
 						</div>
 					</div>
@@ -397,14 +409,14 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h5 class="mb-1">Projects</h5>
 									<p class="mb-0 text-title-gray">Total items</p>
 								</div>
-								<div class="badge rounded-pill bg-light-success text-success">Portfolio</div>
+								<div class="sr-kpi-badge bg-light-success text-success">Portfolio</div>
 							</div>
 							<div class="mt-3 d-flex align-items-end justify-content-between">
 								<div>
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_projects_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="projects.php">Open</a>
+								<a class="btn btn-primary" href="projects">Open</a>
 							</div>
 						</div>
 					</div>
@@ -419,13 +431,15 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<div class="text-title-gray">Last 14 days • Total last 7 days: <?php echo htmlspecialchars($sr_enquiries_7d, ENT_QUOTES, 'UTF-8'); ?> • Last 30 days: <?php echo htmlspecialchars($sr_enquiries_30d, ENT_QUOTES, 'UTF-8'); ?></div>
 								</div>
 								<div class="d-flex gap-2 flex-wrap">
-									<a class="btn btn-outline-primary" href="enquiries.php">Open Enquiries</a>
-									<a class="btn btn-primary" href="pages.php?slug=home">Edit Home</a>
+									<a class="btn btn-outline-primary" href="enquiries">Open Enquiries</a>
+									<a class="btn btn-primary" href="pages?slug=home">Edit Home</a>
 								</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<canvas id="srEnquiriesTrend" height="90"></canvas>
+							<div class="sr-chart-box sr-chart-box--line">
+								<canvas id="srEnquiriesTrend"></canvas>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -437,7 +451,15 @@ $sr_dash_csrf = sr_admin_csrf_token();
 							<div class="text-title-gray">Last 30 days</div>
 						</div>
 						<div class="card-body">
-							<canvas id="srEnquiriesStatus" height="210"></canvas>
+							<div class="sr-chart-box sr-chart-box--donut">
+								<canvas id="srEnquiriesStatus"></canvas>
+								<div class="sr-donut-center">
+									<div>
+										<div class="sr-donut-total" id="srEnquiriesStatusTotal">0</div>
+										<div class="sr-donut-sub">Total (30 days)</div>
+									</div>
+								</div>
+							</div>
 							<div class="mt-3 d-flex justify-content-between flex-wrap gap-2">
 								<div class="text-title-gray">New: <span class="fw-bold"><?php echo (int)$sr_enquiries_new_30d; ?></span></div>
 								<div class="text-title-gray">In progress: <span class="fw-bold"><?php echo (int)$sr_enquiries_in_progress_30d; ?></span></div>
@@ -452,7 +474,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 						<div class="card-header">
 							<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 								<h4 class="mb-0">Recent Enquiries</h4>
-								<a class="btn btn-outline-primary" href="enquiries.php">View All</a>
+								<a class="btn btn-outline-primary" href="enquiries">View All</a>
 							</div>
 						</div>
 						<div class="card-body">
@@ -486,7 +508,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 												<td><span class="badge rounded-pill <?php echo $badge; ?>"><?php echo htmlspecialchars($st, ENT_QUOTES, 'UTF-8'); ?></span></td>
 												<td class="text-title-gray"><?php echo htmlspecialchars((string)($e['created_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
 												<td class="text-end">
-													<a class="btn btn-sm btn-primary" href="enquiries.php?action=view&id=<?php echo (int)($e['id'] ?? 0); ?>">Open</a>
+													<a class="btn btn-sm btn-primary" href="enquiries?action=view&id=<?php echo (int)($e['id'] ?? 0); ?>">Open</a>
 												</td>
 											</tr>
 										<?php } ?>
@@ -504,7 +526,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 							<div class="text-title-gray">Download client-ready CSV reports</div>
 						</div>
 						<div class="card-body">
-							<form method="get" action="index.php" class="row g-3">
+							<form method="get" action="index" class="row g-3">
 								<input type="hidden" name="report" value="enquiries_csv">
 								<input type="hidden" name="csrf" value="<?php echo htmlspecialchars($sr_dash_csrf, ENT_QUOTES, 'UTF-8'); ?>">
 								<div class="col-6">
@@ -526,7 +548,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 								</div>
 								<div class="col-12 d-flex gap-2 flex-wrap">
 									<button class="btn btn-primary" type="submit"><i data-feather="download"></i><span class="ms-2">Download Enquiries CSV</span></button>
-									<a class="btn btn-outline-primary" href="index.php?report=summary_csv&from=<?php echo rawurlencode(date('Y-m-d', strtotime('-30 days'))); ?>&to=<?php echo rawurlencode(date('Y-m-d')); ?>&csrf=<?php echo rawurlencode($sr_dash_csrf); ?>"><i data-feather="file-text"></i><span class="ms-2">Download Summary CSV</span></a>
+									<a class="btn btn-outline-primary" href="index?report=summary_csv&from=<?php echo rawurlencode(date('Y-m-d', strtotime('-30 days'))); ?>&to=<?php echo rawurlencode(date('Y-m-d')); ?>&csrf=<?php echo rawurlencode($sr_dash_csrf); ?>"><i data-feather="file-text"></i><span class="ms-2">Download Summary CSV</span></a>
 								</div>
 							</form>
 							<div class="mt-3 p-3 rounded-3 border bg-light">
@@ -546,7 +568,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<a class="btn btn-outline-primary" href="../contact" target="_blank" rel="noopener">Open Contact Page</a>
 									<a class="btn btn-outline-primary" href="../projects" target="_blank" rel="noopener">Open Projects Page</a>
 									<a class="btn btn-outline-primary" href="../blog" target="_blank" rel="noopener">Open Blog Page</a>
-									<a class="btn btn-primary" href="settings.php">Admin Settings</a>
+									<a class="btn btn-primary" href="settings">Admin Settings</a>
 								</div>
 							</div>
 						</div>
@@ -591,56 +613,72 @@ $sr_dash_csrf = sr_admin_csrf_token();
 		(function () {
 			var ctxTrend = document.getElementById('srEnquiriesTrend');
 			if (ctxTrend && window.Chart) {
-				new Chart(ctxTrend.getContext('2d'), {
-					type: 'line',
-					data: {
+				try {
+					var tCtx = ctxTrend.getContext('2d');
+					var g = tCtx.createLinearGradient(0, 0, 0, 280);
+					g.addColorStop(0, 'rgba(16,168,84,.22)');
+					g.addColorStop(1, 'rgba(16,168,84,0)');
+					var trendData = {
 						labels: <?php echo json_encode($sr_enquiries_trend_labels, JSON_UNESCAPED_SLASHES); ?>,
 						datasets: [{
 							label: 'Enquiries',
-							data: <?php echo json_encode($sr_enquiries_trend_values, JSON_UNESCAPED_SLASHES); ?>,
-							borderColor: 'rgba(16,168,84,1)',
-							backgroundColor: 'rgba(16,168,84,.12)',
-							pointRadius: 3,
-							pointHoverRadius: 4,
-							tension: 0.35,
-							fill: true
+							fillColor: g,
+							strokeColor: 'rgba(16,168,84,1)',
+							pointColor: 'rgba(16,168,84,1)',
+							pointStrokeColor: '#fff',
+							pointHighlightFill: '#fff',
+							pointHighlightStroke: 'rgba(16,168,84,1)',
+							data: <?php echo json_encode($sr_enquiries_trend_values, JSON_UNESCAPED_SLASHES); ?>
 						}]
-					},
-					options: {
+					};
+					var trendOptions = {
 						responsive: true,
 						maintainAspectRatio: false,
-						plugins: {
-							legend: { display: false },
-							tooltip: { mode: 'index', intersect: false }
-						},
-						scales: {
-							x: { grid: { display: false } },
-							y: { beginAtZero: true, ticks: { precision: 0 } }
-						}
-					}
-				});
+						bezierCurve: true,
+						bezierCurveTension: 0.35,
+						pointDot: true,
+						pointDotRadius: 3,
+						pointDotStrokeWidth: 2,
+						datasetStrokeWidth: 2,
+						scaleShowGridLines: false,
+						scaleBeginAtZero: true,
+						tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>"
+					};
+					new Chart(tCtx).Line(trendData, trendOptions);
+				} catch (e) {
+					try {
+						ctxTrend.parentNode.innerHTML = '<div class="text-title-gray p-3">Unable to render Enquiries Trend chart.</div>';
+					} catch (e2) {}
+				}
 			}
 
 			var ctxStatus = document.getElementById('srEnquiriesStatus');
 			if (ctxStatus && window.Chart) {
-				new Chart(ctxStatus.getContext('2d'), {
-					type: 'doughnut',
-					data: {
-						labels: ['New', 'In progress', 'Closed'],
-						datasets: [{
-							data: [<?php echo (int)$sr_enquiries_new_30d; ?>, <?php echo (int)$sr_enquiries_in_progress_30d; ?>, <?php echo (int)$sr_enquiries_closed_30d; ?>],
-							backgroundColor: ['rgba(0,123,255,.85)', 'rgba(255,193,7,.85)', 'rgba(16,168,84,.85)'],
-							borderWidth: 0
-						}]
-					},
-					options: {
+				try {
+					var sCtx = ctxStatus.getContext('2d');
+					var total = <?php echo (int)$sr_enquiries_new_30d + (int)$sr_enquiries_in_progress_30d + (int)$sr_enquiries_closed_30d; ?>;
+					var totalEl = document.getElementById('srEnquiriesStatusTotal');
+					if (totalEl) totalEl.textContent = total.toString();
+					var statusData = [
+						{ value: <?php echo (int)$sr_enquiries_new_30d; ?>, color: "rgba(0,123,255,.90)", highlight: "rgba(0,123,255,1)", label: "New" },
+						{ value: <?php echo (int)$sr_enquiries_in_progress_30d; ?>, color: "rgba(255,193,7,.90)", highlight: "rgba(255,193,7,1)", label: "In progress" },
+						{ value: <?php echo (int)$sr_enquiries_closed_30d; ?>, color: "rgba(16,168,84,.90)", highlight: "rgba(16,168,84,1)", label: "Closed" }
+					];
+					var statusOptions = {
 						responsive: true,
-						plugins: {
-							legend: { position: 'bottom' }
-						},
-						cutout: '68%'
-					}
-				});
+						maintainAspectRatio: false,
+						percentageInnerCutout: 68,
+						segmentShowStroke: false,
+						animateRotate: true,
+						animateScale: false,
+						tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>"
+					};
+					new Chart(sCtx).Doughnut(statusData, statusOptions);
+				} catch (e) {
+					try {
+						ctxStatus.parentNode.innerHTML = '<div class="text-title-gray p-3">Unable to render Enquiry Status chart.</div>';
+					} catch (e2) {}
+				}
 			}
 		})();
 	</script>

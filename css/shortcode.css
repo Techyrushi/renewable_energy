@@ -1571,11 +1571,11 @@
     color: var(--pbmit-white-color);
     background-color: var(--pbmit-global-color);
 }
-.pbmit-service-style-4 .pbmit-service-icon svg g,
+/* .pbmit-service-style-4 .pbmit-service-icon svg g,
 .pbmit-service-style-4 .pbmit-service-icon svg path,
 .pbmit-service-style-4 .pbmit-service-icon svg {
 	fill: var(--pbmit-white-color);
-}
+} */
 .pbmit-service-style-4 .pbmit-featured-wrapper img{
 	width: 100%;
 }
@@ -2966,7 +2966,7 @@
     opacity: 1;
 }
 .pbmit-portfolio-style-1 .pbmit-portfolio-title a{
-	color: var(--pbmit-white-color);
+	color: var(--pbmit-primary-color);	
 }
 .pbmit-portfolio-style-1 .pbmit-featured-wrapper{
 	position: relative;

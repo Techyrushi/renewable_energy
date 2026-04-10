@@ -64,12 +64,12 @@ function sr_admin_safe_next(string $next): string
 {
 	$next = trim($next);
 	if ($next === '') {
-		return 'index.php';
+		return 'index';
 	}
 	if (preg_match('/^[a-z0-9-]+\.php$/i', $next) === 1) {
 		return $next;
 	}
-	return 'index.php';
+	return 'index';
 }
 
 function sr_admin_login_attempts(): int

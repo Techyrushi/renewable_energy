@@ -149,62 +149,62 @@ if ($action === 'list') {
 								<div class="row g-3">
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Date</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['created_at'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">Date</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['created_at'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Name</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['full_name'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">Name</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['full_name'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Status</div>
-											<div class="fw-bold text-uppercase"><?php echo htmlspecialchars($enquiry['status'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">Status</div>
+											<div class="fw-bold text-uppercase text-primary"><?php echo htmlspecialchars($enquiry['status'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Phone</div>
-											<div class="fw-bold"><a href="tel:<?php echo htmlspecialchars($enquiry['phone'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($enquiry['phone'], ENT_QUOTES, 'UTF-8'); ?></a></div>
+											<div class="text-title-gray fw-bold">Phone</div>
+											<div class="fw-bold text-primary"><a href="tel:<?php echo htmlspecialchars($enquiry['phone'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($enquiry['phone'], ENT_QUOTES, 'UTF-8'); ?></a></div>	
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Email</div>
-											<div class="fw-bold"><a href="mailto:<?php echo htmlspecialchars($enquiry['email'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($enquiry['email'], ENT_QUOTES, 'UTF-8'); ?></a></div>
+											<div class="text-title-gray fw-bold">Email</div>
+											<div class="fw-bold text-primary"><a href="mailto:<?php echo htmlspecialchars($enquiry['email'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($enquiry['email'], ENT_QUOTES, 'UTF-8'); ?></a></div>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">City</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['city'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">City</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['city'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">Customer Type</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['customer_type'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">Customer Type</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['customer_type'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-lg-4">
 										<div class="p-3 rounded-3 border bg-light h-100">
-											<div class="text-title-gray">System Size</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['system_size'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">System Size</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['system_size'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-12">
 										<div class="p-3 rounded-3 border bg-light">
-											<div class="text-title-gray">Source</div>
-											<div class="fw-bold"><?php echo htmlspecialchars($enquiry['source'], ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold">Source</div>
+											<div class="fw-bold text-primary"><?php echo htmlspecialchars($enquiry['source'], ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-12">
 										<div class="p-3 rounded-3 border bg-light">
-											<div class="text-title-gray mb-1">Message</div>
-											<div class="fw-bold" style="white-space: pre-wrap;"><?php echo htmlspecialchars($enquiry['message'] !== '' ? $enquiry['message'] : '(none)', ENT_QUOTES, 'UTF-8'); ?></div>
+											<div class="text-title-gray fw-bold mb-1">Message</div>
+											<div class="fw-bold text-primary" style="white-space: pre-wrap;"><?php echo htmlspecialchars($enquiry['message'] !== '' ? $enquiry['message'] : '(none)', ENT_QUOTES, 'UTF-8'); ?></div>
 										</div>
 									</div>
 									<div class="col-12 d-flex align-items-center justify-content-between flex-wrap gap-2">

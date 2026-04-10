@@ -134,6 +134,27 @@ if ($sr_post === null) {
 <?php include 'includes/header.php'; ?>
 </header>
 
+<style>
+	.sr-article-content img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 18px 0;
+		border-radius: 18px;
+		box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
+		border: 1px solid rgba(10, 25, 38, .10);
+		background: #fff;
+	}
+	.sr-article-content figure {
+		margin: 18px 0;
+	}
+	.sr-article-content figcaption {
+		margin-top: 10px;
+		font-weight: 600;
+		color: rgba(10, 25, 38, .70);
+	}
+</style>
+
 <div class="pbmit-title-bar-wrapper sr-why-hero sr-blog-detail-hero">
 	<div class="container">
 		<div class="pbmit-title-bar-content">

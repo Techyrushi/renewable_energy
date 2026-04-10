@@ -4,6 +4,161 @@ $sr_home_page = sr_cms_page_get('home');
 $sr_home_kicker = sr_cms_setting_get('home_kicker', 'Maharashtra’s Trusted Solar EPC Partner');
 $sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== '' ? (string)$sr_home_page['hero_title'] : 'Powering a Greener Tomorrow — One Solar Panel at a Time';
 $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== '' ? (string)$sr_home_page['hero_subtitle'] : 'Shivanjali Renewables is Maharashtra\'s trusted Solar EPC partner for homes, businesses, industries, and large-scale solar parks. Clean energy. Real savings. Lasting impact.';
+
+$sr_home_stat1_title = sr_cms_setting_get('home_stat1_title', 'Projects<br>Completed');
+$sr_home_stat1_to = sr_cms_setting_get('home_stat1_to', '500');
+$sr_home_stat1_suffix = sr_cms_setting_get('home_stat1_suffix', '+');
+$sr_home_stat2_title = sr_cms_setting_get('home_stat2_title', 'Solar Capacity<br>Installed');
+$sr_home_stat2_to = sr_cms_setting_get('home_stat2_to', '20');
+$sr_home_stat2_suffix = sr_cms_setting_get('home_stat2_suffix', ' MW+');
+$sr_home_stat3_title = sr_cms_setting_get('home_stat3_title', 'System<br>Range');
+$sr_home_stat3_to = sr_cms_setting_get('home_stat3_to', '3');
+$sr_home_stat3_suffix = sr_cms_setting_get('home_stat3_suffix', ' kW – 20 MW');
+$sr_home_stat4_title = sr_cms_setting_get('home_stat4_title', 'After-Sales<br>Support');
+$sr_home_stat4_to = sr_cms_setting_get('home_stat4_to', '100');
+$sr_home_stat4_suffix = sr_cms_setting_get('home_stat4_suffix', '%');
+
+$sr_home_services_subtitle = sr_cms_setting_get('home_services_subtitle', 'Our Services');
+$sr_home_services_title = sr_cms_setting_get('home_services_title', 'Comprehensive solar solutions from concept to completion');
+$sr_home_services_cta_label = sr_cms_setting_get('home_services_cta_label', 'View All Services');
+
+$sr_home_products_subtitle = sr_cms_setting_get('home_products_subtitle', 'Products');
+$sr_home_products_title = sr_cms_setting_get('home_products_title', 'Solar Solutions for Every Scale');
+$sr_home_products_cta_label = sr_cms_setting_get('home_products_cta_label', 'Explore All Products');
+
+$sr_home_about_subtitle = sr_cms_setting_get('home_about_subtitle', 'Who We Are');
+$sr_home_about_title = sr_cms_setting_get('home_about_title', 'Shivanjali Renewables Pvt. Ltd.');
+$sr_home_about_p1 = sr_cms_setting_get('home_about_p1', 'Shivanjali Renewables Pvt. Ltd. is a pioneering Solar EPC (Engineering, Procurement & Construction) company headquartered in Nashik, Maharashtra. With deep expertise across the entire solar value chain — from design and procurement to installation and maintenance — we deliver reliable, high-performance solar solutions for every scale.');
+$sr_home_about_p2 = sr_cms_setting_get('home_about_p2', 'Whether you are a homeowner looking to cut your electricity bill, a factory owner seeking energy independence, or a developer wanting to build a solar park, we are your end-to-end partner.');
+$sr_home_about_b1 = sr_cms_setting_get('home_about_b1', 'End-to-end EPC delivery across every scale');
+$sr_home_about_b2 = sr_cms_setting_get('home_about_b2', 'Design, procurement, installation & maintenance');
+$sr_home_about_cta_label = sr_cms_setting_get('home_about_cta_label', 'Know More About Us');
+$sr_home_about_cta_url = sr_cms_setting_get('home_about_cta_url', 'about');
+$sr_home_about_bg_image = sr_cms_setting_get('home_about_bg_image', '');
+$sr_home_about_fid_to = sr_cms_setting_get('home_about_fid_to', '2386');
+$sr_home_about_fid_suffix = sr_cms_setting_get('home_about_fid_suffix', '+');
+$sr_home_about_fid_title = sr_cms_setting_get('home_about_fid_title', 'Trusted customers around the world');
+$sr_home_about_t1_title = sr_cms_setting_get('home_about_timeline1_title', 'Our Vision.');
+$sr_home_about_t1_desc = sr_cms_setting_get('home_about_timeline1_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
+$sr_home_about_t2_title = sr_cms_setting_get('home_about_timeline2_title', 'Our Mission');
+$sr_home_about_t2_desc = sr_cms_setting_get('home_about_timeline2_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
+$sr_home_about_t3_title = sr_cms_setting_get('home_about_timeline3_title', 'Our Achievements');
+$sr_home_about_t3_desc = sr_cms_setting_get('home_about_timeline3_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
+
+$sr_home_why_subtitle = sr_cms_setting_get('home_why_subtitle', 'Why Choose us');
+$sr_home_why_title = sr_cms_setting_get('home_why_title', 'Your partner for sustainable <br> environmental solutions');
+$sr_home_why_card1_title = sr_cms_setting_get('home_why_card1_title', 'Commercial Solutions');
+$sr_home_why_card1_desc = sr_cms_setting_get('home_why_card1_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
+$sr_home_why_card2_title = sr_cms_setting_get('home_why_card2_title', 'Tailored Solutions');
+$sr_home_why_card2_desc = sr_cms_setting_get('home_why_card2_desc', 'Precision engineering, quality components, and clean installation practices for every rooftop.');
+$sr_home_why_card3_title = sr_cms_setting_get('home_why_card3_title', 'Expert Installation');
+$sr_home_why_card3_desc = sr_cms_setting_get('home_why_card3_desc', 'O&M, performance checks, and after-sales support that keeps your system delivering.');
+$sr_home_why_card4_title = sr_cms_setting_get('home_why_card4_title', 'Expert Installation');
+$sr_home_why_card4_desc = sr_cms_setting_get('home_why_card4_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
+$sr_home_why_card5_title = sr_cms_setting_get('home_why_card5_title', 'Low Cost Operation');
+$sr_home_why_card5_desc = sr_cms_setting_get('home_why_card5_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
+$sr_home_why_card6_title = sr_cms_setting_get('home_why_card6_title', 'Expert Solar Worker');
+$sr_home_why_card6_desc = sr_cms_setting_get('home_why_card6_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
+
+$sr_home_why_sr_title = sr_cms_setting_get('home_why_sr_title', 'Why Shivanjali Renewables?');
+$sr_home_why_sr_1_title = sr_cms_setting_get('home_why_sr_1_title', 'Experience');
+$sr_home_why_sr_1_desc = sr_cms_setting_get('home_why_sr_1_desc', 'Years of proven expertise in the solar industry');
+$sr_home_why_sr_2_title = sr_cms_setting_get('home_why_sr_2_title', 'Expert Team');
+$sr_home_why_sr_2_desc = sr_cms_setting_get('home_why_sr_2_desc', 'Engineers, technicians, and consultants committed to excellence');
+$sr_home_why_sr_3_title = sr_cms_setting_get('home_why_sr_3_title', 'Comprehensive Support');
+$sr_home_why_sr_3_desc = sr_cms_setting_get('home_why_sr_3_desc', 'Full warranty, after-sales maintenance, and project design services');
+
+$sr_home_process_subtitle = sr_cms_setting_get('home_process_subtitle', 'Our Process');
+$sr_home_process_title = sr_cms_setting_get('home_process_title', 'Wind Solar Energy work<br> Project Planning');
+$sr_home_process_1_title = sr_cms_setting_get('home_process_1_title', 'System Design');
+$sr_home_process_1_desc = sr_cms_setting_get('home_process_1_desc', 'Tailoring efficient and sustainable solar energy systems to meet your specific needs.');
+$sr_home_process_1_image = sr_cms_setting_get('home_process_1_image', 'images/homepage-2/ihbox/image-01.jpg');
+$sr_home_process_2_title = sr_cms_setting_get('home_process_2_title', 'Panel Installation');
+$sr_home_process_2_desc = sr_cms_setting_get('home_process_2_desc', 'Expert installation of high-quality solar panels for maximum energy capture.');
+$sr_home_process_2_image = sr_cms_setting_get('home_process_2_image', 'images/homepage-2/ihbox/image-02.jpg');
+$sr_home_process_3_title = sr_cms_setting_get('home_process_3_title', 'Inverter Integration');
+$sr_home_process_3_desc = sr_cms_setting_get('home_process_3_desc', 'Seamlessly converting solar energy into usable electricity with advanced inverters.');
+$sr_home_process_3_image = sr_cms_setting_get('home_process_3_image', 'images/homepage-2/ihbox/image-03.png');
+$sr_home_process_4_title = sr_cms_setting_get('home_process_4_title', 'Battery Solutions');
+$sr_home_process_4_desc = sr_cms_setting_get('home_process_4_desc', 'Panel installation involves the professional installation expert panel maintenance.');
+$sr_home_process_4_image = sr_cms_setting_get('home_process_4_image', 'images/homepage-2/ihbox/image-04.jpg');
+
+$sr_home_marquee_1 = sr_cms_setting_get('home_marquee_1', 'Sustainable');
+$sr_home_marquee_2 = sr_cms_setting_get('home_marquee_2', 'Smart solar');
+$sr_home_marquee_3 = sr_cms_setting_get('home_marquee_3', 'Turbine Technology');
+$sr_home_marquee_4 = sr_cms_setting_get('home_marquee_4', 'Electricity');
+
+$sr_home_testimonial_title = sr_cms_setting_get('home_testimonial_title', 'What Our Clients Say');
+$sr_home_testimonial_quote = sr_cms_setting_get('home_testimonial_quote', '“Partnering with Shivanjali Renewables for our 900 kW solar project has been a transformative experience. Their expertise, professionalism, and commitment to quality ensured the successful completion of our project. We are delighted with the energy savings and sustainability impact we have achieved.”');
+$sr_home_testimonial_name = sr_cms_setting_get('home_testimonial_name', 'Ms. Manisha Dhatrak');
+$sr_home_testimonial_company = sr_cms_setting_get('home_testimonial_company', 'Varun Agro Food Processing Pvt. Ltd.');
+$sr_home_testimonial_image = sr_cms_setting_get('home_testimonial_image', 'images/homepage-1/testimonial/testimonial-01.jpg');
+
+$sr_home_blog_subtitle = sr_cms_setting_get('home_blog_subtitle', 'Latest News');
+$sr_home_blog_title = sr_cms_setting_get('home_blog_title', 'Latest from the Blog');
+$sr_home_blog_cta_label = sr_cms_setting_get('home_blog_cta_label', 'View All Post');
+
+$sr_home_cta_title = sr_cms_setting_get('home_cta_title', 'Ready to Switch to Solar?');
+$sr_home_cta_desc = sr_cms_setting_get('home_cta_desc', 'Get a free, no-obligation solar assessment from our experts. We will evaluate your energy needs and design the perfect system for you.');
+$sr_home_cta_btn1_label = sr_cms_setting_get('home_cta_btn1_label', 'Get Free Quote');
+$sr_home_cta_btn1_url = sr_cms_setting_get('home_cta_btn1_url', 'contact');
+$sr_home_cta_btn2_label = sr_cms_setting_get('home_cta_btn2_label', 'Call Us Now');
+$sr_home_cta_btn2_url = sr_cms_setting_get('home_cta_btn2_url', 'tel:+918686313133');
+
+$sr_home_services_items = [];
+$sr_home_products_items = [];
+$sr_home_blog_items = [];
+$sr_home_testimonials = [];
+$sr_db_home = sr_cms_db_try();
+if ($sr_db_home instanceof mysqli) {
+	$res = $sr_db_home->query("SELECT slug, title, short_desc, image, icon_svg
+		FROM cms_services
+		WHERE published = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 4");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_home_services_items[] = $row;
+		}
+		$res->free();
+	}
+
+	$res = $sr_db_home->query("SELECT slug, category_anchor, badge_label, title, range_label, short_desc, image
+		FROM cms_products
+		WHERE published = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 8");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_home_products_items[] = $row;
+		}
+		$res->free();
+	}
+
+	$res = $sr_db_home->query("SELECT slug, title, category, date_label, cover_image
+		FROM cms_blog_posts
+		WHERE published = 1
+		ORDER BY COALESCE(published_at, updated_at) DESC
+		LIMIT 3");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_home_blog_items[] = $row;
+		}
+		$res->free();
+	}
+
+	$res = $sr_db_home->query("SELECT id, name, company, quote, image, rating
+		FROM cms_testimonials
+		WHERE is_active = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 12");
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_home_testimonials[] = $row;
+		}
+		$res->free();
+	}
+}
 ?>
 <div class="pbmit-slider-area pbmit-slider-two">
 	<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false"
@@ -60,10 +215,10 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 				$kicker = trim((string)($slide['kicker'] ?? '')) !== '' ? (string)$slide['kicker'] : $sr_home_kicker;
 				$title = trim((string)($slide['title'] ?? '')) !== '' ? (string)$slide['title'] : $sr_home_title;
 				$subtitle = trim((string)($slide['subtitle'] ?? '')) !== '' ? (string)$slide['subtitle'] : $sr_home_subtitle;
-				$primaryLabel = trim((string)($slide['primary_label'] ?? '')) !== '' ? (string)$slide['primary_label'] : 'Get a Free Solar Quote';
-				$primaryUrl = trim((string)($slide['primary_url'] ?? '')) !== '' ? (string)$slide['primary_url'] : 'contact';
-				$secondaryLabel = trim((string)($slide['secondary_label'] ?? '')) !== '' ? (string)$slide['secondary_label'] : 'Explore Our Services';
-				$secondaryUrl = trim((string)($slide['secondary_url'] ?? '')) !== '' ? (string)$slide['secondary_url'] : 'services';
+				$primaryLabel = trim((string)($slide['primary_label'] ?? ''));
+				$primaryUrl = trim((string)($slide['primary_url'] ?? ''));
+				$secondaryLabel = trim((string)($slide['secondary_label'] ?? ''));
+				$secondaryUrl = trim((string)($slide['secondary_url'] ?? ''));
 			?>
 			<div class="swiper-slide">
 				<div class="pbmit-slider-item" style="position: relative;">
@@ -85,16 +240,20 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 											<?php echo $subtitle; ?>
 										</p>
 										<div class="pbmit-button d-flex flex-wrap align-items-center gap-3">
-											<div class="transform-bottom transform-delay-4">
-												<a href="<?php echo htmlspecialchars($primaryUrl, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn">
-													<span class="pbmit-button-text"><?php echo htmlspecialchars($primaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
-												</a>
-											</div>
-											<div class="transform-bottom transform-delay-5">
-												<a href="<?php echo htmlspecialchars($secondaryUrl, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
-													<span class="pbmit-button-text"><?php echo htmlspecialchars($secondaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
-												</a>
-											</div>
+											<?php if ($primaryLabel !== '') { ?>
+												<div class="transform-bottom transform-delay-4">
+													<a href="<?php echo htmlspecialchars($primaryUrl !== '' ? $primaryUrl : '#', ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn">
+														<span class="pbmit-button-text"><?php echo htmlspecialchars($primaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
+													</a>
+												</div>
+											<?php } ?>
+											<?php if ($secondaryLabel !== '') { ?>
+												<div class="transform-bottom transform-delay-5">
+													<a href="<?php echo htmlspecialchars($secondaryUrl !== '' ? $secondaryUrl : '#', ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline" style="border-color: rgba(255,255,255,0.85); color: var(--pbmit-white-color);">
+														<span class="pbmit-button-text"><?php echo htmlspecialchars($secondaryLabel, ENT_QUOTES, 'UTF-8'); ?></span>
+													</a>
+												</div>
+											<?php } ?>
 										</div>
 										<div class="d-block d-lg-none" style="height: 22px;"></div>
 									</div>
@@ -123,14 +282,14 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							<div class="pbmit-fld-contents">
 								<div class="pbmit-fld-wrap">
 									<div class="pbmit-fid-icon-title">
-										<span class="pbmit-fid-title">Projects<br>Completed</span>
+										<span class="pbmit-fid-title"><?php echo strip_tags((string)$sr_home_stat1_title, '<br>'); ?></span>
 									</div>
 									<h4 class="pbmit-fid-inner">
 										<span class="pbmit-fid-before"></span>
 										<span class="pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-											data-from="0" data-to="500" data-interval="5" data-before=""
-											data-before-style="" data-after="" data-after-style="">500</span>
-										<span class="pbmit-fid"><span>+</span></span>
+											data-from="0" data-to="<?php echo htmlspecialchars((string)$sr_home_stat1_to, ENT_QUOTES, 'UTF-8'); ?>" data-interval="5" data-before=""
+											data-before-style="" data-after="" data-after-style=""><?php echo htmlspecialchars((string)$sr_home_stat1_to, ENT_QUOTES, 'UTF-8'); ?></span>
+										<span class="pbmit-fid"><span><?php echo htmlspecialchars((string)$sr_home_stat1_suffix, ENT_QUOTES, 'UTF-8'); ?></span></span>
 									</h4>
 								</div>
 							</div>
@@ -143,14 +302,14 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							<div class="pbmit-fld-contents">
 								<div class="pbmit-fld-wrap">
 									<div class="pbmit-fid-icon-title">
-										<span class="pbmit-fid-title">Solar Capacity<br>Installed</span>
+										<span class="pbmit-fid-title"><?php echo strip_tags((string)$sr_home_stat2_title, '<br>'); ?></span>
 									</div>
 									<h4 class="pbmit-fid-inner">
 										<span class="pbmit-fid-before"></span>
 										<span class="pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-											data-from="0" data-to="20" data-interval="1" data-before=""
-											data-before-style="" data-after="" data-after-style="">20</span>
-										<span class="pbmit-fid"><span> MW+</span></span>
+											data-from="0" data-to="<?php echo htmlspecialchars((string)$sr_home_stat2_to, ENT_QUOTES, 'UTF-8'); ?>" data-interval="1" data-before=""
+											data-before-style="" data-after="" data-after-style=""><?php echo htmlspecialchars((string)$sr_home_stat2_to, ENT_QUOTES, 'UTF-8'); ?></span>
+										<span class="pbmit-fid"><span><?php echo htmlspecialchars((string)$sr_home_stat2_suffix, ENT_QUOTES, 'UTF-8'); ?></span></span>
 									</h4>
 								</div>
 							</div>
@@ -163,14 +322,14 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							<div class="pbmit-fld-contents">
 								<div class="pbmit-fld-wrap">
 									<div class="pbmit-fid-icon-title">
-										<span class="pbmit-fid-title">System<br>Range</span>
+										<span class="pbmit-fid-title"><?php echo strip_tags((string)$sr_home_stat3_title, '<br>'); ?></span>
 									</div>
 									<h4 class="pbmit-fid-inner">
 										<span class="pbmit-fid-before"></span>
 										<span class="pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-											data-from="0" data-to="3" data-interval="1" data-before=""
-											data-before-style="" data-after="" data-after-style="">3</span>
-										<span class="pbmit-fid"><span> kW – 20 MW</span></span>
+											data-from="0" data-to="<?php echo htmlspecialchars((string)$sr_home_stat3_to, ENT_QUOTES, 'UTF-8'); ?>" data-interval="1" data-before=""
+											data-before-style="" data-after="" data-after-style=""><?php echo htmlspecialchars((string)$sr_home_stat3_to, ENT_QUOTES, 'UTF-8'); ?></span>
+										<span class="pbmit-fid"><span><?php echo htmlspecialchars((string)$sr_home_stat3_suffix, ENT_QUOTES, 'UTF-8'); ?></span></span>
 									</h4>
 								</div>
 							</div>
@@ -183,14 +342,14 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							<div class="pbmit-fld-contents">
 								<div class="pbmit-fld-wrap">
 									<div class="pbmit-fid-icon-title">
-										<span class="pbmit-fid-title">After-Sales<br>Support</span>
+										<span class="pbmit-fid-title"><?php echo strip_tags((string)$sr_home_stat4_title, '<br>'); ?></span>
 									</div>
 									<h4 class="pbmit-fid-inner">
 										<span class="pbmit-fid-before"></span>
 										<span class="pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-											data-from="0" data-to="100" data-interval="2" data-before=""
-											data-before-style="" data-after="" data-after-style="">100</span>
-										<span class="pbmit-fid"><span>%</span></span>
+											data-from="0" data-to="<?php echo htmlspecialchars((string)$sr_home_stat4_to, ENT_QUOTES, 'UTF-8'); ?>" data-interval="2" data-before=""
+											data-before-style="" data-after="" data-after-style=""><?php echo htmlspecialchars((string)$sr_home_stat4_to, ENT_QUOTES, 'UTF-8'); ?></span>
+										<span class="pbmit-fid"><span><?php echo htmlspecialchars((string)$sr_home_stat4_suffix, ENT_QUOTES, 'UTF-8'); ?></span></span>
 									</h4>
 								</div>
 							</div>
@@ -206,10 +365,37 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 	<section class="service-section-two home-services-modern">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h4 class="pbmit-subtitle">Our Services</h4>
-				<h2 class="pbmit-title">Comprehensive solar solutions from concept to completion</h2>
+				<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_services_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars((string)$sr_home_services_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4">
+				<?php if ($sr_home_services_items) { ?>
+					<?php $sr_i = 0; foreach ($sr_home_services_items as $svc) { $sr_i++; ?>
+						<article class="pbmit-service-style-4 col-md-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?php echo (int)(($sr_i - 1) * 100); ?>">
+							<div class="pbminfotech-post-item">
+								<div class="pbmit-box-content-wrap">
+									<div class="pbmit-content-box">
+										<div class="pbminfotech-box-number"><?php echo str_pad((string)$sr_i, 2, '0', STR_PAD_LEFT); ?></div>
+										<div class="pbmit-service-icon">
+											<?php echo (string)($svc['icon_svg'] ?? ''); ?>
+										</div>
+										<h3 class="pbmit-service-title">
+											<a href="services/<?php echo htmlspecialchars((string)($svc['slug'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string)($svc['title'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></a>
+										</h3>
+										<p class="home-service-desc"><?php echo htmlspecialchars((string)($svc['short_desc'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+									</div>
+									<div class="pbmit-service-image-wrapper">
+										<div class="pbmit-featured-img-wrapper">
+											<div class="pbmit-featured-wrapper">
+												<img src="<?php echo htmlspecialchars((string)($svc['image'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" class="" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</article>
+					<?php } ?>
+				<?php } else { ?>
 				<article class="pbmit-service-style-4 col-md-6 col-lg-4 col-xl-3" data-aos="fade-up"
 					data-aos-duration="800" data-aos-delay="0">
 					<div class="pbminfotech-post-item">
@@ -588,10 +774,11 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						</div>
 					</div>
 				</article>
+				<?php } ?>
 			</div>
 			<div class="text-center mt-5">
 				<a href="services" class="pbmit-btn">
-					<span class="pbmit-button-text">View All Services</span>
+					<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_services_cta_label, ENT_QUOTES, 'UTF-8'); ?></span>
 				</a>
 			</div>
 		</div>
@@ -603,8 +790,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 		<div class="container">
 			<div class="d-flex align-items-center justify-content-between">
 				<div class="pbmit-heading-subheading">
-					<h4 class="pbmit-subtitle">Products</h4>
-					<h2 class="pbmit-title">Solar Solutions for Every Scale</h2>
+					<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_products_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+					<h2 class="pbmit-title"><?php echo htmlspecialchars((string)$sr_home_products_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 				</div>
 				<div class="d-inline-flex portfolio-arrow"></div>
 			</div>
@@ -614,6 +801,46 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 				data-loop="true" data-dots="false" data-arrows="true" data-columns="4" data-margin="0"
 				data-effect="slide">
 				<div class="swiper-wrapper">
+					<?php if ($sr_home_products_items) { ?>
+						<?php $sr_pi = 0; foreach ($sr_home_products_items as $p) { $sr_pi++; if ($sr_pi > 4) break; ?>
+							<?php
+							$slug = (string)($p['slug'] ?? '');
+							$anchor = trim((string)($p['category_anchor'] ?? ''));
+							$href = $anchor !== '' ? ('products#' . $anchor) : ('products/' . $slug);
+							$catLabel = trim((string)($p['range_label'] ?? ''));
+							if ($catLabel === '') {
+								$catLabel = trim((string)($p['badge_label'] ?? ''));
+							}
+							?>
+							<article class="pbmit-portfolio-style-1 swiper-slide">
+								<div class="pbminfotech-post-content">
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="<?php echo htmlspecialchars((string)($p['image'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid" alt="">
+										</div>
+									</div>
+									<div class="pbminfotech-box-content">
+										<div class="pbminfotech-titlebox">
+											<div class="pbmit-port-cat">
+												<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>" rel="tag"><?php echo htmlspecialchars($catLabel, ENT_QUOTES, 'UTF-8'); ?></a>
+											</div>
+											<h3 class="pbmit-portfolio-title">
+												<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string)($p['title'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></a>
+											</h3>
+											<div class="home-product-desc"><?php echo htmlspecialchars((string)($p['short_desc'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></div>
+											<a class="pbmit-portfolio-btn" href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars((string)($p['title'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+												<span class="pbmit-button-icon-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="demo-icon pbmit-base-icon-arrow-right"></i>
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</article>
+						<?php } ?>
+					<?php } else { ?>
 					<!-- Slide1 -->
 					<article class="pbmit-portfolio-style-1 swiper-slide">
 						<div class="pbminfotech-post-content">
@@ -732,13 +959,14 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							</div>
 						</div>
 					</article>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
 		<div class="container">
 			<div class="text-center pt-5 home-products-cta">
 				<a href="products" class="pbmit-btn">
-					<span class="pbmit-button-text">Explore All Products</span>
+					<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_products_cta_label, ENT_QUOTES, 'UTF-8'); ?></span>
 				</a>
 			</div>
 		</div>
@@ -750,7 +978,7 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 		<div class="container-fluid p-0">
 			<div class="row g-0">
 				<div class="col-md-4 full-width-1200">
-					<div class="about-two-bg-img"></div>
+					<div class="about-two-bg-img"<?php echo trim((string)$sr_home_about_bg_image) !== '' ? (' style="background-image:url(' . htmlspecialchars((string)$sr_home_about_bg_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>></div>
 				</div>
 				<div class="col-md-8 full-width-1200">
 					<div class="about-two-rightbox pbmit-bg-color-secondary">
@@ -758,37 +986,27 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 							<div class="col-md-7">
 								<div class="about-two-inner-box-left">
 									<div class="pbmit-heading-subheading">
-										<h4 class="pbmit-subtitle">Who We Are</h4>
-										<h2 class="pbmit-title">Shivanjali Renewables Pvt. Ltd.</h2>
+										<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_about_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+										<h2 class="pbmit-title"><?php echo htmlspecialchars((string)$sr_home_about_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 									</div>
-									<p class="pbmit-firstletter pbmit-desc">Shivanjali Renewables Pvt. Ltd. is a
-										pioneering Solar EPC (Engineering, Procurement &amp; Construction) company
-										headquartered in Nashik, Maharashtra. With deep expertise across the entire
-										solar
-										value chain — from design and procurement to installation and maintenance — we
-										deliver reliable, high-performance solar solutions for every scale.</p>
-									<p class="pbmit-desc">Whether you are a homeowner looking to cut your electricity
-										bill,
-										a factory owner seeking energy independence, or a developer wanting to build a
-										solar park, we are your end-to-end partner.</p>
+									<p class="pbmit-firstletter pbmit-desc"><?php echo htmlspecialchars((string)$sr_home_about_p1, ENT_QUOTES, 'UTF-8'); ?></p>
+									<p class="pbmit-desc"><?php echo htmlspecialchars((string)$sr_home_about_p2, ENT_QUOTES, 'UTF-8'); ?></p>
 									<ul class="list-group mb-4">
 										<li class="list-group-item">
 											<span class="pbmit-icon-list-icon">
 												<i class="pbmit-base-icon-tick-1"></i>
 											</span>
-											<span class="pbmit-icon-list-text">End-to-end EPC delivery across every
-												scale</span>
+											<span class="pbmit-icon-list-text"><?php echo htmlspecialchars((string)$sr_home_about_b1, ENT_QUOTES, 'UTF-8'); ?></span>
 										</li>
 										<li class="list-group-item">
 											<span class="pbmit-icon-list-icon">
 												<i class="pbmit-base-icon-tick-1"></i>
 											</span>
-											<span class="pbmit-icon-list-text">Design, procurement, installation &amp;
-												maintenance</span>
+											<span class="pbmit-icon-list-text"><?php echo htmlspecialchars((string)$sr_home_about_b2, ENT_QUOTES, 'UTF-8'); ?></span>
 										</li>
 									</ul>
-									<a href="about" class="pbmit-btn">
-										<span class="pbmit-button-text">Know More About Us</span>
+									<a href="<?php echo htmlspecialchars((string)$sr_home_about_cta_url, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn">
+										<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_about_cta_label, ENT_QUOTES, 'UTF-8'); ?></span>
 									</a>
 								</div>
 							</div>
@@ -807,14 +1025,13 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 															<span class="pbmit-fid-before"></span>
 															<span class="pbmit-number-rotate numinate"
 																data-appear-animation="animateDigits" data-from="0"
-																data-to="2386" data-interval="5" data-before=""
+																data-to="<?php echo htmlspecialchars((string)$sr_home_about_fid_to, ENT_QUOTES, 'UTF-8'); ?>" data-interval="5" data-before=""
 																data-before-style="" data-after=""
-																data-after-style="">2386</span>
-															<span class="pbmit-fid"><span>+</span></span>
+																data-after-style=""><?php echo htmlspecialchars((string)$sr_home_about_fid_to, ENT_QUOTES, 'UTF-8'); ?></span>
+															<span class="pbmit-fid"><span><?php echo htmlspecialchars((string)$sr_home_about_fid_suffix, ENT_QUOTES, 'UTF-8'); ?></span></span>
 														</h4>
 													</div>
-													<span class="pbmit-fid-title">Trusted customers around the
-														world</span>
+													<span class="pbmit-fid-title"><?php echo htmlspecialchars((string)$sr_home_about_fid_title, ENT_QUOTES, 'UTF-8'); ?></span>
 												</div>
 											</div>
 										</div>
@@ -828,28 +1045,22 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 													<!-- Slide1 -->
 													<div class="swiper-slide pbmit-timeline-wrapper">
 														<div class="pbmit-same-height steps-content_wrap">
-															<h3 class="pbmit-timeline-title">Our Vision.</h3>
-															<p class="pbmit-timeline-desc">Our mission is to create
-																meaningful connections through the power of music. By
-																fostering creativity, passion, and innovation</p>
+															<h3 class="pbmit-timeline-title"><?php echo htmlspecialchars((string)$sr_home_about_t1_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+															<p class="pbmit-timeline-desc"><?php echo htmlspecialchars((string)$sr_home_about_t1_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 														</div>
 													</div>
 													<!-- Slide2 -->
 													<div class="swiper-slide pbmit-timeline-wrapper">
 														<div class="pbmit-same-height steps-content_wrap">
-															<h3 class="pbmit-timeline-title">Our Mission</h3>
-															<p class="pbmit-timeline-desc">Our mission is to create
-																meaningful connections through the power of music. By
-																fostering creativity, passion, and innovation</p>
+															<h3 class="pbmit-timeline-title"><?php echo htmlspecialchars((string)$sr_home_about_t2_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+															<p class="pbmit-timeline-desc"><?php echo htmlspecialchars((string)$sr_home_about_t2_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 														</div>
 													</div>
 													<!-- Slide3 -->
 													<div class="swiper-slide pbmit-timeline-wrapper">
 														<div class="pbmit-same-height steps-content_wrap">
-															<h3 class="pbmit-timeline-title">Our Achievements</h3>
-															<p class="pbmit-timeline-desc">Our mission is to create
-																meaningful connections through the power of music. By
-																fostering creativity, passion, and innovation</p>
+															<h3 class="pbmit-timeline-title"><?php echo htmlspecialchars((string)$sr_home_about_t3_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+															<p class="pbmit-timeline-desc"><?php echo htmlspecialchars((string)$sr_home_about_t3_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 														</div>
 													</div>
 												</div>
@@ -872,8 +1083,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 	<section class="section-xl ihbox-section-two" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading">
-				<h4 class="pbmit-subtitle">Why Choose us</h4>
-				<h2 class="pbmit-title">Your partner for sustainable <br> environmental solutions</h2>
+					<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_why_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+					<h2 class="pbmit-title"><?php echo strip_tags((string)$sr_home_why_title, '<br>'); ?></h2>
 			</div>
 			<div class="border-top">
 				<div class="pt-5 mt-xl-4">
@@ -974,10 +1185,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Commercial Solutions</h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card1_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card1_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1082,10 +1291,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Tailored Solutions</h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card2_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card2_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1176,10 +1383,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Expert Installation</h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card3_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card3_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1236,10 +1441,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Expert Installation </h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card4_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card4_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1309,10 +1512,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Low Cost Operation</h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card5_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card5_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1445,10 +1646,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 										</div>
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title">Expert Solar Worker</h2>
-										<div class="pbmit-heading-desc">Our Climate change mitigation focus on
-											sustainable practices such as rainwater harvesting, wastewater recycling.
-										</div>
+										<h2 class="pbmit-element-title"><?php echo htmlspecialchars((string)$sr_home_why_card6_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+										<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_why_card6_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 									</div>
 								</div>
 							</div>
@@ -1463,33 +1662,29 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 	<section class="pbmit-bg-color-secondary pbmit-color-white" style="padding: 70px 0;">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title" style="color: var(--pbmit-white-color);">Why Shivanjali Renewables?</h2>
+				<h2 class="pbmit-title" style="color: var(--pbmit-white-color);"><?php echo htmlspecialchars((string)$sr_home_why_sr_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4 text-center">
 				<div class="col-md-4">
 					<div style="font-size: 44px; margin-bottom: 10px;">
 						<i class="pbmit-solaar-icon pbmit-solaar-icon-verified"></i>
 					</div>
-					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;">Experience</h3>
-					<p style="color: rgba(255,255,255,0.9); margin: 0;">Years of proven expertise in the solar industry
-					</p>
+					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;"><?php echo htmlspecialchars((string)$sr_home_why_sr_1_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+					<p style="color: rgba(255,255,255,0.9); margin: 0;"><?php echo htmlspecialchars((string)$sr_home_why_sr_1_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<div class="col-md-4">
 					<div style="font-size: 44px; margin-bottom: 10px;">
 						<i class="pbmit-solaar-icon pbmit-solaar-icon-eco-friendly"></i>
 					</div>
-					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;">Expert Team</h3>
-					<p style="color: rgba(255,255,255,0.9); margin: 0;">Engineers, technicians, and consultants
-						committed to excellence</p>
+					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;"><?php echo htmlspecialchars((string)$sr_home_why_sr_2_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+					<p style="color: rgba(255,255,255,0.9); margin: 0;"><?php echo htmlspecialchars((string)$sr_home_why_sr_2_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<div class="col-md-4">
 					<div style="font-size: 44px; margin-bottom: 10px;">
 						<i class="pbmit-solaar-icon pbmit-solaar-icon-call"></i>
 					</div>
-					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;">Comprehensive
-						Support</h3>
-					<p style="color: rgba(255,255,255,0.9); margin: 0;">Full warranty, after-sales maintenance, and
-						project design services</p>
+					<h3 style="color: var(--pbmit-white-color); font-size: 22px; margin-bottom: 10px;"><?php echo htmlspecialchars((string)$sr_home_why_sr_3_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+					<p style="color: rgba(255,255,255,0.9); margin: 0;"><?php echo htmlspecialchars((string)$sr_home_why_sr_3_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 			</div>
 		</div>
@@ -1690,8 +1885,8 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 	<section class="process-section-two pbmit-element-miconheading-style-14" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h4 class="pbmit-subtitle">Our Process</h4>
-				<h2 class="pbmit-title">Wind Solar Energy work<br> Project Planning</h2>
+				<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_process_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+				<h2 class="pbmit-title"><?php echo strip_tags((string)$sr_home_process_title, '<br>'); ?></h2>
 			</div>
 			<div class="row pbminfotech-gap-50px">
 				<article class="pbmit-miconheading-style-14 col-md-6 col-lg-4 col-xl-3">
@@ -1699,17 +1894,16 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						<div class="pbmit-ihbox-box">
 							<div class="pbmit-ihbox-icon">
 								<div class="pbmit-ihbox-icon-wrapper pbmit-ihbox-icon-type-image">
-									<img src="images/homepage-2/ihbox/image-01.jpg" alt="System Design">
+									<img src="<?php echo htmlspecialchars((string)$sr_home_process_1_image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars((string)$sr_home_process_1_title, ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 							</div>
 							<div class="pbmit-ihbox-box-number-wrapper">
 								<div class="pbmit-ihbox-box-number">01</div>
 							</div>
 							<h2 class="pbmit-element-title">
-								System Design
+								<?php echo htmlspecialchars((string)$sr_home_process_1_title, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
-							<div class="pbmit-heading-desc">Tailoring efficient and sustainable solar energy systems to
-								meet your specific needs.</div>
+							<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_process_1_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 						</div>
 					</div>
 				</article>
@@ -1718,17 +1912,16 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						<div class="pbmit-ihbox-box">
 							<div class="pbmit-ihbox-icon">
 								<div class="pbmit-ihbox-icon-wrapper pbmit-ihbox-icon-type-image">
-									<img src="images/homepage-2/ihbox/image-02.jpg" alt="Panel Installation">
+									<img src="<?php echo htmlspecialchars((string)$sr_home_process_2_image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars((string)$sr_home_process_2_title, ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 							</div>
 							<div class="pbmit-ihbox-box-number-wrapper">
 								<div class="pbmit-ihbox-box-number">02</div>
 							</div>
 							<h2 class="pbmit-element-title">
-								Panel Installation
+								<?php echo htmlspecialchars((string)$sr_home_process_2_title, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
-							<div class="pbmit-heading-desc">Expert installation of high-quality solar panels for maximum
-								energy capture.</div>
+							<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_process_2_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 						</div>
 					</div>
 				</article>
@@ -1737,17 +1930,16 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						<div class="pbmit-ihbox-box">
 							<div class="pbmit-ihbox-icon">
 								<div class="pbmit-ihbox-icon-wrapper pbmit-ihbox-icon-type-image">
-									<img src="images/homepage-2/ihbox/image-03.png" alt="Inverter Integration">
+									<img src="<?php echo htmlspecialchars((string)$sr_home_process_3_image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars((string)$sr_home_process_3_title, ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 							</div>
 							<div class="pbmit-ihbox-box-number-wrapper">
 								<div class="pbmit-ihbox-box-number">03</div>
 							</div>
 							<h2 class="pbmit-element-title">
-								Inverter Integration
+								<?php echo htmlspecialchars((string)$sr_home_process_3_title, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
-							<div class="pbmit-heading-desc">Seamlessly converting solar energy into usable electricity
-								with advanced inverters.</div>
+							<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_process_3_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 						</div>
 					</div>
 				</article>
@@ -1756,17 +1948,16 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						<div class="pbmit-ihbox-box">
 							<div class="pbmit-ihbox-icon">
 								<div class="pbmit-ihbox-icon-wrapper pbmit-ihbox-icon-type-image">
-									<img src="images/homepage-2/ihbox/image-04.jpg" alt="Battery Solutions">
+									<img src="<?php echo htmlspecialchars((string)$sr_home_process_4_image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars((string)$sr_home_process_4_title, ENT_QUOTES, 'UTF-8'); ?>">
 								</div>
 							</div>
 							<div class="pbmit-ihbox-box-number-wrapper">
 								<div class="pbmit-ihbox-box-number">04</div>
 							</div>
 							<h2 class="pbmit-element-title">
-								Battery Solutions
+								<?php echo htmlspecialchars((string)$sr_home_process_4_title, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
-							<div class="pbmit-heading-desc">Panel installation involves the professional installation
-								expert panel maintenance.</div>
+							<div class="pbmit-heading-desc"><?php echo htmlspecialchars((string)$sr_home_process_4_desc, ENT_QUOTES, 'UTF-8'); ?></div>
 						</div>
 					</div>
 				</article>
@@ -1782,29 +1973,29 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 				<div class="swiper-wrapper">
 					<article class="pbmit-marquee-effect-style-2 swiper-slide">
 						<div class="pbmit-tag-wrapper">
-							<h2 class="pbmit-element-title" data-text="Sustainable">
-								Sustainable
+							<h2 class="pbmit-element-title" data-text="<?php echo htmlspecialchars((string)$sr_home_marquee_1, ENT_QUOTES, 'UTF-8'); ?>">
+								<?php echo htmlspecialchars((string)$sr_home_marquee_1, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
 						</div>
 					</article>
 					<article class="pbmit-marquee-effect-style-2 swiper-slide">
 						<div class="pbmit-tag-wrapper">
-							<h2 class="pbmit-element-title" data-text="Smart solar">
-								Smart solar
+							<h2 class="pbmit-element-title" data-text="<?php echo htmlspecialchars((string)$sr_home_marquee_2, ENT_QUOTES, 'UTF-8'); ?>">
+								<?php echo htmlspecialchars((string)$sr_home_marquee_2, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
 						</div>
 					</article>
 					<article class="pbmit-marquee-effect-style-2 swiper-slide">
 						<div class="pbmit-tag-wrapper">
-							<h2 class="pbmit-element-title" data-text="Turbine Technology">
-								Turbine Technology
+							<h2 class="pbmit-element-title" data-text="<?php echo htmlspecialchars((string)$sr_home_marquee_3, ENT_QUOTES, 'UTF-8'); ?>">
+								<?php echo htmlspecialchars((string)$sr_home_marquee_3, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
 						</div>
 					</article>
 					<article class="pbmit-marquee-effect-style-2 swiper-slide">
 						<div class="pbmit-tag-wrapper">
-							<h2 class="pbmit-element-title" data-text="Electricity">
-								Electricity
+							<h2 class="pbmit-element-title" data-text="<?php echo htmlspecialchars((string)$sr_home_marquee_4, ENT_QUOTES, 'UTF-8'); ?>">
+								<?php echo htmlspecialchars((string)$sr_home_marquee_4, ENT_QUOTES, 'UTF-8'); ?>
 							</h2>
 						</div>
 					</article>
@@ -1818,48 +2009,89 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 	<section class="section-xl home-testimonials" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">What Our Clients Say</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars((string)$sr_home_testimonial_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-10 col-xl-9">
-					<article class="pbmit-testimonial-style-2">
-						<div class="pbminfotech-post-item">
-							<div class="pbmit-box-content-wrap">
-								<div class="pbminfotech-box-desc">
-									<div class="pbminfotech-box-star-ratings">
-										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
-										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
-										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
-										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
-										<i class="pbmit-base-icon-star-1 pbmit-active"></i>
-									</div>
-									<blockquote class="pbminfotech-testimonial-text">
-										<p>“Partnering with Shivanjali Renewables for our 900 kW solar project has been
-											a transformative experience. Their expertise, professionalism, and
-											commitment to quality ensured the successful completion of our project. We
-											are delighted with the energy savings and sustainability impact we have
-											achieved.”</p>
-									</blockquote>
-								</div>
-								<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
-									<div class="pbminfotech-box-author d-flex align-items-center">
-										<div class="pbminfotech-box-img">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="images/homepage-1/testimonial/testimonial-01.jpg" alt="">
+					<?php if ($sr_home_testimonials) { ?>
+						<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
+							data-columns="1" data-margin="30" data-effect="slide">
+							<div class="swiper-wrapper">
+								<?php foreach ($sr_home_testimonials as $t) { ?>
+									<?php
+									$rating = (int)($t['rating'] ?? 5);
+									if ($rating < 1) $rating = 1;
+									if ($rating > 5) $rating = 5;
+									?>
+									<article class="pbmit-testimonial-style-2 swiper-slide">
+										<div class="pbminfotech-post-item">
+											<div class="pbmit-box-content-wrap">
+												<div class="pbminfotech-box-desc">
+													<div class="pbminfotech-box-star-ratings">
+														<?php for ($i = 1; $i <= 5; $i++) { ?>
+															<i class="pbmit-base-icon-star-1 <?php echo $i <= $rating ? 'pbmit-active' : ''; ?>"></i>
+														<?php } ?>
+													</div>
+													<blockquote class="pbminfotech-testimonial-text">
+														<p><?php echo htmlspecialchars((string)($t['quote'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+													</blockquote>
+												</div>
+												<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+													<div class="pbminfotech-box-author d-flex align-items-center">
+														<div class="pbminfotech-box-img">
+															<div class="pbmit-featured-img-wrapper">
+																<div class="pbmit-featured-wrapper">
+																	<img src="<?php echo htmlspecialchars((string)($t['image'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" alt="">
+																</div>
+															</div>
+														</div>
+														<div class="pbmit-auther-content">
+															<h3 class="pbminfotech-box-title"><?php echo htmlspecialchars((string)($t['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></h3>
+															<div class="pbminfotech-testimonial-detail"><?php echo htmlspecialchars((string)($t['company'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="pbmit-auther-content">
-											<h3 class="pbminfotech-box-title">Ms. Manisha Dhatrak</h3>
-											<div class="pbminfotech-testimonial-detail">Varun Agro Food Processing Pvt.
-												Ltd.</div>
+									</article>
+								<?php } ?>
+							</div>
+						</div>
+					<?php } else { ?>
+						<article class="pbmit-testimonial-style-2">
+							<div class="pbminfotech-post-item">
+								<div class="pbmit-box-content-wrap">
+									<div class="pbminfotech-box-desc">
+										<div class="pbminfotech-box-star-ratings">
+											<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+											<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+											<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+											<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+											<i class="pbmit-base-icon-star-1 pbmit-active"></i>
+										</div>
+										<blockquote class="pbminfotech-testimonial-text">
+											<p><?php echo htmlspecialchars((string)$sr_home_testimonial_quote, ENT_QUOTES, 'UTF-8'); ?></p>
+										</blockquote>
+									</div>
+									<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+										<div class="pbminfotech-box-author d-flex align-items-center">
+											<div class="pbminfotech-box-img">
+												<div class="pbmit-featured-img-wrapper">
+													<div class="pbmit-featured-wrapper">
+														<img src="<?php echo htmlspecialchars((string)$sr_home_testimonial_image, ENT_QUOTES, 'UTF-8'); ?>" alt="">
+													</div>
+												</div>
+											</div>
+											<div class="pbmit-auther-content">
+												<h3 class="pbminfotech-box-title"><?php echo htmlspecialchars((string)$sr_home_testimonial_name, ENT_QUOTES, 'UTF-8'); ?></h3>
+												<div class="pbminfotech-testimonial-detail"><?php echo htmlspecialchars((string)$sr_home_testimonial_company, ENT_QUOTES, 'UTF-8'); ?></div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</article>
+						</article>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -1870,16 +2102,64 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 		<div class="container">
 			<div class="d-md-flex align-items-center justify-content-between">
 				<div class="pbmit-heading-subheading">
-					<h4 class="pbmit-subtitle">Latest News</h4>
-					<h2 class="pbmit-title">Latest from the Blog</h2>
+					<h4 class="pbmit-subtitle"><?php echo htmlspecialchars((string)$sr_home_blog_subtitle, ENT_QUOTES, 'UTF-8'); ?></h4>
+					<h2 class="pbmit-title"><?php echo htmlspecialchars((string)$sr_home_blog_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 				</div>
 				<div class="mb-5 pbmit-blog-btn">
-					<a href="blog-grid-col-3.html" class="pbmit-btn outline">
-						<span class="pbmit-button-text">View All Post</span>
+					<a href="blog" class="pbmit-btn outline">
+						<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_blog_cta_label, ENT_QUOTES, 'UTF-8'); ?></span>
 					</a>
 				</div>
 			</div>
 			<div class="row">
+				<?php if ($sr_home_blog_items) { ?>
+					<?php foreach ($sr_home_blog_items as $post) { ?>
+						<?php
+						$slug = (string)($post['slug'] ?? '');
+						$title = (string)($post['title'] ?? '');
+						$category = (string)($post['category'] ?? '');
+						$dateLabel = (string)($post['date_label'] ?? '');
+						$cover = (string)($post['cover_image'] ?? '');
+						$link = 'blog/' . $slug;
+						?>
+						<div class="col-md-6 col-lg-4">
+							<article class="pbmit-blog-style-4">
+								<div class="post-item">
+									<div class="pbminfotech-box-content">
+										<div class="pbmit-date-wraper d-flex align-items-center">
+											<div class="pbmit-meta-category-wrapper pbmit-meta-line">
+												<div class="pbmit-meta-category">
+													<a href="blog" rel="category tag"><?php echo htmlspecialchars($category, ENT_QUOTES, 'UTF-8'); ?></a>
+												</div>
+											</div>
+											<div class="pbmit-meta-date pbmit-meta-line">
+												<span class="pbmit-post-date"><?php echo htmlspecialchars($dateLabel, ENT_QUOTES, 'UTF-8'); ?></span>
+											</div>
+										</div>
+										<div class="pbmit-featured-container">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													<img src="<?php echo htmlspecialchars($cover, ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="pbmit-content-wrapper">
+											<h3 class="pbmit-post-title">
+												<a href="<?php echo htmlspecialchars($link, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></a>
+											</h3>
+											<div class="pbmit-blog-button">
+												<a class="pbmit-button-inner" href="<?php echo htmlspecialchars($link, ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
+													<span class="pbmit-button-icon">Read More</span>
+													<i class="demo-icon pbmit-base-icon-arrow-right"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					<?php } ?>
+				<?php } else { ?>
 				<div class="col-md-6 col-lg-4">
 					<article class="pbmit-blog-style-4">
 						<div class="post-item">
@@ -1994,6 +2274,7 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 						</div>
 					</article>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>
@@ -2004,17 +2285,16 @@ $sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']
 				<div class="col-lg-8">
 					<h2
 						style="color: var(--pbmit-white-color); font-size: 46px; line-height: 54px; margin-bottom: 12px;">
-						Ready to Switch to Solar?</h2>
-					<p style="color: rgba(255,255,255,0.92); margin: 0;">Get a free, no-obligation solar assessment from
-						our experts. We will evaluate your energy needs and design the perfect system for you.</p>
+						<?php echo htmlspecialchars((string)$sr_home_cta_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+					<p style="color: rgba(255,255,255,0.92); margin: 0;"><?php echo htmlspecialchars((string)$sr_home_cta_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 				</div>
 				<div class="col-lg-4 text-lg-end">
 					<div class="d-flex flex-wrap gap-3 justify-content-lg-end cta-bar">
-						<a href="contact" class="pbmit-btn outline cta-secondary">
-							<span class="pbmit-button-text">Get Free Quote</span>
+						<a href="<?php echo htmlspecialchars((string)$sr_home_cta_btn1_url, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline cta-secondary">
+							<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_cta_btn1_label, ENT_QUOTES, 'UTF-8'); ?></span>
 						</a>
-						<a href="tel:+918686313133" class="pbmit-btn outline cta-secondary">
-							<span class="pbmit-button-text">Call Us Now</span>
+						<a href="<?php echo htmlspecialchars((string)$sr_home_cta_btn2_url, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn outline cta-secondary">
+							<span class="pbmit-button-text"><?php echo htmlspecialchars((string)$sr_home_cta_btn2_label, ENT_QUOTES, 'UTF-8'); ?></span>
 						</a>
 					</div>
 				</div>

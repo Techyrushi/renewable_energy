@@ -179,7 +179,7 @@ if ($sr_admin_profile_image !== '' && preg_match('/^assets\/images\/[a-z0-9._-]+
 	<div class="page-wrapper compact-wrapper" id="pageWrapper">
 		<header class="page-header row">
 			<div class="logo-wrapper d-flex align-items-center col-auto">
-				<a class="sr-admin-brand" href="index.php">
+				<a class="sr-admin-brand" href="index">
 					<span class="sr-admin-brand-logo">
 						<img src="../images/Shivanjali_Logo.jpg" alt="Shivanjali Renewables">
 					</span>
@@ -227,7 +227,7 @@ if ($sr_admin_profile_image !== '' && preg_match('/^assets\/images\/[a-z0-9._-]+
 									<ul class="profile-body">
 										<li class="d-flex">
 											<i data-feather="settings"></i>
-											<a class="ms-2" href="settings.php">Settings</a>
+											<a class="ms-2" href="settings">Settings</a>
 										</li>
 
 										<li class="d-flex">
@@ -237,7 +237,7 @@ if ($sr_admin_profile_image !== '' && preg_match('/^assets\/images\/[a-z0-9._-]+
 
 										<li class="d-flex">
 											<i data-feather="log-out"></i>
-											<a class="ms-2" href="logout.php">Log Out</a>
+											<a class="ms-2" href="logout">Log Out</a>
 										</li>
 									</ul>
 								</div>

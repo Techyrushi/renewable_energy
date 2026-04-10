@@ -55,6 +55,27 @@ include 'includes/header.php';
 ?>
 </header>
 
+<style>
+	.sr-project-content img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 18px 0;
+		border-radius: 18px;
+		box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
+		border: 1px solid rgba(10, 25, 38, .10);
+		background: #fff;
+	}
+	.sr-project-content figure {
+		margin: 18px 0;
+	}
+	.sr-project-content figcaption {
+		margin-top: 10px;
+		font-weight: 600;
+		color: rgba(10, 25, 38, .70);
+	}
+</style>
+
 <div class="pbmit-title-bar-wrapper sr-why-hero">
 	<div class="container">
 		<div class="pbmit-title-bar-content">
@@ -83,7 +104,7 @@ include 'includes/header.php';
 						<div class="sr-legal-card">
 							<img src="<?php echo htmlspecialchars($sr_image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($sr_title, ENT_QUOTES, 'UTF-8'); ?>" class="img-fluid" style="border-radius: 18px;">
 							<?php if (trim($sr_project['content']) !== '') { ?>
-								<div class="mt-4">
+								<div class="mt-4 sr-project-content">
 									<?php echo $sr_project['content']; ?>
 								</div>
 							<?php } ?>
@@ -112,4 +133,3 @@ include 'includes/header.php';
 </div>
 
 <?php include 'includes/footer.php'; ?>
-

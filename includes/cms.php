@@ -85,6 +85,34 @@ function sr_cms_migrate(mysqli $db): void
 		KEY idx_active_sort (is_active, sort_order)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
+	$db->query("CREATE TABLE IF NOT EXISTS cms_testimonials (
+		id INT NOT NULL AUTO_INCREMENT,
+		name VARCHAR(255) NOT NULL DEFAULT '',
+		company VARCHAR(255) NOT NULL DEFAULT '',
+		quote TEXT NOT NULL,
+		image VARCHAR(255) NOT NULL DEFAULT '',
+		rating TINYINT NOT NULL DEFAULT 5,
+		sort_order INT NOT NULL DEFAULT 0,
+		is_active TINYINT(1) NOT NULL DEFAULT 1,
+		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY (id),
+		KEY idx_active_sort (is_active, sort_order)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+	$db->query("CREATE TABLE IF NOT EXISTS cms_client_logos (
+		id INT NOT NULL AUTO_INCREMENT,
+		image VARCHAR(255) NOT NULL DEFAULT '',
+		label VARCHAR(255) NOT NULL DEFAULT '',
+		url VARCHAR(255) NOT NULL DEFAULT '',
+		sort_order INT NOT NULL DEFAULT 0,
+		is_active TINYINT(1) NOT NULL DEFAULT 1,
+		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY (id),
+		KEY idx_active_sort (is_active, sort_order)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
 	$db->query("CREATE TABLE IF NOT EXISTS cms_pages (
 		id INT NOT NULL AUTO_INCREMENT,
 		slug VARCHAR(120) NOT NULL,
@@ -126,6 +154,18 @@ function sr_cms_migrate(mysqli $db): void
 		PRIMARY KEY (id),
 		UNIQUE KEY uniq_slug (slug),
 		KEY idx_published (published, published_at)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+
+	$db->query("CREATE TABLE IF NOT EXISTS cms_blog_faqs (
+		id INT NOT NULL AUTO_INCREMENT,
+		question VARCHAR(255) NOT NULL,
+		answer TEXT NOT NULL,
+		sort_order INT NOT NULL DEFAULT 0,
+		is_active TINYINT(1) NOT NULL DEFAULT 1,
+		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY (id),
+		KEY idx_active_sort (is_active, sort_order)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
 	$db->query("CREATE TABLE IF NOT EXISTS cms_projects (
@@ -209,6 +249,141 @@ function sr_cms_migrate(mysqli $db): void
 	$db->query("ALTER TABLE cms_projects ADD UNIQUE KEY uniq_slug (slug)");
 
 	$db->query("ALTER TABLE cms_pages ADD COLUMN banner_image VARCHAR(255) NOT NULL DEFAULT ''");
+}
+
+function sr_cms_phpmailer_load(): bool
+{
+	static $loaded = false;
+	static $attempted = false;
+	if ($attempted) {
+		return $loaded;
+	}
+	$attempted = true;
+
+	$vendor = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+	if (is_file($vendor)) {
+		require_once $vendor;
+		if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
+			$loaded = true;
+			return $loaded;
+		}
+	}
+
+	$base = __DIR__ . DIRECTORY_SEPARATOR . 'phpmailer' . DIRECTORY_SEPARATOR;
+	$ex = $base . 'Exception.php';
+	$pm = $base . 'PHPMailer.php';
+	$smtp = $base . 'SMTP.php';
+	if (is_file($ex) && is_file($pm) && is_file($smtp)) {
+		require_once $ex;
+		require_once $smtp;
+		require_once $pm;
+		$loaded = true;
+	}
+	return $loaded;
+}
+
+function sr_cms_mail_last_error(bool $clear = true): string
+{
+	$msg = isset($GLOBALS['sr_cms_last_mail_error']) ? (string) $GLOBALS['sr_cms_last_mail_error'] : '';
+	if ($clear) {
+		$GLOBALS['sr_cms_last_mail_error'] = '';
+	}
+	return $msg;
+}
+
+function sr_cms_send_mail(string $toEmail, string $toName, string $subject, string $textBody, string $htmlBody = '', string $replyToEmail = '', string $replyToName = ''): bool
+{
+	$GLOBALS['sr_cms_last_mail_error'] = '';
+	$toEmail = trim($toEmail);
+	if ($toEmail === '' || !filter_var($toEmail, FILTER_VALIDATE_EMAIL)) {
+		$GLOBALS['sr_cms_last_mail_error'] = 'Invalid recipient email.';
+		return false;
+	}
+	$companyEmail = trim(sr_cms_setting_get('company_email', ''));
+	$companyName = trim(sr_cms_setting_get('company_name', ''));
+	$fromEmail = trim(sr_cms_setting_get('mail_from_email', $companyEmail));
+	$fromName = trim(sr_cms_setting_get('mail_from_name', $companyName));
+
+	$smtpHost = trim(sr_cms_setting_get('smtp_host', ''));
+	$smtpPort = (int) sr_cms_setting_get('smtp_port', '587');
+	$smtpUser = trim(sr_cms_setting_get('smtp_user', ''));
+	$smtpPass = (string) sr_cms_setting_get('smtp_pass', '');
+	$smtpSecure = strtolower(trim(sr_cms_setting_get('smtp_secure', 'tls')));
+
+	if ($fromEmail === '' || !filter_var($fromEmail, FILTER_VALIDATE_EMAIL)) {
+		if ($smtpUser !== '' && filter_var($smtpUser, FILTER_VALIDATE_EMAIL)) {
+			$fromEmail = $smtpUser;
+		} elseif ($companyEmail !== '' && filter_var($companyEmail, FILTER_VALIDATE_EMAIL)) {
+			$fromEmail = $companyEmail;
+		} else {
+			$fromEmail = $toEmail;
+		}
+	}
+	if ($fromName === '') {
+		$fromName = $companyName !== '' ? $companyName : $fromName;
+	}
+
+	$hasMailer = sr_cms_phpmailer_load();
+	if ($hasMailer) {
+		try {
+			$mail = new PHPMailer\PHPMailer\PHPMailer(true);
+			if (property_exists($mail, 'Timeout')) {
+				$mail->Timeout = 8;
+			}
+			if ($smtpHost !== '') {
+				$mail->isSMTP();
+				$mail->Host = $smtpHost;
+				$mail->Port = $smtpPort > 0 ? $smtpPort : 587;
+				$mail->SMTPSecure = $smtpSecure !== '' ? $smtpSecure : 'tls';
+				if ($smtpUser !== '') {
+					$mail->SMTPAuth = true;
+					$mail->Username = $smtpUser;
+					$mail->Password = $smtpPass;
+				}
+			} else {
+				$mail->isMail();
+			}
+
+			$mail->CharSet = 'UTF-8';
+			$mail->setFrom($fromEmail, $fromName);
+			$mail->addAddress($toEmail, $toName);
+			if ($replyToEmail !== '' && filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
+				$mail->addReplyTo($replyToEmail, $replyToName);
+			}
+			$mail->Subject = $subject;
+			if ($htmlBody !== '') {
+				$mail->msgHTML($htmlBody);
+				$mail->AltBody = $textBody;
+			} else {
+				$mail->Body = $textBody;
+				$mail->AltBody = $textBody;
+			}
+			return (bool) $mail->send();
+		} catch (Throwable $e) {
+			$msg = trim((string) $e->getMessage());
+			$smtpPassMask = trim((string) sr_cms_setting_get('smtp_pass', ''));
+			if ($smtpPassMask !== '') {
+				$msg = str_replace($smtpPassMask, '***', $msg);
+			}
+			$msg = preg_replace('/\s+/', ' ', $msg);
+			$GLOBALS['sr_cms_last_mail_error'] = $msg !== '' ? $msg : 'Email sending failed.';
+			return false;
+		}
+	}
+
+	$safeTo = $toEmail;
+	$headers = [];
+	$headers[] = 'MIME-Version: 1.0';
+	$headers[] = 'Content-type: text/plain; charset=UTF-8';
+	$headers[] = 'From: ' . ($fromName !== '' ? ($fromName . ' <' . $fromEmail . '>') : $fromEmail);
+	if ($replyToEmail !== '' && filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
+		$headers[] = 'Reply-To: ' . $replyToEmail;
+	}
+	$ok = @mail($safeTo, $subject, $textBody, implode("\r\n", $headers));
+	if (!$ok) {
+		$GLOBALS['sr_cms_last_mail_error'] = 'Server mail() failed.';
+	}
+	return $ok;
 }
 
 function sr_cms_setting_get(string $key, string $default = ''): string

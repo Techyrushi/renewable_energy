@@ -4,6 +4,43 @@ $sr_page = sr_cms_page_get('why-us');
 $sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'The Shivanjali Difference';
 $sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'We don&#8217;t just install solar panels. We build long-term energy partnerships that deliver measurable results.';
 $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
+
+$sr_diff_title = sr_cms_setting_get('why_diff_title', 'Why Clients Choose Us');
+$sr_tech_title = sr_cms_setting_get('why_tech_title', 'Backed by Technology');
+$sr_testimonials_title = sr_cms_setting_get('why_testimonials_title', 'Client Success Stories');
+$sr_impact_title = sr_cms_setting_get('why_impact_title', 'Our Environmental Impact');
+
+$sr_diff_icons = [
+	'pbmit-base-icon-tick-1',
+	'pbmit-base-icon-user-2',
+	'pbmit-base-icon-fast-delivery',
+	'pbmit-base-icon-check-square-regular',
+	'pbmit-base-icon-method-draw-image',
+	'pbmit-base-icon-support',
+];
+$sr_tech_icons = [
+	'pbmit-base-icon-lightening',
+	'pbmit-base-icon-search',
+	'pbmit-base-icon-checked',
+];
+$sr_impact_icons = [
+	'pbmit-base-icon-lightening',
+	'pbmit-base-icon-check-mark',
+	'pbmit-base-icon-customer',
+];
+
+$sr_testimonials = [];
+$sr_db = sr_cms_db_try();
+if ($sr_db instanceof mysqli) {
+	$res = $sr_db->query('SELECT name, company, quote, image, rating FROM cms_testimonials WHERE is_active=1 ORDER BY sort_order ASC, updated_at DESC LIMIT 50');
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$sr_testimonials[] = $row;
+		}
+		$res->free();
+	}
+}
 ?>
 
 <!-- Title Bar -->
@@ -37,60 +74,29 @@ $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !=
 
 <!-- Page Content -->
 <div class="page-content why-us">
+	<?php if ($sr_page_override !== '') { ?>
+		<?php echo $sr_page_override; ?>
+	<?php } else { ?>
 	<section class="section-xl pbmit-bg-color-white sr-why-diff" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Why Clients Choose Us</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_diff_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4 pt-3">
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-tick-1"></i></div>
-						<h3 class="sr-diff-title">Proven Experience</h3>
-						<p class="sr-diff-desc">Years of hands-on expertise in solar EPC across Maharashtra with a
-							growing portfolio of successful projects.</p>
+				<?php for ($i = 1; $i <= 6; $i++) { ?>
+					<?php
+					$cardTitle = sr_cms_setting_get('why_diff_card' . $i . '_title', '');
+					$cardDesc = sr_cms_setting_get('why_diff_card' . $i . '_desc', '');
+					$icon = $sr_diff_icons[$i - 1] ?? 'pbmit-base-icon-tick-1';
+					?>
+					<div class="col-md-6 col-lg-4">
+						<div class="sr-diff-card">
+							<div class="sr-diff-icon"><i class="<?php echo htmlspecialchars($icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+							<h3 class="sr-diff-title"><?php echo htmlspecialchars($cardTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
+							<p class="sr-diff-desc"><?php echo nl2br(htmlspecialchars($cardDesc, ENT_QUOTES, 'UTF-8')); ?></p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-user-2"></i></div>
-						<h3 class="sr-diff-title">Expert Team</h3>
-						<p class="sr-diff-desc">A multidisciplinary team of certified engineers, experienced
-							technicians, and knowledgeable consultants committed to project excellence.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-fast-delivery"></i></div>
-						<h3 class="sr-diff-title">End-to-End Service</h3>
-						<p class="sr-diff-desc">We manage every step from design and procurement to installation, grid
-							connectivity, and lifetime maintenance.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-check-square-regular"></i></div>
-						<h3 class="sr-diff-title">Certified Quality</h3>
-						<p class="sr-diff-desc">All our products meet stringent national and international quality and
-							safety standards, with Tier-1 certified components only.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-method-draw-image"></i></div>
-						<h3 class="sr-diff-title">Dedicated Project Design Team</h3>
-						<p class="sr-diff-desc">Specialised in solar project design, planning, and architectural
-							integration for optimal performance and aesthetics.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-diff-card">
-						<div class="sr-diff-icon"><i class="pbmit-base-icon-support"></i></div>
-						<h3 class="sr-diff-title">Comprehensive Warranty &amp; Support</h3>
-						<p class="sr-diff-desc">Full after-sales support including preventive maintenance, performance
-							monitoring, and warranty services.</p>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>
@@ -98,34 +104,23 @@ $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !=
 	<section class="section-xl sr-why-tech" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Backed by Technology</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_tech_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4 pt-3">
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-tech-card">
-						<div class="sr-tech-icon"><i class="pbmit-base-icon-lightening"></i></div>
-						<h3 class="sr-tech-title">Innovative Solutions</h3>
-						<p class="sr-tech-desc">We leverage the latest advancements in solar technology, including
-							bifacial panels, smart inverters, and energy management systems, to deliver unmatched
-							performance.</p>
+				<?php for ($i = 1; $i <= 3; $i++) { ?>
+					<?php
+					$cardTitle = sr_cms_setting_get('why_tech_card' . $i . '_title', '');
+					$cardDesc = sr_cms_setting_get('why_tech_card' . $i . '_desc', '');
+					$icon = $sr_tech_icons[$i - 1] ?? 'pbmit-base-icon-lightening';
+					?>
+					<div class="col-md-6 col-lg-4">
+						<div class="sr-tech-card">
+							<div class="sr-tech-icon"><i class="<?php echo htmlspecialchars($icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+							<h3 class="sr-tech-title"><?php echo htmlspecialchars($cardTitle, ENT_QUOTES, 'UTF-8'); ?></h3>
+							<p class="sr-tech-desc"><?php echo nl2br(htmlspecialchars($cardDesc, ENT_QUOTES, 'UTF-8')); ?></p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-tech-card">
-						<div class="sr-tech-icon"><i class="pbmit-base-icon-search"></i></div>
-						<h3 class="sr-tech-title">R&amp;D Focus</h3>
-						<p class="sr-tech-desc">Continuous investment in research and development to improve system
-							efficiency, reliability, and integration with emerging energy storage technologies.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-tech-card">
-						<div class="sr-tech-icon"><i class="pbmit-base-icon-checked"></i></div>
-						<h3 class="sr-tech-title">Certified Products</h3>
-						<p class="sr-tech-desc">All equipment and installations meet stringent industry certifications
-							for quality, safety, and long-term performance.</p>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>
@@ -133,11 +128,67 @@ $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !=
 	<section class="section-xl sr-why-testimonials" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Client Success Stories</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_testimonials_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
 				data-columns="1" data-margin="30" data-effect="slide">
 				<div class="swiper-wrapper">
+					<?php if ($sr_testimonials) { ?>
+						<?php
+						$fallbackImgs = [
+							'images/homepage-1/testimonial/testimonial-01.jpg',
+							'images/homepage-1/testimonial/testimonial-02.jpg',
+							'images/homepage-1/testimonial/testimonial-03.jpg',
+						];
+						?>
+						<?php foreach ($sr_testimonials as $idx => $t) { ?>
+							<?php
+							$name = trim((string)($t['name'] ?? ''));
+							$company = trim((string)($t['company'] ?? ''));
+							$quote = trim((string)($t['quote'] ?? ''));
+							$image = trim((string)($t['image'] ?? ''));
+							$rating = (int)($t['rating'] ?? 5);
+							if ($rating < 1) { $rating = 1; }
+							if ($rating > 5) { $rating = 5; }
+							if ($image === '') {
+								$image = $fallbackImgs[$idx % count($fallbackImgs)];
+							}
+							?>
+							<article class="pbmit-testimonial-style-2 swiper-slide">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-box-content-wrap">
+										<div class="pbminfotech-box-desc">
+											<div class="pbminfotech-box-star-ratings">
+												<?php for ($s = 1; $s <= 5; $s++) { ?>
+													<i class="pbmit-base-icon-star-1 <?php echo $s <= $rating ? 'pbmit-active' : ''; ?>"></i>
+												<?php } ?>
+											</div>
+											<blockquote class="pbminfotech-testimonial-text">
+												<p>&#8220;<?php echo htmlspecialchars($quote, ENT_QUOTES, 'UTF-8'); ?>&#8221;</p>
+											</blockquote>
+										</div>
+										<div class="pbminfotech-box-author-wrapper d-flex align-items-center">
+											<div class="pbminfotech-box-author d-flex align-items-center">
+												<div class="pbminfotech-box-img">
+													<div class="pbmit-featured-img-wrapper">
+														<div class="pbmit-featured-wrapper">
+															<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="">
+														</div>
+													</div>
+												</div>
+												<div class="pbmit-auther-content">
+													<h3 class="pbminfotech-box-title"><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></h3>
+													<?php if ($company !== '') { ?>
+														<div class="pbminfotech-testimonial-detail"><?php echo htmlspecialchars($company, ENT_QUOTES, 'UTF-8'); ?></div>
+													<?php } ?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						<?php } ?>
+					<?php } else { ?>
 					<article class="pbmit-testimonial-style-2 swiper-slide">
 						<div class="pbminfotech-post-item">
 							<div class="pbmit-box-content-wrap">
@@ -246,6 +297,7 @@ $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !=
 							</div>
 						</div>
 					</article>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -254,60 +306,38 @@ $sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !=
 	<section class="section-xl sr-why-impact" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Our Environmental Impact</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_impact_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4 pt-3">
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-impact-card">
-						<div class="sr-impact-top">
-							<div class="sr-impact-icon"><i class="pbmit-base-icon-lightening"></i></div>
-							<div class="sr-impact-label">Solar Capacity Installed</div>
+				<?php for ($i = 1; $i <= 3; $i++) { ?>
+					<?php
+					$label = sr_cms_setting_get('why_impact' . $i . '_label', '');
+					$toStr = sr_cms_setting_get('why_impact' . $i . '_to', '0');
+					$to = (int) preg_replace('/\D+/', '', $toStr);
+					$unit = sr_cms_setting_get('why_impact' . $i . '_unit', '');
+					$desc = sr_cms_setting_get('why_impact' . $i . '_desc', '');
+					$icon = $sr_impact_icons[$i - 1] ?? 'pbmit-base-icon-lightening';
+					?>
+					<div class="col-md-6 col-lg-4">
+						<div class="sr-impact-card">
+							<div class="sr-impact-top">
+								<div class="sr-impact-icon"><i class="<?php echo htmlspecialchars($icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+								<div class="sr-impact-label"><?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?></div>
+							</div>
+							<div class="sr-impact-value">
+								<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
+									data-from="0" data-to="<?php echo (int) $to; ?>" data-interval="5" data-before="" data-before-style="" data-after=""
+									data-after-style=""><?php echo (int) $to; ?></span>
+								<span class="sr-impact-unit"><?php echo htmlspecialchars($unit, ENT_QUOTES, 'UTF-8'); ?></span>
+							</div>
+							<p class="sr-impact-desc"><?php echo nl2br(htmlspecialchars($desc, ENT_QUOTES, 'UTF-8')); ?></p>
 						</div>
-						<div class="sr-impact-value">
-							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-								data-from="0" data-to="20" data-interval="1" data-before="" data-before-style="" data-after=""
-								data-after-style="">20</span>
-							<span class="sr-impact-unit">MW+</span>
-						</div>
-						<p class="sr-impact-desc">Harnessing solar energy to reduce dependency on fossil fuels and lower
-							the carbon footprint of our clients across Maharashtra.</p>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-impact-card">
-						<div class="sr-impact-top">
-							<div class="sr-impact-icon"><i class="pbmit-base-icon-check-mark"></i></div>
-							<div class="sr-impact-label">Projects Completed</div>
-						</div>
-						<div class="sr-impact-value">
-							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-								data-from="0" data-to="500" data-interval="5" data-before="" data-before-style="" data-after=""
-								data-after-style="">500</span>
-							<span class="sr-impact-unit">+</span>
-						</div>
-						<p class="sr-impact-desc">Our installed systems collectively save crores of rupees in electricity
-							bills for residential, commercial, and industrial customers every year.</p>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="sr-impact-card">
-						<div class="sr-impact-top">
-							<div class="sr-impact-icon"><i class="pbmit-base-icon-customer"></i></div>
-							<div class="sr-impact-label">Trusted Customers</div>
-						</div>
-						<div class="sr-impact-value">
-							<span class="sr-impact-number pbmit-number-rotate numinate" data-appear-animation="animateDigits"
-								data-from="0" data-to="2386" data-interval="5" data-before="" data-before-style="" data-after=""
-								data-after-style="">2386</span>
-							<span class="sr-impact-unit">+</span>
-						</div>
-						<p class="sr-impact-desc">By enabling widespread solar adoption, we play a vital role in
-							India&#8217;s national clean energy transition and Net Zero goals.</p>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>
+	<?php } ?>
 </div>
 <!-- Page Content End -->
 

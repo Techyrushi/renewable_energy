@@ -5,11 +5,13 @@ $sr_products_tbar = $sr_products_page && trim((string)$sr_products_page['title']
 $sr_products_hero_title = $sr_products_page && trim((string)$sr_products_page['hero_title']) !== '' ? (string)$sr_products_page['hero_title'] : 'Solar Systems for Every Scale — 3 kW to 20 MW';
 $sr_products_hero_subtitle = $sr_products_page && trim((string)$sr_products_page['hero_subtitle']) !== '' ? (string)$sr_products_page['hero_subtitle'] : 'Whether you are a homeowner, a factory owner, or a large-scale developer, we have the right solar solution to match your energy needs and budget.';
 $sr_banner_image = $sr_products_page && trim((string)($sr_products_page['banner_image'] ?? '')) !== '' ? (string)$sr_products_page['banner_image'] : '';
+$sr_page_override = $sr_products_page && trim((string)($sr_products_page['content'] ?? '')) !== '' ? (string)$sr_products_page['content'] : '';
+$sr_open_product = isset($_GET['open']) ? trim((string)$_GET['open']) : '';
 
 $sr_products_items = [];
 $sr_db = sr_cms_db_try();
 if ($sr_db instanceof mysqli) {
-	$res = $sr_db->query("SELECT slug, category_anchor, badge_label, title, range_label, short_desc, bullets, image
+	$res = $sr_db->query("SELECT slug, category_anchor, badge_label, title, range_label, short_desc, bullets, image, content
 		FROM cms_products
 		WHERE published = 1
 		ORDER BY sort_order ASC, updated_at DESC
@@ -23,7 +25,7 @@ if ($sr_db instanceof mysqli) {
 }
 ?>
 </header>
-<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
+<div class="pbmit-title-bar-wrapper sr-projects-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">
@@ -46,6 +48,9 @@ if ($sr_db instanceof mysqli) {
 	</div>
 </div>
 <div class="page-content products">
+	<?php if ($sr_page_override !== '') { ?>
+		<?php echo $sr_page_override; ?>
+	<?php } else { ?>
 	<section class="section-xl products-hero" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
@@ -65,7 +70,6 @@ if ($sr_db instanceof mysqli) {
 						<?php
 						$slug = trim((string)($p['slug'] ?? ''));
 						if ($slug === '') continue;
-						$href = 'products/' . rawurlencode($slug);
 						$anchor = trim((string)($p['category_anchor'] ?? 'products'));
 						$badge = trim((string)($p['badge_label'] ?? ''));
 						$title = (string)($p['title'] ?? '');
@@ -73,6 +77,7 @@ if ($sr_db instanceof mysqli) {
 						$desc = (string)($p['short_desc'] ?? '');
 						$image = trim((string)($p['image'] ?? ''));
 						if ($image === '') $image = 'images/homepage-1/service/service-img-01.jpg';
+							$html = (string)($p['content'] ?? '');
 
 						$badgeClass = 'sr-product-badge';
 						$iconClass = 'pbmit-base-icon-lightening';
@@ -88,13 +93,13 @@ if ($sr_db instanceof mysqli) {
 						<div class="col-md-6 col-lg-3" id="<?php echo htmlspecialchars($anchor !== '' ? $anchor : ('product-' . (int)$idx), ENT_QUOTES, 'UTF-8'); ?>" data-aos="fade-up" data-aos-duration="800" data-aos-delay="<?php echo (int)min(360, $idx * 90); ?>">
 							<div class="sr-product-card">
 								<div class="sr-product-media">
-									<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>">
+									<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#productModal" data-product="<?php echo htmlspecialchars($slug, ENT_QUOTES, 'UTF-8'); ?>" data-title="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
 										<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
 									</a>
 									<div class="sr-product-icon"><i class="<?php echo htmlspecialchars($iconClass, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
 								</div>
 								<?php if ($badge !== '') { ?><div class="<?php echo htmlspecialchars($badgeClass, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($badge, ENT_QUOTES, 'UTF-8'); ?></div><?php } ?>
-								<h3 class="sr-product-title"><a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></a></h3>
+								<h3 class="sr-product-title"><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#productModal" data-product="<?php echo htmlspecialchars($slug, ENT_QUOTES, 'UTF-8'); ?>" data-title="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></a></h3>
 								<?php if ($range !== '') { ?><div class="sr-product-range"><i class="pbmit-base-icon-lightening"></i> <?php echo htmlspecialchars($range, ENT_QUOTES, 'UTF-8'); ?></div><?php } ?>
 								<p class="sr-product-desc"><?php echo htmlspecialchars($desc, ENT_QUOTES, 'UTF-8'); ?></p>
 								<?php if ($points) { ?>
@@ -104,9 +109,36 @@ if ($sr_db instanceof mysqli) {
 										<?php } ?>
 									</ul>
 								<?php } ?>
-								<a href="<?php echo htmlspecialchars($href, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn sr-readmore">
+								<button type="button" class="pbmit-btn sr-readmore" data-bs-toggle="modal" data-bs-target="#productModal" data-product="<?php echo htmlspecialchars($slug, ENT_QUOTES, 'UTF-8'); ?>" data-title="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
 									<span class="pbmit-button-text">Read more</span>
-								</a>
+								</button>
+							</div>
+							<div class="d-none" id="product-detail-<?php echo htmlspecialchars($slug, ENT_QUOTES, 'UTF-8'); ?>">
+								<div class="sr-modal-top">
+									<div class="sr-modal-media">
+										<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>">
+									</div>
+									<div class="sr-modal-meta">
+										<?php if ($badge !== '') { ?><div class="<?php echo htmlspecialchars($badgeClass, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($badge, ENT_QUOTES, 'UTF-8'); ?></div><?php } ?>
+										<?php if ($range !== '') { ?><div class="sr-modal-range"><i class="pbmit-base-icon-lightening"></i> Capacity Range: <strong><?php echo htmlspecialchars($range, ENT_QUOTES, 'UTF-8'); ?></strong></div><?php } ?>
+									</div>
+								</div>
+								<?php if (trim($html) !== '') { ?>
+									<?php echo $html; ?>
+								<?php } else { ?>
+									<p><?php echo htmlspecialchars($desc, ENT_QUOTES, 'UTF-8'); ?></p>
+									<?php if ($points) { ?>
+										<div class="sr-modal-section-title">Key Benefits</div>
+										<ul class="sr-modal-list sr-icon-list">
+											<?php foreach ($points as $pt) { ?>
+												<li><i class="pbmit-base-icon-tick"></i><?php echo htmlspecialchars($pt, ENT_QUOTES, 'UTF-8'); ?></li>
+											<?php } ?>
+										</ul>
+									<?php } ?>
+								<?php } ?>
+								<div class="sr-modal-cta">
+									<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Request a proposal</span></a>
+								</div>
 							</div>
 						</div>
 					<?php } ?>
@@ -315,6 +347,22 @@ if ($sr_db instanceof mysqli) {
 		</div>
 	</section>
 
+	<style>
+		#productModalBody img,
+		#productModalBody figure img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 18px 0;
+			border-radius: 18px;
+			box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
+			border: 1px solid rgba(10, 25, 38, .10);
+			background: #fff;
+		}
+		#productModalBody figure { margin: 18px 0; }
+		#productModalBody figcaption { margin-top: 10px; font-weight: 600; color: rgba(10, 25, 38, .70); }
+	</style>
+
 	<div class="modal fade sr-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg">
 			<div class="modal-content">
@@ -342,7 +390,26 @@ if ($sr_db instanceof mysqli) {
 				if (titleEl) titleEl.textContent = title;
 				if (body) body.innerHTML = source ? source.innerHTML : '';
 			});
+
+			var openKey = <?php echo json_encode($sr_open_product, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
+			if (openKey) {
+				var trigger = document.querySelector('[data-bs-target="#productModal"][data-product="' + openKey.replace(/"/g, '\\"') + '"]');
+				if (trigger) {
+					trigger.click();
+					return;
+				}
+				var source = document.getElementById('product-detail-' + openKey);
+				if (source && window.bootstrap && bootstrap.Modal) {
+					var body = document.getElementById('productModalBody');
+					var titleEl = document.getElementById('productModalLabel');
+					if (titleEl) titleEl.textContent = 'Product';
+					if (body) body.innerHTML = source.innerHTML;
+					var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+					modal.show();
+				}
+			}
 		})();
 	</script>
+	<?php } ?>
 </div>
 <?php include 'includes/footer.php'; ?>

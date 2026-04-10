@@ -61,9 +61,62 @@ $sr_blog_page = sr_cms_page_get('blog');
 $sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : 'Solar Knowledge Hub';
 $sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : 'Stay informed with the latest news, guides, and insights from India&#8217;s solar industry.';
 $sr_banner_image = $sr_blog_page && trim((string)($sr_blog_page['banner_image'] ?? '')) !== '' ? (string)$sr_blog_page['banner_image'] : '';
+$sr_page_override = $sr_blog_page && trim((string)($sr_blog_page['content'] ?? '')) !== '' ? (string)$sr_blog_page['content'] : '';
+
+$sr_blog_categories_title = sr_cms_setting_get('blog_categories_title', 'Browse Categories');
+$sr_blog_cat1_icon = sr_cms_setting_get('blog_cat1_icon', 'pbmit-base-icon-lightening');
+$sr_blog_cat1_title = sr_cms_setting_get('blog_cat1_title', 'Solar Basics');
+$sr_blog_cat1_desc = sr_cms_setting_get('blog_cat1_desc', 'How solar works, types of systems, net metering explained');
+$sr_blog_cat2_icon = sr_cms_setting_get('blog_cat2_icon', 'pbmit-base-icon-document');
+$sr_blog_cat2_title = sr_cms_setting_get('blog_cat2_title', 'Government Schemes');
+$sr_blog_cat2_desc = sr_cms_setting_get('blog_cat2_desc', 'PM Surya Ghar Yojana, subsidies, accelerated depreciation');
+$sr_blog_cat3_icon = sr_cms_setting_get('blog_cat3_icon', 'pbmit-base-icon-news');
+$sr_blog_cat3_title = sr_cms_setting_get('blog_cat3_title', 'Industry News');
+$sr_blog_cat3_desc = sr_cms_setting_get('blog_cat3_desc', 'Renewable energy policy updates, Maharashtra solar news');
+$sr_blog_cat4_icon = sr_cms_setting_get('blog_cat4_icon', 'pbmit-base-icon-check-mark');
+$sr_blog_cat4_title = sr_cms_setting_get('blog_cat4_title', 'Case Studies');
+$sr_blog_cat4_desc = sr_cms_setting_get('blog_cat4_desc', 'Detailed project stories with energy savings data');
+$sr_blog_cat5_icon = sr_cms_setting_get('blog_cat5_icon', 'pbmit-base-icon-chat-3');
+$sr_blog_cat5_title = sr_cms_setting_get('blog_cat5_title', 'FAQs');
+$sr_blog_cat5_desc = sr_cms_setting_get('blog_cat5_desc', 'Answers to common questions from residential and commercial buyers');
+$sr_blog_latest_title = sr_cms_setting_get('blog_latest_title', 'Latest Articles');
+$sr_blog_latest_desc = sr_cms_setting_get('blog_latest_desc', 'Practical guides, policy updates, and solar insights to help you make confident decisions.');
+$sr_blog_faq_title = sr_cms_setting_get('blog_faq_title', 'Frequently Asked Questions');
+$sr_blog_faq_cta_label = sr_cms_setting_get('blog_faq_cta_label', 'Request Free Consultation');
+$sr_blog_faq_cta_url = sr_cms_setting_get('blog_faq_cta_url', 'contact');
+
+$sr_db = sr_cms_db_try();
+$sr_blog_faqs = [];
+if ($sr_db instanceof mysqli) {
+	$resFaq = $sr_db->query("SELECT question, answer
+		FROM cms_blog_faqs
+		WHERE is_active = 1
+		ORDER BY sort_order ASC, updated_at DESC
+		LIMIT 50");
+	if ($resFaq) {
+		while ($row = $resFaq->fetch_assoc()) {
+			$q = (string) ($row['question'] ?? '');
+			$a = (string) ($row['answer'] ?? '');
+			if (trim($q) === '' || trim($a) === '') {
+				continue;
+			}
+			$sr_blog_faqs[] = ['q' => $q, 'a' => $a];
+		}
+		$resFaq->free();
+	}
+}
+if (!$sr_blog_faqs) {
+	for ($i = 1; $i <= 10; $i++) {
+		$q = sr_cms_setting_get('blog_faq' . $i . '_q', '');
+		$a = sr_cms_setting_get('blog_faq' . $i . '_a', '');
+		if (trim($q) === '' || trim($a) === '') {
+			continue;
+		}
+		$sr_blog_faqs[] = ['q' => $q, 'a' => $a];
+	}
+}
 
 $sr_blog_posts = [];
-$sr_db = sr_cms_db_try();
 if ($sr_db instanceof mysqli) {
 	$res = $sr_db->query("SELECT slug, title, category, date_label, read_time, cover_image, excerpt
 		FROM cms_blog_posts
@@ -120,45 +173,48 @@ if (!$sr_blog_posts) {
 </header>
 
 <div class="page-content blog-hub">
+	<?php if ($sr_page_override !== '') { ?>
+		<?php echo $sr_page_override; ?>
+	<?php } else { ?>
 	<section id="news" class="section-xl pbmit-bg-color-white sr-blog-cats" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Browse Categories</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_blog_categories_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row g-4 pt-3">
 				<div class="col-md-6 col-lg-4">
 					<div class="sr-cat-card">
-						<div class="sr-cat-icon"><i class="pbmit-base-icon-lightening"></i></div>
-						<h3 class="sr-cat-title">Solar Basics</h3>
-						<p class="sr-cat-desc">How solar works, types of systems, net metering explained</p>
+						<div class="sr-cat-icon"><i class="<?php echo htmlspecialchars($sr_blog_cat1_icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+						<h3 class="sr-cat-title"><?php echo htmlspecialchars($sr_blog_cat1_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+						<p class="sr-cat-desc"><?php echo htmlspecialchars($sr_blog_cat1_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-4">
 					<div class="sr-cat-card">
-						<div class="sr-cat-icon"><i class="pbmit-base-icon-document"></i></div>
-						<h3 class="sr-cat-title">Government Schemes</h3>
-						<p class="sr-cat-desc">PM Surya Ghar Yojana, subsidies, accelerated depreciation</p>
+						<div class="sr-cat-icon"><i class="<?php echo htmlspecialchars($sr_blog_cat2_icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+						<h3 class="sr-cat-title"><?php echo htmlspecialchars($sr_blog_cat2_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+						<p class="sr-cat-desc"><?php echo htmlspecialchars($sr_blog_cat2_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-4">
 					<div class="sr-cat-card">
-						<div class="sr-cat-icon"><i class="pbmit-base-icon-news"></i></div>
-						<h3 class="sr-cat-title">Industry News</h3>
-						<p class="sr-cat-desc">Renewable energy policy updates, Maharashtra solar news</p>
+						<div class="sr-cat-icon"><i class="<?php echo htmlspecialchars($sr_blog_cat3_icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+						<h3 class="sr-cat-title"><?php echo htmlspecialchars($sr_blog_cat3_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+						<p class="sr-cat-desc"><?php echo htmlspecialchars($sr_blog_cat3_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6">
 					<div class="sr-cat-card">
-						<div class="sr-cat-icon"><i class="pbmit-base-icon-check-mark"></i></div>
-						<h3 class="sr-cat-title">Case Studies</h3>
-						<p class="sr-cat-desc">Detailed project stories with energy savings data</p>
+						<div class="sr-cat-icon"><i class="<?php echo htmlspecialchars($sr_blog_cat4_icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+						<h3 class="sr-cat-title"><?php echo htmlspecialchars($sr_blog_cat4_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+						<p class="sr-cat-desc"><?php echo htmlspecialchars($sr_blog_cat4_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6">
 					<div class="sr-cat-card">
-						<div class="sr-cat-icon"><i class="pbmit-base-icon-chat-3"></i></div>
-						<h3 class="sr-cat-title">FAQs</h3>
-						<p class="sr-cat-desc">Answers to common questions from residential and commercial buyers</p>
+						<div class="sr-cat-icon"><i class="<?php echo htmlspecialchars($sr_blog_cat5_icon, ENT_QUOTES, 'UTF-8'); ?>"></i></div>
+						<h3 class="sr-cat-title"><?php echo htmlspecialchars($sr_blog_cat5_title, ENT_QUOTES, 'UTF-8'); ?></h3>
+						<p class="sr-cat-desc"><?php echo htmlspecialchars($sr_blog_cat5_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 					</div>
 				</div>
 			</div>
@@ -168,9 +224,8 @@ if (!$sr_blog_posts) {
 	<section id="solar-guides" class="section-xl sr-blog-posts" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Latest Articles</h2>
-				<p class="mb-0 sr-blog-subtext">Practical guides, policy updates, and solar insights to help you make
-					confident decisions.</p>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_blog_latest_title, ENT_QUOTES, 'UTF-8'); ?></h2>
+				<p class="mb-0 sr-blog-subtext"><?php echo htmlspecialchars($sr_blog_latest_desc, ENT_QUOTES, 'UTF-8'); ?></p>
 			</div>
 			<div class="row g-4 pt-4">
 				<?php foreach ($sr_blog_posts as $post) { ?>
@@ -202,181 +257,43 @@ if (!$sr_blog_posts) {
 	<section id="faqs" class="section-xl sr-blog-faq" data-aos="fade-up" data-aos-duration="800">
 		<div class="container">
 			<div class="pbmit-heading-subheading text-center">
-				<h2 class="pbmit-title">Frequently Asked Questions</h2>
+				<h2 class="pbmit-title"><?php echo htmlspecialchars($sr_blog_faq_title, ENT_QUOTES, 'UTF-8'); ?></h2>
 			</div>
 			<div class="row justify-content-center pt-3">
 				<div class="col-lg-10 col-xl-9">
 					<div class="accordion" id="blogFaq">
-						<div class="accordion-item active">
-							<h2 class="accordion-header" id="bf1">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba1" aria-expanded="true" aria-controls="ba1">
-									<span class="sr-faq-title">What is a Solar EPC company?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba1" class="accordion-collapse collapse show" aria-labelledby="bf1"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>An EPC (Engineering, Procurement &amp; Construction) company manages the complete solar
-										project lifecycle from design and material procurement to installation and
-										commissioning.</p>
+						<?php if ($sr_blog_faqs) { ?>
+							<?php foreach ($sr_blog_faqs as $i => $faq) { ?>
+								<?php
+								$iNum = (int) ($i + 1);
+								$open = $iNum === 1;
+								?>
+								<div class="accordion-item <?php echo $open ? 'active' : ''; ?>">
+									<h2 class="accordion-header" id="bf<?php echo $iNum; ?>">
+										<button class="accordion-button <?php echo $open ? '' : 'collapsed'; ?>" type="button" data-bs-toggle="collapse"
+											data-bs-target="#ba<?php echo $iNum; ?>" aria-expanded="<?php echo $open ? 'true' : 'false'; ?>" aria-controls="ba<?php echo $iNum; ?>">
+											<span class="sr-faq-title"><?php echo (string) $faq['q']; ?></span>
+											<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
+										</button>
+									</h2>
+									<div id="ba<?php echo $iNum; ?>" class="accordion-collapse collapse <?php echo $open ? 'show' : ''; ?>" aria-labelledby="bf<?php echo $iNum; ?>"
+										data-bs-parent="#blogFaq">
+										<div class="accordion-body">
+											<p><?php echo (string) $faq['a']; ?></p>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf2">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba2" aria-expanded="false" aria-controls="ba2">
-									<span class="sr-faq-title">How much does a residential solar system cost in Maharashtra?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba2" class="accordion-collapse collapse" aria-labelledby="bf2"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>A 5 kW system typically costs between ₹2.5–3.5 lakh before subsidy. After PM Surya Ghar
-										subsidy, the net cost can drop significantly.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf3">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba3" aria-expanded="false" aria-controls="ba3">
-									<span class="sr-faq-title">What is the payback period for solar in India?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba3" class="accordion-collapse collapse" aria-labelledby="bf3"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Most residential systems pay back in 4–6 years. Commercial and industrial systems often pay
-										back in 3–5 years.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf4">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba4" aria-expanded="false" aria-controls="ba4">
-									<span class="sr-faq-title">Does Shivanjali Renewables offer maintenance after installation?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba4" class="accordion-collapse collapse" aria-labelledby="bf4"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Yes. We offer comprehensive O&amp;M services including remote monitoring, cleaning, and on-site
-										repairs.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf5">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba5" aria-expanded="false" aria-controls="ba5">
-									<span class="sr-faq-title">What is Open Access solar?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba5" class="accordion-collapse collapse" aria-labelledby="bf5"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Open Access allows large consumers to purchase solar power directly from a generator,
-										bypassing the distribution grid tariff. It is typically available for consumers above 100
-										kW demand.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf6">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba6" aria-expanded="false" aria-controls="ba6">
-									<span class="sr-faq-title">Which panels and inverters do you use?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba6" class="accordion-collapse collapse" aria-labelledby="bf6"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>We use only Tier-1 certified solar panels and inverters from reputed brands that meet MNRE
-										and BIS standards.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf7">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba7" aria-expanded="false" aria-controls="ba7">
-									<span class="sr-faq-title">Can solar be installed on any type of roof?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba7" class="accordion-collapse collapse" aria-labelledby="bf7"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Yes. We install on RCC, metal sheet, and tile roofs. Our structural team assesses load-bearing
-										capacity before installation.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf8">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba8" aria-expanded="false" aria-controls="ba8">
-									<span class="sr-faq-title">How long does installation take?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba8" class="accordion-collapse collapse" aria-labelledby="bf8"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Residential systems are installed in 1–3 days. Commercial and industrial projects may take
-										2–8 weeks depending on scale.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf9">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba9" aria-expanded="false" aria-controls="ba9">
-									<span class="sr-faq-title">Is there a warranty on solar systems?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba9" class="accordion-collapse collapse" aria-labelledby="bf9"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Yes. Panels carry a 25-year performance warranty. Inverters and other equipment have
-										manufacturer warranties ranging from 5–10 years.</p>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="bf10">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									data-bs-target="#ba10" aria-expanded="false" aria-controls="ba10">
-									<span class="sr-faq-title">How do I get started?</span>
-									<span class="sr-faq-arrow" aria-hidden="true"><i class="pbmit-base-icon-arrow-right-2"></i></span>
-								</button>
-							</h2>
-							<div id="ba10" class="accordion-collapse collapse" aria-labelledby="bf10"
-								data-bs-parent="#blogFaq">
-								<div class="accordion-body">
-									<p>Simply fill out our contact form or call us. Our team will schedule a free site survey within
-										48 hours.</p>
-								</div>
-							</div>
-						</div>
+							<?php } ?>
+						<?php } ?>
 					</div>
 					<div class="sr-blog-faq-cta">
-						<a href="contact" class="pbmit-btn"><span class="pbmit-button-text">Request Free Consultation</span></a>
+						<a href="<?php echo htmlspecialchars($sr_blog_faq_cta_url, ENT_QUOTES, 'UTF-8'); ?>" class="pbmit-btn"><span class="pbmit-button-text"><?php echo htmlspecialchars($sr_blog_faq_cta_label, ENT_QUOTES, 'UTF-8'); ?></span></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<?php } ?>
 </div>
 
 <?php include 'includes/footer.php'; ?>
