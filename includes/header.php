@@ -17,6 +17,7 @@ ob_start(function ($buffer) {
 	}, $buffer);
 });
 require_once __DIR__ . '/cms.php';
+$sr_css_ver = (string) (@filemtime(__DIR__ . '/../css/style.css') ?: time());
 $sr_company_name = sr_cms_setting_get('company_name', 'Shivanjali Renewables');
 $sr_company_email = sr_cms_setting_get('company_email', 'info@shivanjalirenewables.com');
 $sr_company_phone = sr_cms_setting_get('company_phone', '+91 8686313133');
@@ -51,6 +52,25 @@ if ($sr_route === '') {
 }
 if ($sr_route !== '/') {
 	$sr_route = rtrim($sr_route, '/');
+}
+
+$sr_nav_active = '';
+if ($sr_route === '/' || strcasecmp($sr_route, '/index.php') === 0) {
+	$sr_nav_active = 'home';
+} elseif ($sr_route === '/about' || str_starts_with($sr_route, '/about/')) {
+	$sr_nav_active = 'about';
+} elseif ($sr_route === '/services' || str_starts_with($sr_route, '/services/')) {
+	$sr_nav_active = 'services';
+} elseif ($sr_route === '/products' || str_starts_with($sr_route, '/products/')) {
+	$sr_nav_active = 'products';
+} elseif ($sr_route === '/projects' || str_starts_with($sr_route, '/projects/')) {
+	$sr_nav_active = 'projects';
+} elseif ($sr_route === '/why-us' || str_starts_with($sr_route, '/why-us/')) {
+	$sr_nav_active = 'why-us';
+} elseif ($sr_route === '/blog' || str_starts_with($sr_route, '/blog/')) {
+	$sr_nav_active = 'blog';
+} elseif ($sr_route === '/contact' || str_starts_with($sr_route, '/contact/')) {
+	$sr_nav_active = 'contact';
 }
 
 $sr_seo_row = sr_cms_seo_route_get($sr_route);
@@ -403,29 +423,29 @@ if ($sr_nav_db instanceof mysqli) {
 	<!-- CSS
 		 ============================================ -->
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Fontawesome -->
-	<link rel="stylesheet" href="css/fontawesome.css">
+	<link rel="stylesheet" href="css/fontawesome.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Solaar Icon -->
-	<link rel="stylesheet" href="fonts/pbmit-solaar-icon/pbmit_solaar.css">
+	<link rel="stylesheet" href="fonts/pbmit-solaar-icon/pbmit_solaar.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Base Icons -->
-	<link rel="stylesheet" href="css/pbminfotech-base-icons.css">
+	<link rel="stylesheet" href="css/pbminfotech-base-icons.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="css/themify-icons.css">
+	<link rel="stylesheet" href="css/themify-icons.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Slick -->
-	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/swiper.min.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Magnific -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/magnific-popup.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- AOS -->
-	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="css/aos.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Shortcode CSS -->
-	<link rel="stylesheet" href="css/shortcode.css">
+	<link rel="stylesheet" href="css/shortcode.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Base CSS -->
-	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/base.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Style CSS -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/responsive.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 
 </head>
 
@@ -436,7 +456,7 @@ if ($sr_nav_db instanceof mysqli) {
 
 		<!-- Header Main Area -->
 		<header class="site-header pbmit-header-style-2 pbmit-header-sticky-yes" id="masthead">
-			<div class="pbmit-pre-header-wrapper pbmit-bg-color-white pbmit-color-white">
+			<div class="pbmit-pre-header-wrapper pbmit-bg-color-white">
 				<div class="container-fluid">
 					<div class="d-flex justify-content-between">
 						<div class="pbmit-pre-header-left">
@@ -496,9 +516,9 @@ if ($sr_nav_db instanceof mysqli) {
 											<nav class="main-menu pbmit-navbar">
 												<div>
 													<ul id="pbmit-top-menu" class="navigation clearfix">
-														<li class="active"><a class="text-primary" href="./">Home</a>
+														<li<?php echo $sr_nav_active === 'home' ? ' class="active"' : ''; ?>><a class="text-primary" href="./">Home</a>
 														</li>
-														<li class="dropdown">
+														<li class="dropdown<?php echo $sr_nav_active === 'about' ? ' active' : ''; ?>">
 															<a class="text-primary" href="about">About Us</a>
 															<ul>
 																<li><a href="about#our-story">Our
@@ -513,7 +533,7 @@ if ($sr_nav_db instanceof mysqli) {
 																</li>
 															</ul>
 														</li>
-														<li class="dropdown">
+														<li class="dropdown<?php echo $sr_nav_active === 'services' ? ' active' : ''; ?>">
 															<a class="text-primary" href="services">Services</a>
 															<ul>
 																<?php if (!empty($sr_nav_services)) { ?>
@@ -534,7 +554,7 @@ if ($sr_nav_db instanceof mysqli) {
 																<?php } ?>
 															</ul>
 														</li>
-														<li class="dropdown">
+														<li class="dropdown<?php echo $sr_nav_active === 'products' ? ' active' : ''; ?>">
 															<a class="text-primary" href="products">Products</a>
 															<ul>
 																<?php if (!empty($sr_nav_products)) { ?>
@@ -555,7 +575,7 @@ if ($sr_nav_db instanceof mysqli) {
 																<?php } ?>
 															</ul>
 														</li>
-														<li class="dropdown">
+														<li class="dropdown<?php echo $sr_nav_active === 'projects' ? ' active' : ''; ?>">
 															<a class="text-primary" href="projects">Projects</a>
 															<ul>
 																<?php if (!empty($sr_nav_projects)) { ?>
@@ -574,8 +594,8 @@ if ($sr_nav_db instanceof mysqli) {
 																<?php } ?>
 															</ul>
 														</li>
-														<li><a class="text-primary" href="why-us">Why Us</a></li>
-														<li class="dropdown">
+														<li<?php echo $sr_nav_active === 'why-us' ? ' class="active"' : ''; ?>><a class="text-primary" href="why-us">Why Us</a></li>
+														<li class="dropdown<?php echo $sr_nav_active === 'blog' ? ' active' : ''; ?>">
 															<a class="text-primary" href="blog">Blog / Resources</a>
 															<ul>
 																<?php if (!empty($sr_nav_blog)) { ?>
@@ -593,7 +613,7 @@ if ($sr_nav_db instanceof mysqli) {
 																<?php } ?>
 															</ul>
 														</li>
-														<li><a class="text-primary" href="contact">Contact Us</a></li>
+														<li<?php echo $sr_nav_active === 'contact' ? ' class="active"' : ''; ?>><a class="text-primary" href="contact">Contact Us</a></li>
 													</ul>
 												</div>
 											</nav>

@@ -435,32 +435,119 @@ function sr_cms_page_get(string $slug): ?array
 	return $page;
 }
 
+/**
+ * Normalized request path + common aliases so SEO rows saved as /contact-us or /about-us
+ * still match pretty URLs (/contact, /about) and home variants.
+ *
+ * @return list<string>
+ */
+function sr_cms_seo_route_candidates(string $route): array
+{
+	$r = trim($route);
+	if ($r === '') {
+		$r = '/';
+	}
+	if ($r[0] !== '/') {
+		$r = '/' . $r;
+	}
+	if ($r !== '/') {
+		$r = rtrim($r, '/');
+	}
+
+	$out = [];
+	$push = function (string $x) use (&$out): void {
+		if ($x === '' || in_array($x, $out, true)) {
+			return;
+		}
+		$out[] = $x;
+	};
+
+	$push($r);
+
+	$homePaths = ['/', '/home', '/index.php'];
+	if (in_array($r, $homePaths, true)) {
+		foreach ($homePaths as $h) {
+			$push($h);
+		}
+	}
+
+	$equiv = [
+		'/contact' => ['/contact-us', '/contact-us.php'],
+		'/contact-us' => ['/contact'],
+		'/contact-us.php' => ['/contact', '/contact-us'],
+		'/about' => ['/about-us', '/about-us.php'],
+		'/about-us' => ['/about'],
+		'/about-us.php' => ['/about', '/about-us'],
+		'/terms-of-use' => ['/terms', '/terms.php'],
+		'/terms' => ['/terms-of-use'],
+		'/terms.php' => ['/terms-of-use', '/terms'],
+		'/privacy-policy' => ['/privacy-policy.php'],
+		'/privacy-policy.php' => ['/privacy-policy'],
+	];
+
+	if (isset($equiv[$r])) {
+		foreach ($equiv[$r] as $alt) {
+			$push((string) $alt);
+		}
+	}
+	foreach ($equiv as $canonical => $alts) {
+		if (in_array($r, $alts, true)) {
+			$push((string) $canonical);
+			foreach ($alts as $a) {
+				$push((string) $a);
+			}
+		}
+	}
+
+	return $out;
+}
+
 function sr_cms_seo_route_get(string $route): ?array
 {
 	$db = sr_cms_db_try();
 	if (!$db instanceof mysqli) {
 		return null;
 	}
-	$stmt = $db->prepare('SELECT route, title, description, keywords, og_image, noindex FROM cms_seo_routes WHERE route=? LIMIT 1');
+
+	$candidates = sr_cms_seo_route_candidates($route);
+	if ($candidates === []) {
+		return null;
+	}
+
+	$placeholders = implode(',', array_fill(0, count($candidates), '?'));
+	$sql = 'SELECT route, title, description, keywords, og_image, noindex FROM cms_seo_routes WHERE route IN (' . $placeholders . ')';
+	$stmt = $db->prepare($sql);
 	if (!$stmt) {
 		return null;
 	}
-	$stmt->bind_param('s', $route);
+
+	$types = str_repeat('s', count($candidates));
+	$stmt->bind_param($types, ...$candidates);
 	$stmt->execute();
-	$stmt->bind_result($rRoute, $title, $desc, $keywords, $ogImage, $noindex);
-	$row = null;
-	if ($stmt->fetch()) {
-		$row = [
-			'route' => (string)$rRoute,
-			'title' => (string)$title,
-			'description' => (string)$desc,
-			'keywords' => (string)$keywords,
-			'og_image' => (string)$ogImage,
-			'noindex' => (int)$noindex,
-		];
+	$res = $stmt->get_result();
+	$rows = [];
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$rows[(string) ($row['route'] ?? '')] = $row;
+		}
 	}
 	$stmt->close();
-	return $row;
+
+	foreach ($candidates as $c) {
+		if (isset($rows[$c])) {
+			$r = $rows[$c];
+			return [
+				'route' => (string) ($r['route'] ?? ''),
+				'title' => (string) ($r['title'] ?? ''),
+				'description' => (string) ($r['description'] ?? ''),
+				'keywords' => (string) ($r['keywords'] ?? ''),
+				'og_image' => (string) ($r['og_image'] ?? ''),
+				'noindex' => (int) ($r['noindex'] ?? 0),
+			];
+		}
+	}
+
+	return null;
 }
 
 function sr_cms_slugify(string $s): string
