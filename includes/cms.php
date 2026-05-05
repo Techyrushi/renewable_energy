@@ -2,6 +2,53 @@
 
 declare(strict_types=1);
 
+function sr_cms_load_env_file(): void
+{
+	static $loaded = false;
+	if ($loaded) {
+		return;
+	}
+	$loaded = true;
+
+	$envPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . '.env';
+	if (!is_file($envPath) || !is_readable($envPath)) {
+		return;
+	}
+
+	$lines = @file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	if (!is_array($lines)) {
+		return;
+	}
+
+	foreach ($lines as $line) {
+		$line = trim((string) $line);
+		if ($line === '' || str_starts_with($line, '#')) {
+			continue;
+		}
+		$eqPos = strpos($line, '=');
+		if ($eqPos === false) {
+			continue;
+		}
+		$key = trim(substr($line, 0, $eqPos));
+		$val = trim(substr($line, $eqPos + 1));
+		if ($key === '') {
+			continue;
+		}
+		if (strlen($val) >= 2) {
+			$first = $val[0];
+			$last = $val[strlen($val) - 1];
+			if (($first === '"' && $last === '"') || ($first === "'" && $last === "'")) {
+				$val = substr($val, 1, -1);
+			}
+		}
+		if (getenv($key) === false) {
+			putenv($key . '=' . $val);
+			$_ENV[$key] = $val;
+			$_SERVER[$key] = $val;
+		}
+	}
+}
+
 function sr_cms_db_try(): ?mysqli
 {
 	static $db = null;
@@ -11,15 +58,25 @@ function sr_cms_db_try(): ?mysqli
 		return $db;
 	}
 	$attempted = true;
+	sr_cms_load_env_file();
 
-	$host = (string)(getenv('SR_DB_HOST') ?: 'localhost');
-	$user = (string)(getenv('SR_DB_USER') ?: 'root');
+	$host = trim((string)(getenv('SR_DB_HOST') ?: ''));
+	$user = trim((string)(getenv('SR_DB_USER') ?: ''));
 	$pass = (string)(getenv('SR_DB_PASS') ?: '');
-	$name = (string)(getenv('SR_DB_NAME') ?: 'renewable');
+	$name = trim((string)(getenv('SR_DB_NAME') ?: ''));
+	$port = (int)(getenv('SR_DB_PORT') ?: 3306);
+
+	if ($host === '' || $user === '' || $name === '') {
+		error_log('CMS DB config missing. Required env vars: SR_DB_HOST, SR_DB_USER, SR_DB_NAME');
+		$db = null;
+		return null;
+	}
 
 	mysqli_report(MYSQLI_REPORT_OFF);
-	$conn = @mysqli_connect($host, $user, $pass, $name);
+	$conn = @mysqli_connect($host, $user, $pass, $name, $port);
 	if (!$conn instanceof mysqli) {
+		$err = mysqli_connect_error();
+		error_log('CMS DB connect failed for host: ' . $host . ', db: ' . $name . ', user: ' . $user . ', error: ' . ($err !== '' ? $err : 'unknown error'));
 		$db = null;
 		return null;
 	}
@@ -404,6 +461,61 @@ function sr_cms_setting_get(string $key, string $default = ''): string
 		$out = (string)$v;
 	}
 	$stmt->close();
+	return $out;
+}
+
+function sr_cms_testimonials_get(int $limit = 50, bool $activeOnly = true): array
+{
+	$db = sr_cms_db_try();
+	if (!$db instanceof mysqli) {
+		return [];
+	}
+
+	if ($limit < 1) {
+		$limit = 1;
+	}
+	if ($limit > 200) {
+		$limit = 200;
+	}
+
+	if ($activeOnly) {
+		$sql = 'SELECT id, name, company, `quote`, image, rating, sort_order, is_active, created_at, updated_at
+			FROM cms_testimonials
+			WHERE is_active = 1
+			ORDER BY sort_order ASC, updated_at DESC
+			LIMIT ?';
+		$stmt = $db->prepare($sql);
+		if (!$stmt) {
+			error_log('Failed preparing testimonials query (activeOnly=1): ' . $db->error);
+			return [];
+		}
+		$stmt->bind_param('i', $limit);
+	} else {
+		$sql = 'SELECT id, name, company, `quote`, image, rating, sort_order, is_active, created_at, updated_at
+			FROM cms_testimonials
+			ORDER BY sort_order ASC, updated_at DESC
+			LIMIT ?';
+		$stmt = $db->prepare($sql);
+		if (!$stmt) {
+			error_log('Failed preparing testimonials query (activeOnly=0): ' . $db->error);
+			return [];
+		}
+		$stmt->bind_param('i', $limit);
+	}
+
+	$out = [];
+	$stmt->execute();
+	$res = $stmt->get_result();
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$out[] = $row;
+		}
+		$res->free();
+	} else {
+		error_log('Failed loading testimonials result: ' . $db->error);
+	}
+	$stmt->close();
+
 	return $out;
 }
 

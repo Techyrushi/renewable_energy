@@ -31,16 +31,7 @@ $sr_impact_icons = [
 ];
 
 $sr_testimonials = [];
-$sr_db = sr_cms_db_try();
-if ($sr_db instanceof mysqli) {
-	$res = $sr_db->query('SELECT name, company, quote, image, rating FROM cms_testimonials WHERE is_active=1 ORDER BY sort_order ASC, updated_at DESC LIMIT 50');
-	if ($res) {
-		while ($row = $res->fetch_assoc()) {
-			$sr_testimonials[] = $row;
-		}
-		$res->free();
-	}
-}
+$sr_testimonials = sr_cms_testimonials_get(50, true);
 ?>
 
 <!-- Title Bar -->

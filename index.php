@@ -108,7 +108,7 @@ $sr_home_cta_btn2_url = sr_cms_setting_get('home_cta_btn2_url', 'tel:+9186863131
 $sr_home_services_items = [];
 $sr_home_products_items = [];
 $sr_home_blog_items = [];
-$sr_home_testimonials = [];
+$sr_home_testimonials = sr_cms_testimonials_get(12, true);
 $sr_db_home = sr_cms_db_try();
 if ($sr_db_home instanceof mysqli) {
 	$res = $sr_db_home->query("SELECT slug, title, short_desc, image, icon_svg
@@ -147,17 +147,6 @@ if ($sr_db_home instanceof mysqli) {
 		$res->free();
 	}
 
-	$res = $sr_db_home->query("SELECT id, name, company, quote, image, rating
-		FROM cms_testimonials
-		WHERE is_active = 1
-		ORDER BY sort_order ASC, updated_at DESC
-		LIMIT 12");
-	if ($res) {
-		while ($row = $res->fetch_assoc()) {
-			$sr_home_testimonials[] = $row;
-		}
-		$res->free();
-	}
 }
 ?>
 <div class="pbmit-slider-area pbmit-slider-two">

@@ -1817,6 +1817,10 @@ if ($editing && $editing['slug'] === 'home') {
 $homeTestimonials = [];
 $editingTestimonial = null;
 $homeTestimonialTitle = sr_cms_setting_get('home_testimonial_title', 'What Our Clients Say');
+$sr_front_db_connected = $db instanceof mysqli;
+$sr_front_testimonials_total = 0;
+$sr_front_testimonials_active = 0;
+$sr_front_testimonials_last_updated = '';
 if ($editing && $editing['slug'] === 'home') {
 	$res = $db->query("SELECT id, name, company, quote, image, rating, is_active, sort_order, updated_at
 		FROM cms_testimonials
@@ -1835,6 +1839,20 @@ if ($editing && $editing['slug'] === 'home') {
 				break;
 			}
 		}
+	}
+
+	$diagRes = $db->query("SELECT
+			COUNT(*) AS total_count,
+			SUM(CASE WHEN is_active = 1 THEN 1 ELSE 0 END) AS active_count,
+			MAX(updated_at) AS last_updated
+		FROM cms_testimonials");
+	if ($diagRes && ($diagRow = $diagRes->fetch_assoc())) {
+		$sr_front_testimonials_total = (int) ($diagRow['total_count'] ?? 0);
+		$sr_front_testimonials_active = (int) ($diagRow['active_count'] ?? 0);
+		$sr_front_testimonials_last_updated = (string) ($diagRow['last_updated'] ?? '');
+	}
+	if ($diagRes) {
+		$diagRes->free();
 	}
 }
 ?>
@@ -3302,6 +3320,31 @@ if ($editing && $editing['slug'] === 'home') {
 															<div class="fw-bold mb-1 text-dark">Testimonials</div>
 															<div class="text-title-gray">Add, edit, or remove client
 																testimonials shown on the homepage.</div>
+														</div>
+													</div>
+													<div class="col-12">
+														<div class="p-3 rounded-3 border <?php echo $sr_front_db_connected ? 'bg-light' : 'bg-light-danger'; ?>">
+															<div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+																<div class="fw-bold text-dark">Frontend DB Diagnostics</div>
+																<span class="badge rounded-pill <?php echo $sr_front_db_connected ? 'bg-light-success text-success' : 'bg-light-danger text-danger'; ?>">
+																	<?php echo $sr_front_db_connected ? 'Connected' : 'Disconnected'; ?>
+																</span>
+															</div>
+															<div class="row g-3 mt-1">
+																<div class="col-md-4">
+																	<div class="small text-title-gray">Total testimonials</div>
+																	<div class="fw-bold text-dark"><?php echo (int) $sr_front_testimonials_total; ?></div>
+																</div>
+																<div class="col-md-4">
+																	<div class="small text-title-gray">Active testimonials</div>
+																	<div class="fw-bold text-dark"><?php echo (int) $sr_front_testimonials_active; ?></div>
+																</div>
+																<div class="col-md-4">
+																	<div class="small text-title-gray">Last updated</div>
+																	<div class="fw-bold text-dark"><?php echo htmlspecialchars($sr_front_testimonials_last_updated !== '' ? $sr_front_testimonials_last_updated : '-', ENT_QUOTES, 'UTF-8'); ?></div>
+																</div>
+															</div>
+															<div class="small text-title-gray mt-2">If status is connected and active testimonials are greater than 0, frontend should display items from database.</div>
 														</div>
 													</div>
 
