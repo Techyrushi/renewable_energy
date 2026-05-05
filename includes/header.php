@@ -529,7 +529,7 @@ if ($sr_nav_db instanceof mysqli) {
 													<img class="logo-img"
 														src="<?php echo htmlspecialchars($sr_site_logo, ENT_QUOTES, 'UTF-8'); ?>"
 														alt="Shivanjali Renewables">
-													<span class="pbmit-logo-tagline">Solar &amp; Renewable Energy</span>
+													<span class="pbmit-logo-tagline" style="color: rgba(var(--bs-primary-rgb), 1) !important;">Solar &amp; Renewable Energy</span>
 												</a>
 											</h1>
 										</div>
