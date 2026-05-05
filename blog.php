@@ -60,7 +60,7 @@ $sr_blog_posts_fallback = [
 $sr_blog_page = sr_cms_page_get('blog');
 $sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : 'Solar Knowledge Hub';
 $sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : 'Stay informed with the latest news, guides, and insights from India&#8217;s solar industry.';
-$sr_banner_image = $sr_blog_page && trim((string)($sr_blog_page['banner_image'] ?? '')) !== '' ? (string)$sr_blog_page['banner_image'] : '';
+$sr_banner_image = $sr_blog_page && trim((string)($sr_blog_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_blog_page['banner_image']) : '';
 $sr_page_override = $sr_blog_page && trim((string)($sr_blog_page['content'] ?? '')) !== '' ? (string)$sr_blog_page['content'] : '';
 
 $sr_blog_categories_title = sr_cms_setting_get('blog_categories_title', 'Browse Categories');
@@ -130,7 +130,7 @@ if ($sr_db instanceof mysqli) {
 				'category' => (string)($row['category'] ?? ''),
 				'date' => (string)($row['date_label'] ?? ''),
 				'read_time' => (string)($row['read_time'] ?? ''),
-				'image' => (string)($row['cover_image'] ?? ''),
+				'image' => sr_cms_public_asset_url((string)($row['cover_image'] ?? '')),
 				'title' => (string)($row['title'] ?? ''),
 				'excerpt' => (string)($row['excerpt'] ?? ''),
 			];
@@ -141,6 +141,10 @@ if ($sr_db instanceof mysqli) {
 if (!$sr_blog_posts) {
 	$sr_blog_posts = $sr_blog_posts_fallback;
 }
+foreach ($sr_blog_posts as &$sr_post_item) {
+	$sr_post_item['image'] = sr_cms_public_asset_url((string)($sr_post_item['image'] ?? ''));
+}
+unset($sr_post_item);
 ?>
 
 <!-- Title Bar -->

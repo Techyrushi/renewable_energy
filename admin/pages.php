@@ -821,6 +821,31 @@ function sr_admin_upload_image_to(string $absDir, string $relDir, string $prefix
 	return ['ok' => true, 'path' => $rel, 'error' => ''];
 }
 
+function sr_admin_normalize_testimonial_image_path(string $path): string
+{
+	$path = trim(str_replace('\\', '/', $path));
+	if ($path === '') {
+		return '';
+	}
+
+	$urlPath = (string) (parse_url($path, PHP_URL_PATH) ?? '');
+	if ($urlPath !== '') {
+		$path = $urlPath;
+	}
+	$path = ltrim($path, '/');
+
+	$needle = 'images/testimonials/';
+	$idx = stripos($path, $needle);
+	if ($idx !== false) {
+		$path = substr($path, $idx);
+	}
+
+	if (preg_match('/^images\/testimonials\/testimonial-[a-z0-9-]+\.(png|jpe?g|webp)$/i', $path) !== 1) {
+		return '';
+	}
+	return $path;
+}
+
 if ($slugParam !== '' && $action === 'list' && $id === 0) {
 	$stmt = $db->prepare('SELECT id FROM cms_pages WHERE slug=? LIMIT 1');
 	if ($stmt) {
@@ -957,7 +982,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					$stmt->close();
 				}
 
-				if (is_string($oldImage) && preg_match('/^images\\/testimonials\\/testimonial-[a-z0-9-]+\\.(png|jpe?g|webp)$/i', $oldImage) === 1) {
+				$oldImage = sr_admin_normalize_testimonial_image_path((string) $oldImage);
+				if ($oldImage !== '') {
 					$abs = dirname(__DIR__) . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $oldImage);
 					if (is_file($abs)) {
 						@unlink($abs);
@@ -980,7 +1006,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$rating = 5;
 		$sortOrder = isset($_POST['test_sort_order']) ? (int) $_POST['test_sort_order'] : 0;
 		$isActive = isset($_POST['test_is_active']) ? 1 : 0;
-		$image = trim((string) ($_POST['test_image_existing'] ?? ''));
+		$image = sr_admin_normalize_testimonial_image_path((string) ($_POST['test_image_existing'] ?? ''));
 
 		if ($name === '' || $quote === '') {
 			header('Location: ' . $back . '&msg=' . rawurlencode('Name and quote are required.'));
@@ -998,6 +1024,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		}
 
 		$oldImage = $image;
+		if ($testId > 0) {
+			$stmtExisting = $db->prepare('SELECT image FROM cms_testimonials WHERE id=? LIMIT 1');
+			if ($stmtExisting) {
+				$existingImage = '';
+				$stmtExisting->bind_param('i', $testId);
+				$stmtExisting->execute();
+				$stmtExisting->bind_result($existingImage);
+				if ($stmtExisting->fetch()) {
+					$image = sr_admin_normalize_testimonial_image_path((string) $existingImage);
+					$oldImage = $image;
+				}
+				$stmtExisting->close();
+			}
+		}
 		if (isset($_FILES['test_image']) && is_array($_FILES['test_image'])) {
 			$upImg = sr_admin_upload_image_to(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'testimonials', 'images/testimonials', 'testimonial', $_FILES['test_image'], 3_000_000);
 			if ($upImg['error'] !== '') {
@@ -1021,7 +1061,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$stmt->execute();
 				$stmt->close();
 			}
-			if ($oldImage !== $image && preg_match('/^images\\/testimonials\\/testimonial-[a-z0-9-]+\\.(png|jpe?g|webp)$/i', $oldImage) === 1) {
+			if ($oldImage !== '' && $oldImage !== $image) {
 				$abs = dirname(__DIR__) . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $oldImage);
 				if (is_file($abs)) {
 					@unlink($abs);

@@ -46,9 +46,9 @@ if ($sr_project) {
 	}
 }
 
-$sr_image = $sr_project ? trim($sr_project['image']) : '';
+$sr_image = $sr_project ? sr_cms_public_asset_url(trim($sr_project['image'])) : '';
 if ($sr_image === '') {
-	$sr_image = 'images/portfolio/portfolio-01.jpg';
+	$sr_image = sr_cms_public_asset_url('images/portfolio/portfolio-01.jpg');
 }
 
 include 'includes/header.php';

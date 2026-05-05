@@ -40,6 +40,8 @@ $sr_site_favicon = sr_cms_setting_get('site_favicon', 'images/fevicon.png');
 
 $sr_site_logo = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp)$/i', $sr_site_logo) === 1) ? $sr_site_logo : 'images/Shivanjali_Logo.jpg';
 $sr_site_favicon = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp|ico)$/i', $sr_site_favicon) === 1) ? $sr_site_favicon : 'images/fevicon.png';
+$sr_site_logo = sr_cms_public_asset_url($sr_site_logo);
+$sr_site_favicon = sr_cms_public_asset_url($sr_site_favicon);
 
 $sr_req_path = (string) (parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?? '/');
 $sr_base_path = rtrim(str_replace('\\', '/', (string) dirname((string) ($_SERVER['SCRIPT_NAME'] ?? '/'))), '/');
@@ -198,6 +200,7 @@ if ($sr_meta_image === '' && $sr_page_for_meta && trim((string) ($sr_page_for_me
 if ($sr_meta_image === '' && $sr_entity_image !== '') {
 	$sr_meta_image = $sr_entity_image;
 }
+$sr_meta_image = sr_cms_public_asset_url($sr_meta_image);
 $sr_meta_image_abs = '';
 if ($sr_meta_image !== '') {
 	if (preg_match('~^https?://~i', $sr_meta_image) === 1) {

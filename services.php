@@ -3,7 +3,7 @@
 $sr_page = sr_cms_page_get('services');
 $sr_services_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Services';
 $sr_services_subtitle = $sr_page && trim((string)($sr_page['hero_subtitle'] ?? '')) !== '' ? (string)$sr_page['hero_subtitle'] : '';
-$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_page['banner_image']) : '';
 $sr_services_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 $sr_services_intro_title = sr_cms_setting_get('services_intro_title', 'End-to-End Solar Services. Zero Compromise.');
 $sr_services_intro_desc = sr_cms_setting_get('services_intro_desc', 'From feasibility study and design to installation, grid connection, and lifetime maintenance — Shivanjali Renewables handles it all.');
@@ -76,8 +76,8 @@ $sr_icon_palette = [
 							$href = 'services/' . rawurlencode($slug);
 							$title = (string)($s['title'] ?? '');
 							$desc = (string)($s['short_desc'] ?? '');
-							$image = trim((string)($s['image'] ?? ''));
-							if ($image === '') $image = 'images/homepage-2/service/service-img-01.jpg';
+							$image = sr_cms_public_asset_url(trim((string)($s['image'] ?? '')));
+							if ($image === '') $image = sr_cms_public_asset_url('images/homepage-2/service/service-img-01.jpg');
 							$iconSvg = trim((string)($s['icon_svg'] ?? ''));
 							$useAutoIcon = $iconSvg === '' || strpos($iconSvg, $sr_default_icon_sig) !== false;
 							if ($useAutoIcon) {

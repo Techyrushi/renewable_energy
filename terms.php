@@ -5,7 +5,7 @@ $sr_page = sr_cms_page_get('terms-of-use');
 $sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Terms of Use';
 $sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'These Terms of Use govern access to and use of the Shivanjali Renewables website. By using this website, you agree to these terms.';
 $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V6h2.5L14 3.5zM7 9h10v1.8H7V9zm0 4h10v1.8H7V13zm0 4h7v1.8H7V17z"/></svg>';
-$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_page['banner_image']) : '';
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $tou_defaults = [

@@ -3,7 +3,7 @@
 $sr_projects_page = sr_cms_page_get('projects');
 $sr_projects_intro_title = $sr_projects_page && trim((string)$sr_projects_page['hero_title']) !== '' ? (string)$sr_projects_page['hero_title'] : 'Projects That Prove Our Promise';
 $sr_projects_intro_desc = $sr_projects_page && trim((string)$sr_projects_page['hero_subtitle']) !== '' ? (string)$sr_projects_page['hero_subtitle'] : 'From rooftop systems in Nashik to megawatt-scale solar farms, every project reflects our commitment to quality, efficiency, and clean energy.';
-$sr_banner_image = $sr_projects_page && trim((string)($sr_projects_page['banner_image'] ?? '')) !== '' ? (string)$sr_projects_page['banner_image'] : '';
+$sr_banner_image = $sr_projects_page && trim((string)($sr_projects_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_projects_page['banner_image']) : '';
 $sr_projects_tbar = $sr_projects_page && trim((string)($sr_projects_page['title'] ?? '')) !== '' ? (string)$sr_projects_page['title'] : 'Projects';
 $sr_page_override = $sr_projects_page && trim((string)($sr_projects_page['content'] ?? '')) !== '' ? (string)$sr_projects_page['content'] : '';
 
@@ -242,9 +242,9 @@ if ($sr_db instanceof mysqli) {
 							}
 							$chipClass = $cat === 'openaccess' ? 'sr-project-chip--openaccess' : ($cat === 'parks' ? 'sr-project-chip--parks' : 'sr-project-chip--rooftop');
 							$markIcon = $cat === 'openaccess' ? 'pbmit-base-icon-budgeting' : ($cat === 'parks' ? 'pbmit-base-icon-location-1' : 'pbmit-base-icon-home');
-							$image = trim((string)($item['image'] ?? ''));
+							$image = sr_cms_public_asset_url(trim((string)($item['image'] ?? '')));
 							if ($image === '') {
-								$image = $cat === 'openaccess' ? 'images/portfolio/portfolio-04.jpg' : ($cat === 'parks' ? 'images/portfolio/portfolio-05.jpg' : 'images/portfolio/portfolio-01.jpg');
+								$image = $cat === 'openaccess' ? sr_cms_public_asset_url('images/portfolio/portfolio-04.jpg') : ($cat === 'parks' ? sr_cms_public_asset_url('images/portfolio/portfolio-05.jpg') : sr_cms_public_asset_url('images/portfolio/portfolio-01.jpg'));
 							}
 							$title = (string)($item['title'] ?? '');
 							$slug = trim((string)($item['slug'] ?? ''));

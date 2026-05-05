@@ -265,7 +265,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 					</div>
 					<div class="col-sm-6 col-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="index"><i data-feather="home"></i></a></li>
+							<li class="breadcrumb-item"><a href="index.php"><i data-feather="home"></i></a></li>
 							<li class="breadcrumb-item active">Dashboard</li>
 						</ol>
 					</div>
@@ -290,7 +290,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_enquiries_today, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">Last 24 hours</p>
 								</div>
-								<a class="btn btn-primary" href="enquiries">View</a>
+								<a class="btn btn-primary" href="enquiries.php">View</a>
 							</div>
 						</div>
 					</div>
@@ -311,7 +311,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_enquiries_open, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">New + in progress</p>
 								</div>
-								<a class="btn btn-primary" href="enquiries">Manage</a>
+								<a class="btn btn-primary" href="enquiries.php">Manage</a>
 							</div>
 						</div>
 					</div>
@@ -332,7 +332,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_blog_published, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">Published posts</p>
 								</div>
-								<a class="btn btn-primary" href="blog-posts">View</a>
+								<a class="btn btn-primary" href="blog-posts.php">View</a>
 							</div>
 						</div>
 					</div>
@@ -374,7 +374,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_products_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="products">Open</a>
+								<a class="btn btn-primary" href="products.php">Open</a>
 							</div>
 						</div>
 					</div>
@@ -395,7 +395,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_services_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="services">Open</a>
+								<a class="btn btn-primary" href="services.php">Open</a>
 							</div>
 						</div>
 					</div>
@@ -416,7 +416,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<h2 class="mb-0"><?php echo htmlspecialchars($sr_projects_total, ENT_QUOTES, 'UTF-8'); ?></h2>
 									<p class="mb-0 text-title-gray">In CMS</p>
 								</div>
-								<a class="btn btn-primary" href="projects">Open</a>
+								<a class="btn btn-primary" href="projects.php">Open</a>
 							</div>
 						</div>
 					</div>
@@ -431,8 +431,8 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<div class="text-title-gray">Last 14 days • Total last 7 days: <?php echo htmlspecialchars($sr_enquiries_7d, ENT_QUOTES, 'UTF-8'); ?> • Last 30 days: <?php echo htmlspecialchars($sr_enquiries_30d, ENT_QUOTES, 'UTF-8'); ?></div>
 								</div>
 								<div class="d-flex gap-2 flex-wrap">
-									<a class="btn btn-outline-primary" href="enquiries">Open Enquiries</a>
-									<a class="btn btn-primary" href="pages?slug=home">Edit Home</a>
+									<a class="btn btn-outline-primary" href="enquiries.php">Open Enquiries</a>
+									<a class="btn btn-primary" href="pages.php?slug=home">Edit Home</a>
 								</div>
 							</div>
 						</div>
@@ -474,7 +474,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 						<div class="card-header">
 							<div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 								<h4 class="mb-0">Recent Enquiries</h4>
-								<a class="btn btn-outline-primary" href="enquiries">View All</a>
+								<a class="btn btn-outline-primary" href="enquiries.php">View All</a>
 							</div>
 						</div>
 						<div class="card-body">
@@ -508,7 +508,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 												<td><span class="badge rounded-pill <?php echo $badge; ?>"><?php echo htmlspecialchars($st, ENT_QUOTES, 'UTF-8'); ?></span></td>
 												<td class="text-title-gray"><?php echo htmlspecialchars((string)($e['created_at'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></td>
 												<td class="text-end">
-													<a class="btn btn-sm btn-primary" href="enquiries?action=view&id=<?php echo (int)($e['id'] ?? 0); ?>">Open</a>
+													<a class="btn btn-sm btn-primary" href="enquiries.php?action=view&id=<?php echo (int)($e['id'] ?? 0); ?>">Open</a>
 												</td>
 											</tr>
 										<?php } ?>
@@ -526,7 +526,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 							<div class="text-title-gray">Download client-ready CSV reports</div>
 						</div>
 						<div class="card-body">
-							<form method="get" action="index" class="row g-3">
+							<form method="get" action="index.php" class="row g-3">
 								<input type="hidden" name="report" value="enquiries_csv">
 								<input type="hidden" name="csrf" value="<?php echo htmlspecialchars($sr_dash_csrf, ENT_QUOTES, 'UTF-8'); ?>">
 								<div class="col-6">
@@ -548,7 +548,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 								</div>
 								<div class="col-12 d-flex gap-2 flex-wrap">
 									<button class="btn btn-primary" type="submit"><i data-feather="download"></i><span class="ms-2">Download Enquiries CSV</span></button>
-									<a class="btn btn-outline-primary" href="index?report=summary_csv&from=<?php echo rawurlencode(date('Y-m-d', strtotime('-30 days'))); ?>&to=<?php echo rawurlencode(date('Y-m-d')); ?>&csrf=<?php echo rawurlencode($sr_dash_csrf); ?>"><i data-feather="file-text"></i><span class="ms-2">Download Summary CSV</span></a>
+									<a class="btn btn-outline-primary" href="index.php?report=summary_csv&from=<?php echo rawurlencode(date('Y-m-d', strtotime('-30 days'))); ?>&to=<?php echo rawurlencode(date('Y-m-d')); ?>&csrf=<?php echo rawurlencode($sr_dash_csrf); ?>"><i data-feather="file-text"></i><span class="ms-2">Download Summary CSV</span></a>
 								</div>
 							</form>
 							<div class="mt-3 p-3 rounded-3 border bg-light">
@@ -568,7 +568,7 @@ $sr_dash_csrf = sr_admin_csrf_token();
 									<a class="btn btn-outline-primary" href="../contact" target="_blank" rel="noopener">Open Contact Page</a>
 									<a class="btn btn-outline-primary" href="../projects" target="_blank" rel="noopener">Open Projects Page</a>
 									<a class="btn btn-outline-primary" href="../blog" target="_blank" rel="noopener">Open Blog Page</a>
-									<a class="btn btn-primary" href="settings">Admin Settings</a>
+									<a class="btn btn-primary" href="settings.php">Admin Settings</a>
 								</div>
 							</div>
 						</div>

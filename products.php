@@ -4,7 +4,7 @@ $sr_products_page = sr_cms_page_get('products');
 $sr_products_tbar = $sr_products_page && trim((string)$sr_products_page['title']) !== '' ? (string)$sr_products_page['title'] : 'Products';
 $sr_products_hero_title = $sr_products_page && trim((string)$sr_products_page['hero_title']) !== '' ? (string)$sr_products_page['hero_title'] : 'Solar Systems for Every Scale — 3 kW to 20 MW';
 $sr_products_hero_subtitle = $sr_products_page && trim((string)$sr_products_page['hero_subtitle']) !== '' ? (string)$sr_products_page['hero_subtitle'] : 'Whether you are a homeowner, a factory owner, or a large-scale developer, we have the right solar solution to match your energy needs and budget.';
-$sr_banner_image = $sr_products_page && trim((string)($sr_products_page['banner_image'] ?? '')) !== '' ? (string)$sr_products_page['banner_image'] : '';
+$sr_banner_image = $sr_products_page && trim((string)($sr_products_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_products_page['banner_image']) : '';
 $sr_page_override = $sr_products_page && trim((string)($sr_products_page['content'] ?? '')) !== '' ? (string)$sr_products_page['content'] : '';
 $sr_open_product = isset($_GET['open']) ? trim((string)$_GET['open']) : '';
 
@@ -75,8 +75,8 @@ if ($sr_db instanceof mysqli) {
 						$title = (string)($p['title'] ?? '');
 						$range = trim((string)($p['range_label'] ?? ''));
 						$desc = (string)($p['short_desc'] ?? '');
-						$image = trim((string)($p['image'] ?? ''));
-						if ($image === '') $image = 'images/homepage-1/service/service-img-01.jpg';
+						$image = sr_cms_public_asset_url(trim((string)($p['image'] ?? '')));
+						if ($image === '') $image = sr_cms_public_asset_url('images/homepage-1/service/service-img-01.jpg');
 							$html = (string)($p['content'] ?? '');
 
 						$badgeClass = 'sr-product-badge';

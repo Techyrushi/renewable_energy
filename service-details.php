@@ -32,9 +32,9 @@ if ($sr_service === null) {
 }
 
 $sr_title = $sr_service ? $sr_service['title'] : 'Service';
-$sr_image = $sr_service ? trim($sr_service['image']) : '';
+$sr_image = $sr_service ? sr_cms_public_asset_url(trim($sr_service['image'])) : '';
 if ($sr_image === '') {
-	$sr_image = 'images/homepage-2/service/service-img-01.jpg';
+	$sr_image = sr_cms_public_asset_url('images/homepage-2/service/service-img-01.jpg');
 }
 
 include 'includes/header.php';

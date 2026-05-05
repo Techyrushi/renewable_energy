@@ -152,7 +152,6 @@ $sr_whatsapp_tel = preg_replace('/\\D+/', '', sr_cms_setting_get('company_whatsa
 <!-- JS
         ============================================ -->
 <!-- jQuery JS -->
-<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- Sticky-kit JS -->
 <script src="js/jquery.sticky-kit.min.js"></script>
@@ -229,21 +228,9 @@ $sr_whatsapp_tel = preg_replace('/\\D+/', '', sr_cms_setting_get('company_whatsa
             if (el) el.classList.remove('is-visible');
         }
 
-        function loadAnalytics() {
-            if (window.__srAnalyticsLoaded) return;
-            window.__srAnalyticsLoaded = true;
-            var s = document.createElement('script');
-            s.defer = true;
-            s.src = 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516';
-            s.setAttribute('data-cf-beacon', '{"version":"2024.11.0","token":"125856bf84ab44059737e93b01aa0fef"}');
-            s.crossOrigin = 'anonymous';
-            document.head.appendChild(s);
-        }
-
         window.srAcceptCookies = function () {
             setConsent('all');
             hideBanner();
-            loadAnalytics();
         };
 
         window.srRejectCookies = function () {
@@ -252,9 +239,6 @@ $sr_whatsapp_tel = preg_replace('/\\D+/', '', sr_cms_setting_get('company_whatsa
         };
 
         var consent = getConsent();
-        if (consent === 'all') {
-            loadAnalytics();
-        }
         if (!consent) {
             showBanner();
         }

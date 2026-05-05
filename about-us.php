@@ -3,7 +3,7 @@
 $sr_page = sr_cms_page_get('about');
 $sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Illuminating the Path to a Sustainable Future';
 $sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Born in Nashik. Built for India. Driven by a clean-energy mission.';
-$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? sr_cms_public_asset_url((string)$sr_page['banner_image']) : '';
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $sr_story_subtitle = sr_cms_setting_get('about_story_subtitle', 'About Us');
@@ -11,8 +11,8 @@ $sr_story_title = sr_cms_setting_get('about_story_title', 'Our Story');
 $sr_story_p1 = sr_cms_setting_get('about_story_p1', "Shivanjali Renewables Pvt. Ltd. was founded with a singular vision: to accelerate India's transition to clean, renewable energy. Starting from Nashik — the heart of Maharashtra — we have grown into a full-service Solar EPC company trusted by homeowners, industries, and businesses across the region.");
 $sr_story_p2 = sr_cms_setting_get('about_story_p2', 'Every project we undertake is powered by a commitment to quality, a passion for sustainability, and a drive to deliver real value to our customers. From a small rooftop installation in a residential colony to a 20 MW open-access solar park, we bring the same level of dedication and technical excellence to every assignment.');
 $sr_story_p3 = sr_cms_setting_get('about_story_p3', 'Our name, Shivanjali, is a tribute to our roots — a blend of strength and dedication that defines our work ethic every single day.');
-$sr_story_img1 = sr_cms_setting_get('about_story_img1', 'images/banner-slider-img/Slider01-2.jpg');
-$sr_story_img2 = sr_cms_setting_get('about_story_img2', 'images/banner-slider-img/Slider02-3.jpg');
+$sr_story_img1 = sr_cms_public_asset_url(sr_cms_setting_get('about_story_img1', 'images/banner-slider-img/Slider01-2.jpg'));
+$sr_story_img2 = sr_cms_public_asset_url(sr_cms_setting_get('about_story_img2', 'images/banner-slider-img/Slider02-3.jpg'));
 
 $sr_vm_title = sr_cms_setting_get('about_vm_title', 'OUR VISION & MISSION');
 $sr_vision_desc = sr_cms_setting_get('about_vision_desc', 'To be a global leader in the solar energy sector, pioneering innovation and fostering the widespread adoption of sustainable renewable energy solutions.');
@@ -31,10 +31,10 @@ $sr_leadership_subtitle = sr_cms_setting_get('about_leadership_subtitle', 'Leade
 $sr_leadership_title = sr_cms_setting_get('about_leadership_title', 'Meet Our Leadership');
 $sr_leader1_name = sr_cms_setting_get('about_leader1_name', 'Anjali Shivaji Chavanke');
 $sr_leader1_role = sr_cms_setting_get('about_leader1_role', 'Managing Director (MD)');
-$sr_leader1_photo = sr_cms_setting_get('about_leader1_photo', 'images/homepage-1/team/team-img-01.jpg');
+$sr_leader1_photo = sr_cms_public_asset_url(sr_cms_setting_get('about_leader1_photo', 'images/homepage-1/team/team-img-01.jpg'));
 $sr_leader2_name = sr_cms_setting_get('about_leader2_name', 'Abhijeet Shivaji Chavanke');
 $sr_leader2_role = sr_cms_setting_get('about_leader2_role', 'Chief Executive Officer (CEO)');
-$sr_leader2_photo = sr_cms_setting_get('about_leader2_photo', 'images/homepage-1/team/team-img-02.jpg');
+$sr_leader2_photo = sr_cms_public_asset_url(sr_cms_setting_get('about_leader2_photo', 'images/homepage-1/team/team-img-02.jpg'));
 $sr_founder_subtitle = sr_cms_setting_get('about_founder_subtitle', 'Founder / CEO Message');
 $sr_founder_quote = sr_cms_setting_get('about_founder_quote', '"At Shivanjali Renewables, our goal is to lead the transition toward clean energy. We are dedicated to delivering cutting-edge solar solutions that empower communities and businesses to embrace sustainability. Together, we can build a brighter and greener future."');
 
@@ -43,27 +43,27 @@ $sr_history_title = sr_cms_setting_get('about_history_title', 'Milestones That D
 $sr_h1_year = sr_cms_setting_get('about_history1_year', '01');
 $sr_h1_title = sr_cms_setting_get('about_history1_title', 'Founded');
 $sr_h1_desc = sr_cms_setting_get('about_history1_desc', 'Shivanjali Renewables established in Nashik, Maharashtra.');
-$sr_h1_img = sr_cms_setting_get('about_history1_image', 'images/history/history-img-01.jpg');
+$sr_h1_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history1_image', 'images/history/history-img-01.jpg'));
 $sr_h2_year = sr_cms_setting_get('about_history2_year', '02');
 $sr_h2_title = sr_cms_setting_get('about_history2_title', 'First commercial project');
 $sr_h2_desc = sr_cms_setting_get('about_history2_desc', '50 kW rooftop installation for an industrial client.');
-$sr_h2_img = sr_cms_setting_get('about_history2_image', 'images/history/history-img-02.jpg');
+$sr_h2_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history2_image', 'images/history/history-img-02.jpg'));
 $sr_h3_year = sr_cms_setting_get('about_history3_year', '03');
 $sr_h3_title = sr_cms_setting_get('about_history3_title', 'Crossed 1 MW capacity');
 $sr_h3_desc = sr_cms_setting_get('about_history3_desc', 'Crossed 1 MW cumulative installed capacity.');
-$sr_h3_img = sr_cms_setting_get('about_history3_image', 'images/history/history-img-03.jpg');
+$sr_h3_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history3_image', 'images/history/history-img-03.jpg'));
 $sr_h4_year = sr_cms_setting_get('about_history4_year', '04');
 $sr_h4_title = sr_cms_setting_get('about_history4_title', 'Open Access Solar');
 $sr_h4_desc = sr_cms_setting_get('about_history4_desc', 'Launched Open Access Solar division for large-scale industrial clients.');
-$sr_h4_img = sr_cms_setting_get('about_history4_image', 'images/history/history-img-04.jpg');
+$sr_h4_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history4_image', 'images/history/history-img-04.jpg'));
 $sr_h5_year = sr_cms_setting_get('about_history5_year', '05');
 $sr_h5_title = sr_cms_setting_get('about_history5_title', '900 kW project completed');
 $sr_h5_desc = sr_cms_setting_get('about_history5_desc', 'Completed 900 kW project for Varun Agro Food Processing Pvt. Ltd.');
-$sr_h5_img = sr_cms_setting_get('about_history5_image', 'images/history/history-img-05.jpg');
+$sr_h5_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history5_image', 'images/history/history-img-05.jpg'));
 $sr_h6_year = sr_cms_setting_get('about_history6_year', '06');
 $sr_h6_title = sr_cms_setting_get('about_history6_title', '20 MW+ installed');
 $sr_h6_desc = sr_cms_setting_get('about_history6_desc', 'Crossed 20 MW+ total installed solar capacity.');
-$sr_h6_img = sr_cms_setting_get('about_history6_image', 'images/history/history-img-06.jpg');
+$sr_h6_img = sr_cms_public_asset_url(sr_cms_setting_get('about_history6_image', 'images/history/history-img-06.jpg'));
 ?>
 <!-- Title Bar -->
 <div class="pbmit-title-bar-wrapper sr-projects-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>

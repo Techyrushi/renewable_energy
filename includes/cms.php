@@ -671,3 +671,42 @@ function sr_cms_slugify(string $s): string
 	$s = trim($s, '-');
 	return $s !== '' ? $s : 'item';
 }
+
+function sr_cms_public_asset_url(string $path): string
+{
+	$path = trim($path);
+	if ($path === '') {
+		return '';
+	}
+
+	$path = str_replace('\\', '/', $path);
+	if (preg_match('~^(?:https?:)?//~i', $path) === 1 || preg_match('~^(?:data|blob):~i', $path) === 1) {
+		$uPath = (string) (parse_url($path, PHP_URL_PATH) ?? '');
+		if ($uPath !== '' && preg_match('~/(images|uploads)/~i', $uPath) === 1) {
+			$parts = preg_split('~/(images|uploads)/~i', $uPath, 2, PREG_SPLIT_DELIM_CAPTURE);
+			if (is_array($parts) && count($parts) >= 3) {
+				$rel = strtolower((string) $parts[1]) . '/' . ltrim((string) $parts[2], '/');
+				return $rel;
+			}
+		}
+		return $path;
+	}
+
+	$path = preg_replace('~^\\./+~', '', $path) ?? $path;
+	$path = preg_replace('~^(?:\\.\\./)+~', '', $path) ?? $path;
+
+	$scriptName = str_replace('\\', '/', (string) ($_SERVER['SCRIPT_NAME'] ?? '/'));
+	$basePath = rtrim((string) dirname($scriptName), '/');
+	$rootBase = rtrim((string) dirname($basePath), '/');
+	if ($rootBase !== '' && $rootBase !== '/' && str_starts_with($path, $rootBase . '/')) {
+		$path = substr($path, strlen($rootBase) + 1);
+	}
+
+	if (str_starts_with($path, '/images/') || str_starts_with($path, '/uploads/')) {
+		$path = ltrim($path, '/');
+	}
+	if (str_starts_with($path, '/')) {
+		return $path;
+	}
+	return $path;
+}

@@ -36,9 +36,9 @@ if ($sr_product === null) {
 }
 
 $sr_title = $sr_product ? $sr_product['title'] : 'Product';
-$sr_image = $sr_product ? trim($sr_product['image']) : '';
+$sr_image = $sr_product ? sr_cms_public_asset_url(trim($sr_product['image'])) : '';
 if ($sr_image === '') {
-	$sr_image = 'images/about-01.jpg';
+	$sr_image = sr_cms_public_asset_url('images/about-01.jpg');
 }
 
 include 'includes/header.php';

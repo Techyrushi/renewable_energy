@@ -1,115 +1,120 @@
 <?php include 'includes/header.php'; ?>
 <?php
+$sr_db_home = sr_cms_db_try();
+$sr_use_fallback = !($sr_db_home instanceof mysqli);
 $sr_home_page = sr_cms_page_get('home');
-$sr_home_kicker = sr_cms_setting_get('home_kicker', 'Maharashtra’s Trusted Solar EPC Partner');
-$sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== '' ? (string)$sr_home_page['hero_title'] : 'Powering a Greener Tomorrow — One Solar Panel at a Time';
-$sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== '' ? (string)$sr_home_page['hero_subtitle'] : 'Shivanjali Renewables is Maharashtra\'s trusted Solar EPC partner for homes, businesses, industries, and large-scale solar parks. Clean energy. Real savings. Lasting impact.';
+$sr_home_kicker = sr_cms_setting_get('home_kicker', $sr_use_fallback ? 'Maharashtra’s Trusted Solar EPC Partner' : '');
+$sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== ''
+	? (string)$sr_home_page['hero_title']
+	: ($sr_use_fallback ? 'Powering a Greener Tomorrow — One Solar Panel at a Time' : '');
+$sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== ''
+	? (string)$sr_home_page['hero_subtitle']
+	: ($sr_use_fallback ? 'Shivanjali Renewables is Maharashtra\'s trusted Solar EPC partner for homes, businesses, industries, and large-scale solar parks. Clean energy. Real savings. Lasting impact.' : '');
 
-$sr_home_stat1_title = sr_cms_setting_get('home_stat1_title', 'Projects<br>Completed');
-$sr_home_stat1_to = sr_cms_setting_get('home_stat1_to', '500');
-$sr_home_stat1_suffix = sr_cms_setting_get('home_stat1_suffix', '+');
-$sr_home_stat2_title = sr_cms_setting_get('home_stat2_title', 'Solar Capacity<br>Installed');
-$sr_home_stat2_to = sr_cms_setting_get('home_stat2_to', '20');
-$sr_home_stat2_suffix = sr_cms_setting_get('home_stat2_suffix', ' MW+');
-$sr_home_stat3_title = sr_cms_setting_get('home_stat3_title', 'System<br>Range');
-$sr_home_stat3_to = sr_cms_setting_get('home_stat3_to', '3');
-$sr_home_stat3_suffix = sr_cms_setting_get('home_stat3_suffix', ' kW – 20 MW');
-$sr_home_stat4_title = sr_cms_setting_get('home_stat4_title', 'After-Sales<br>Support');
-$sr_home_stat4_to = sr_cms_setting_get('home_stat4_to', '100');
-$sr_home_stat4_suffix = sr_cms_setting_get('home_stat4_suffix', '%');
+$sr_home_stat1_title = sr_cms_setting_get('home_stat1_title', $sr_use_fallback ? 'Projects<br>Completed' : '');
+$sr_home_stat1_to = sr_cms_setting_get('home_stat1_to', $sr_use_fallback ? '500' : '');
+$sr_home_stat1_suffix = sr_cms_setting_get('home_stat1_suffix', $sr_use_fallback ? '+' : '');
+$sr_home_stat2_title = sr_cms_setting_get('home_stat2_title', $sr_use_fallback ? 'Solar Capacity<br>Installed' : '');
+$sr_home_stat2_to = sr_cms_setting_get('home_stat2_to', $sr_use_fallback ? '20' : '');
+$sr_home_stat2_suffix = sr_cms_setting_get('home_stat2_suffix', $sr_use_fallback ? ' MW+' : '');
+$sr_home_stat3_title = sr_cms_setting_get('home_stat3_title', $sr_use_fallback ? 'System<br>Range' : '');
+$sr_home_stat3_to = sr_cms_setting_get('home_stat3_to', $sr_use_fallback ? '3' : '');
+$sr_home_stat3_suffix = sr_cms_setting_get('home_stat3_suffix', $sr_use_fallback ? ' kW – 20 MW' : '');
+$sr_home_stat4_title = sr_cms_setting_get('home_stat4_title', $sr_use_fallback ? 'After-Sales<br>Support' : '');
+$sr_home_stat4_to = sr_cms_setting_get('home_stat4_to', $sr_use_fallback ? '100' : '');
+$sr_home_stat4_suffix = sr_cms_setting_get('home_stat4_suffix', $sr_use_fallback ? '%' : '');
 
-$sr_home_services_subtitle = sr_cms_setting_get('home_services_subtitle', 'Our Services');
-$sr_home_services_title = sr_cms_setting_get('home_services_title', 'Comprehensive solar solutions from concept to completion');
-$sr_home_services_cta_label = sr_cms_setting_get('home_services_cta_label', 'View All Services');
+$sr_home_services_subtitle = sr_cms_setting_get('home_services_subtitle', $sr_use_fallback ? 'Our Services' : '');
+$sr_home_services_title = sr_cms_setting_get('home_services_title', $sr_use_fallback ? 'Comprehensive solar solutions from concept to completion' : '');
+$sr_home_services_cta_label = sr_cms_setting_get('home_services_cta_label', $sr_use_fallback ? 'View All Services' : '');
 
-$sr_home_products_subtitle = sr_cms_setting_get('home_products_subtitle', 'Products');
-$sr_home_products_title = sr_cms_setting_get('home_products_title', 'Solar Solutions for Every Scale');
-$sr_home_products_cta_label = sr_cms_setting_get('home_products_cta_label', 'Explore All Products');
+$sr_home_products_subtitle = sr_cms_setting_get('home_products_subtitle', $sr_use_fallback ? 'Products' : '');
+$sr_home_products_title = sr_cms_setting_get('home_products_title', $sr_use_fallback ? 'Solar Solutions for Every Scale' : '');
+$sr_home_products_cta_label = sr_cms_setting_get('home_products_cta_label', $sr_use_fallback ? 'Explore All Products' : '');
 
-$sr_home_about_subtitle = sr_cms_setting_get('home_about_subtitle', 'Who We Are');
-$sr_home_about_title = sr_cms_setting_get('home_about_title', 'Shivanjali Renewables Pvt. Ltd.');
-$sr_home_about_p1 = sr_cms_setting_get('home_about_p1', 'Shivanjali Renewables Pvt. Ltd. is a pioneering Solar EPC (Engineering, Procurement & Construction) company headquartered in Nashik, Maharashtra. With deep expertise across the entire solar value chain — from design and procurement to installation and maintenance — we deliver reliable, high-performance solar solutions for every scale.');
-$sr_home_about_p2 = sr_cms_setting_get('home_about_p2', 'Whether you are a homeowner looking to cut your electricity bill, a factory owner seeking energy independence, or a developer wanting to build a solar park, we are your end-to-end partner.');
-$sr_home_about_b1 = sr_cms_setting_get('home_about_b1', 'End-to-end EPC delivery across every scale');
-$sr_home_about_b2 = sr_cms_setting_get('home_about_b2', 'Design, procurement, installation & maintenance');
-$sr_home_about_cta_label = sr_cms_setting_get('home_about_cta_label', 'Know More About Us');
-$sr_home_about_cta_url = sr_cms_setting_get('home_about_cta_url', 'about');
-$sr_home_about_bg_image = sr_cms_setting_get('home_about_bg_image', '');
-$sr_home_about_fid_to = sr_cms_setting_get('home_about_fid_to', '2386');
-$sr_home_about_fid_suffix = sr_cms_setting_get('home_about_fid_suffix', '+');
-$sr_home_about_fid_title = sr_cms_setting_get('home_about_fid_title', 'Trusted customers around the world');
-$sr_home_about_t1_title = sr_cms_setting_get('home_about_timeline1_title', 'Our Vision.');
-$sr_home_about_t1_desc = sr_cms_setting_get('home_about_timeline1_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
-$sr_home_about_t2_title = sr_cms_setting_get('home_about_timeline2_title', 'Our Mission');
-$sr_home_about_t2_desc = sr_cms_setting_get('home_about_timeline2_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
-$sr_home_about_t3_title = sr_cms_setting_get('home_about_timeline3_title', 'Our Achievements');
-$sr_home_about_t3_desc = sr_cms_setting_get('home_about_timeline3_desc', 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation');
+$sr_home_about_subtitle = sr_cms_setting_get('home_about_subtitle', $sr_use_fallback ? 'Who We Are' : '');
+$sr_home_about_title = sr_cms_setting_get('home_about_title', $sr_use_fallback ? 'Shivanjali Renewables Pvt. Ltd.' : '');
+$sr_home_about_p1 = sr_cms_setting_get('home_about_p1', $sr_use_fallback ? 'Shivanjali Renewables Pvt. Ltd. is a pioneering Solar EPC (Engineering, Procurement & Construction) company headquartered in Nashik, Maharashtra. With deep expertise across the entire solar value chain — from design and procurement to installation and maintenance — we deliver reliable, high-performance solar solutions for every scale.' : '');
+$sr_home_about_p2 = sr_cms_setting_get('home_about_p2', $sr_use_fallback ? 'Whether you are a homeowner looking to cut your electricity bill, a factory owner seeking energy independence, or a developer wanting to build a solar park, we are your end-to-end partner.' : '');
+$sr_home_about_b1 = sr_cms_setting_get('home_about_b1', $sr_use_fallback ? 'End-to-end EPC delivery across every scale' : '');
+$sr_home_about_b2 = sr_cms_setting_get('home_about_b2', $sr_use_fallback ? 'Design, procurement, installation & maintenance' : '');
+$sr_home_about_cta_label = sr_cms_setting_get('home_about_cta_label', $sr_use_fallback ? 'Know More About Us' : '');
+$sr_home_about_cta_url = sr_cms_setting_get('home_about_cta_url', $sr_use_fallback ? 'about' : '');
+$sr_home_about_bg_image = sr_cms_public_asset_url(sr_cms_setting_get('home_about_bg_image', ''));
+$sr_home_about_fid_to = sr_cms_setting_get('home_about_fid_to', $sr_use_fallback ? '2386' : '');
+$sr_home_about_fid_suffix = sr_cms_setting_get('home_about_fid_suffix', $sr_use_fallback ? '+' : '');
+$sr_home_about_fid_title = sr_cms_setting_get('home_about_fid_title', $sr_use_fallback ? 'Trusted customers around the world' : '');
+$sr_home_about_t1_title = sr_cms_setting_get('home_about_timeline1_title', $sr_use_fallback ? 'Our Vision.' : '');
+$sr_home_about_t1_desc = sr_cms_setting_get('home_about_timeline1_desc', $sr_use_fallback ? 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation' : '');
+$sr_home_about_t2_title = sr_cms_setting_get('home_about_timeline2_title', $sr_use_fallback ? 'Our Mission' : '');
+$sr_home_about_t2_desc = sr_cms_setting_get('home_about_timeline2_desc', $sr_use_fallback ? 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation' : '');
+$sr_home_about_t3_title = sr_cms_setting_get('home_about_timeline3_title', $sr_use_fallback ? 'Our Achievements' : '');
+$sr_home_about_t3_desc = sr_cms_setting_get('home_about_timeline3_desc', $sr_use_fallback ? 'Our mission is to create meaningful connections through the power of music. By fostering creativity, passion, and innovation' : '');
 
-$sr_home_why_subtitle = sr_cms_setting_get('home_why_subtitle', 'Why Choose us');
-$sr_home_why_title = sr_cms_setting_get('home_why_title', 'Your partner for sustainable <br> environmental solutions');
-$sr_home_why_card1_title = sr_cms_setting_get('home_why_card1_title', 'Commercial Solutions');
-$sr_home_why_card1_desc = sr_cms_setting_get('home_why_card1_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
-$sr_home_why_card2_title = sr_cms_setting_get('home_why_card2_title', 'Tailored Solutions');
-$sr_home_why_card2_desc = sr_cms_setting_get('home_why_card2_desc', 'Precision engineering, quality components, and clean installation practices for every rooftop.');
-$sr_home_why_card3_title = sr_cms_setting_get('home_why_card3_title', 'Expert Installation');
-$sr_home_why_card3_desc = sr_cms_setting_get('home_why_card3_desc', 'O&M, performance checks, and after-sales support that keeps your system delivering.');
-$sr_home_why_card4_title = sr_cms_setting_get('home_why_card4_title', 'Expert Installation');
-$sr_home_why_card4_desc = sr_cms_setting_get('home_why_card4_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
-$sr_home_why_card5_title = sr_cms_setting_get('home_why_card5_title', 'Low Cost Operation');
-$sr_home_why_card5_desc = sr_cms_setting_get('home_why_card5_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
-$sr_home_why_card6_title = sr_cms_setting_get('home_why_card6_title', 'Expert Solar Worker');
-$sr_home_why_card6_desc = sr_cms_setting_get('home_why_card6_desc', 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.');
+$sr_home_why_subtitle = sr_cms_setting_get('home_why_subtitle', $sr_use_fallback ? 'Why Choose us' : '');
+$sr_home_why_title = sr_cms_setting_get('home_why_title', $sr_use_fallback ? 'Your partner for sustainable <br> environmental solutions' : '');
+$sr_home_why_card1_title = sr_cms_setting_get('home_why_card1_title', $sr_use_fallback ? 'Commercial Solutions' : '');
+$sr_home_why_card1_desc = sr_cms_setting_get('home_why_card1_desc', $sr_use_fallback ? 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.' : '');
+$sr_home_why_card2_title = sr_cms_setting_get('home_why_card2_title', $sr_use_fallback ? 'Tailored Solutions' : '');
+$sr_home_why_card2_desc = sr_cms_setting_get('home_why_card2_desc', $sr_use_fallback ? 'Precision engineering, quality components, and clean installation practices for every rooftop.' : '');
+$sr_home_why_card3_title = sr_cms_setting_get('home_why_card3_title', $sr_use_fallback ? 'Expert Installation' : '');
+$sr_home_why_card3_desc = sr_cms_setting_get('home_why_card3_desc', $sr_use_fallback ? 'O&M, performance checks, and after-sales support that keeps your system delivering.' : '');
+$sr_home_why_card4_title = sr_cms_setting_get('home_why_card4_title', $sr_use_fallback ? 'Expert Installation' : '');
+$sr_home_why_card4_desc = sr_cms_setting_get('home_why_card4_desc', $sr_use_fallback ? 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.' : '');
+$sr_home_why_card5_title = sr_cms_setting_get('home_why_card5_title', $sr_use_fallback ? 'Low Cost Operation' : '');
+$sr_home_why_card5_desc = sr_cms_setting_get('home_why_card5_desc', $sr_use_fallback ? 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.' : '');
+$sr_home_why_card6_title = sr_cms_setting_get('home_why_card6_title', $sr_use_fallback ? 'Expert Solar Worker' : '');
+$sr_home_why_card6_desc = sr_cms_setting_get('home_why_card6_desc', $sr_use_fallback ? 'Our Climate change mitigation focus on sustainable practices such as rainwater harvesting, wastewater recycling.' : '');
 
-$sr_home_why_sr_title = sr_cms_setting_get('home_why_sr_title', 'Why Shivanjali Renewables?');
-$sr_home_why_sr_1_title = sr_cms_setting_get('home_why_sr_1_title', 'Experience');
-$sr_home_why_sr_1_desc = sr_cms_setting_get('home_why_sr_1_desc', 'Years of proven expertise in the solar industry');
-$sr_home_why_sr_2_title = sr_cms_setting_get('home_why_sr_2_title', 'Expert Team');
-$sr_home_why_sr_2_desc = sr_cms_setting_get('home_why_sr_2_desc', 'Engineers, technicians, and consultants committed to excellence');
-$sr_home_why_sr_3_title = sr_cms_setting_get('home_why_sr_3_title', 'Comprehensive Support');
-$sr_home_why_sr_3_desc = sr_cms_setting_get('home_why_sr_3_desc', 'Full warranty, after-sales maintenance, and project design services');
+$sr_home_why_sr_title = sr_cms_setting_get('home_why_sr_title', $sr_use_fallback ? 'Why Shivanjali Renewables?' : '');
+$sr_home_why_sr_1_title = sr_cms_setting_get('home_why_sr_1_title', $sr_use_fallback ? 'Experience' : '');
+$sr_home_why_sr_1_desc = sr_cms_setting_get('home_why_sr_1_desc', $sr_use_fallback ? 'Years of proven expertise in the solar industry' : '');
+$sr_home_why_sr_2_title = sr_cms_setting_get('home_why_sr_2_title', $sr_use_fallback ? 'Expert Team' : '');
+$sr_home_why_sr_2_desc = sr_cms_setting_get('home_why_sr_2_desc', $sr_use_fallback ? 'Engineers, technicians, and consultants committed to excellence' : '');
+$sr_home_why_sr_3_title = sr_cms_setting_get('home_why_sr_3_title', $sr_use_fallback ? 'Comprehensive Support' : '');
+$sr_home_why_sr_3_desc = sr_cms_setting_get('home_why_sr_3_desc', $sr_use_fallback ? 'Full warranty, after-sales maintenance, and project design services' : '');
 
-$sr_home_process_subtitle = sr_cms_setting_get('home_process_subtitle', 'Our Process');
-$sr_home_process_title = sr_cms_setting_get('home_process_title', 'Wind Solar Energy work<br> Project Planning');
-$sr_home_process_1_title = sr_cms_setting_get('home_process_1_title', 'System Design');
-$sr_home_process_1_desc = sr_cms_setting_get('home_process_1_desc', 'Tailoring efficient and sustainable solar energy systems to meet your specific needs.');
-$sr_home_process_1_image = sr_cms_setting_get('home_process_1_image', 'images/homepage-2/ihbox/image-01.jpg');
-$sr_home_process_2_title = sr_cms_setting_get('home_process_2_title', 'Panel Installation');
-$sr_home_process_2_desc = sr_cms_setting_get('home_process_2_desc', 'Expert installation of high-quality solar panels for maximum energy capture.');
-$sr_home_process_2_image = sr_cms_setting_get('home_process_2_image', 'images/homepage-2/ihbox/image-02.jpg');
-$sr_home_process_3_title = sr_cms_setting_get('home_process_3_title', 'Inverter Integration');
-$sr_home_process_3_desc = sr_cms_setting_get('home_process_3_desc', 'Seamlessly converting solar energy into usable electricity with advanced inverters.');
-$sr_home_process_3_image = sr_cms_setting_get('home_process_3_image', 'images/homepage-2/ihbox/image-03.png');
-$sr_home_process_4_title = sr_cms_setting_get('home_process_4_title', 'Battery Solutions');
-$sr_home_process_4_desc = sr_cms_setting_get('home_process_4_desc', 'Panel installation involves the professional installation expert panel maintenance.');
-$sr_home_process_4_image = sr_cms_setting_get('home_process_4_image', 'images/homepage-2/ihbox/image-04.jpg');
+$sr_home_process_subtitle = sr_cms_setting_get('home_process_subtitle', $sr_use_fallback ? 'Our Process' : '');
+$sr_home_process_title = sr_cms_setting_get('home_process_title', $sr_use_fallback ? 'Wind Solar Energy work<br> Project Planning' : '');
+$sr_home_process_1_title = sr_cms_setting_get('home_process_1_title', $sr_use_fallback ? 'System Design' : '');
+$sr_home_process_1_desc = sr_cms_setting_get('home_process_1_desc', $sr_use_fallback ? 'Tailoring efficient and sustainable solar energy systems to meet your specific needs.' : '');
+$sr_home_process_1_image = sr_cms_public_asset_url(sr_cms_setting_get('home_process_1_image', $sr_use_fallback ? 'images/homepage-2/ihbox/image-01.jpg' : ''));
+$sr_home_process_2_title = sr_cms_setting_get('home_process_2_title', $sr_use_fallback ? 'Panel Installation' : '');
+$sr_home_process_2_desc = sr_cms_setting_get('home_process_2_desc', $sr_use_fallback ? 'Expert installation of high-quality solar panels for maximum energy capture.' : '');
+$sr_home_process_2_image = sr_cms_public_asset_url(sr_cms_setting_get('home_process_2_image', $sr_use_fallback ? 'images/homepage-2/ihbox/image-02.jpg' : ''));
+$sr_home_process_3_title = sr_cms_setting_get('home_process_3_title', $sr_use_fallback ? 'Inverter Integration' : '');
+$sr_home_process_3_desc = sr_cms_setting_get('home_process_3_desc', $sr_use_fallback ? 'Seamlessly converting solar energy into usable electricity with advanced inverters.' : '');
+$sr_home_process_3_image = sr_cms_public_asset_url(sr_cms_setting_get('home_process_3_image', $sr_use_fallback ? 'images/homepage-2/ihbox/image-03.png' : ''));
+$sr_home_process_4_title = sr_cms_setting_get('home_process_4_title', $sr_use_fallback ? 'Battery Solutions' : '');
+$sr_home_process_4_desc = sr_cms_setting_get('home_process_4_desc', $sr_use_fallback ? 'Panel installation involves the professional installation expert panel maintenance.' : '');
+$sr_home_process_4_image = sr_cms_public_asset_url(sr_cms_setting_get('home_process_4_image', $sr_use_fallback ? 'images/homepage-2/ihbox/image-04.jpg' : ''));
 
-$sr_home_marquee_1 = sr_cms_setting_get('home_marquee_1', 'Sustainable');
-$sr_home_marquee_2 = sr_cms_setting_get('home_marquee_2', 'Smart solar');
-$sr_home_marquee_3 = sr_cms_setting_get('home_marquee_3', 'Turbine Technology');
-$sr_home_marquee_4 = sr_cms_setting_get('home_marquee_4', 'Electricity');
+$sr_home_marquee_1 = sr_cms_setting_get('home_marquee_1', $sr_use_fallback ? 'Sustainable' : '');
+$sr_home_marquee_2 = sr_cms_setting_get('home_marquee_2', $sr_use_fallback ? 'Smart solar' : '');
+$sr_home_marquee_3 = sr_cms_setting_get('home_marquee_3', $sr_use_fallback ? 'Turbine Technology' : '');
+$sr_home_marquee_4 = sr_cms_setting_get('home_marquee_4', $sr_use_fallback ? 'Electricity' : '');
 
-$sr_home_testimonial_title = sr_cms_setting_get('home_testimonial_title', 'What Our Clients Say');
-$sr_home_testimonial_quote = sr_cms_setting_get('home_testimonial_quote', '“Partnering with Shivanjali Renewables for our 900 kW solar project has been a transformative experience. Their expertise, professionalism, and commitment to quality ensured the successful completion of our project. We are delighted with the energy savings and sustainability impact we have achieved.”');
-$sr_home_testimonial_name = sr_cms_setting_get('home_testimonial_name', 'Ms. Manisha Dhatrak');
-$sr_home_testimonial_company = sr_cms_setting_get('home_testimonial_company', 'Varun Agro Food Processing Pvt. Ltd.');
-$sr_home_testimonial_image = sr_cms_setting_get('home_testimonial_image', 'images/homepage-1/testimonial/testimonial-01.jpg');
+$sr_home_testimonial_title = sr_cms_setting_get('home_testimonial_title', $sr_use_fallback ? 'What Our Clients Say' : '');
+$sr_home_testimonial_quote = sr_cms_setting_get('home_testimonial_quote', $sr_use_fallback ? '“Partnering with Shivanjali Renewables for our 900 kW solar project has been a transformative experience. Their expertise, professionalism, and commitment to quality ensured the successful completion of our project. We are delighted with the energy savings and sustainability impact we have achieved.”' : '');
+$sr_home_testimonial_name = sr_cms_setting_get('home_testimonial_name', $sr_use_fallback ? 'Ms. Manisha Dhatrak' : '');
+$sr_home_testimonial_company = sr_cms_setting_get('home_testimonial_company', $sr_use_fallback ? 'Varun Agro Food Processing Pvt. Ltd.' : '');
+$sr_home_testimonial_image = sr_cms_public_asset_url(sr_cms_setting_get('home_testimonial_image', $sr_use_fallback ? 'images/homepage-1/testimonial/testimonial-01.jpg' : ''));
 
-$sr_home_blog_subtitle = sr_cms_setting_get('home_blog_subtitle', 'Latest News');
-$sr_home_blog_title = sr_cms_setting_get('home_blog_title', 'Latest from the Blog');
-$sr_home_blog_cta_label = sr_cms_setting_get('home_blog_cta_label', 'View All Post');
+$sr_home_blog_subtitle = sr_cms_setting_get('home_blog_subtitle', $sr_use_fallback ? 'Latest News' : '');
+$sr_home_blog_title = sr_cms_setting_get('home_blog_title', $sr_use_fallback ? 'Latest from the Blog' : '');
+$sr_home_blog_cta_label = sr_cms_setting_get('home_blog_cta_label', $sr_use_fallback ? 'View All Post' : '');
 
-$sr_home_cta_title = sr_cms_setting_get('home_cta_title', 'Ready to Switch to Solar?');
-$sr_home_cta_desc = sr_cms_setting_get('home_cta_desc', 'Get a free, no-obligation solar assessment from our experts. We will evaluate your energy needs and design the perfect system for you.');
-$sr_home_cta_btn1_label = sr_cms_setting_get('home_cta_btn1_label', 'Get Free Quote');
-$sr_home_cta_btn1_url = sr_cms_setting_get('home_cta_btn1_url', 'contact');
-$sr_home_cta_btn2_label = sr_cms_setting_get('home_cta_btn2_label', 'Call Us Now');
-$sr_home_cta_btn2_url = sr_cms_setting_get('home_cta_btn2_url', 'tel:+918686313133');
+$sr_home_cta_title = sr_cms_setting_get('home_cta_title', $sr_use_fallback ? 'Ready to Switch to Solar?' : '');
+$sr_home_cta_desc = sr_cms_setting_get('home_cta_desc', $sr_use_fallback ? 'Get a free, no-obligation solar assessment from our experts. We will evaluate your energy needs and design the perfect system for you.' : '');
+$sr_home_cta_btn1_label = sr_cms_setting_get('home_cta_btn1_label', $sr_use_fallback ? 'Get Free Quote' : '');
+$sr_home_cta_btn1_url = sr_cms_setting_get('home_cta_btn1_url', $sr_use_fallback ? 'contact' : '');
+$sr_home_cta_btn2_label = sr_cms_setting_get('home_cta_btn2_label', $sr_use_fallback ? 'Call Us Now' : '');
+$sr_home_cta_btn2_url = sr_cms_setting_get('home_cta_btn2_url', $sr_use_fallback ? 'tel:+918686313133' : '');
 
 $sr_home_services_items = [];
 $sr_home_products_items = [];
 $sr_home_blog_items = [];
 $sr_home_testimonials = sr_cms_testimonials_get(12, true);
-$sr_db_home = sr_cms_db_try();
 if ($sr_db_home instanceof mysqli) {
 	$res = $sr_db_home->query("SELECT slug, title, short_desc, image, icon_svg
 		FROM cms_services
@@ -148,6 +153,31 @@ if ($sr_db_home instanceof mysqli) {
 	}
 
 }
+foreach ($sr_home_services_items as &$sr_home_service_item) {
+	$sr_home_service_item['image'] = sr_cms_public_asset_url((string)($sr_home_service_item['image'] ?? ''));
+}
+unset($sr_home_service_item);
+foreach ($sr_home_products_items as &$sr_home_product_item) {
+	$sr_home_product_item['image'] = sr_cms_public_asset_url((string)($sr_home_product_item['image'] ?? ''));
+}
+unset($sr_home_product_item);
+foreach ($sr_home_blog_items as &$sr_home_blog_item) {
+	$sr_home_blog_item['cover_image'] = sr_cms_public_asset_url((string)($sr_home_blog_item['cover_image'] ?? ''));
+}
+unset($sr_home_blog_item);
+foreach ($sr_home_testimonials as &$sr_home_testimonial_item) {
+	$img = sr_cms_public_asset_url((string)($sr_home_testimonial_item['image'] ?? ''));
+	if ($img !== '') {
+		$ver = trim((string)($sr_home_testimonial_item['updated_at'] ?? ''));
+		if ($ver === '') {
+			$ver = (string) ((int)($sr_home_testimonial_item['id'] ?? 0));
+		}
+		$sep = strpos($img, '?') === false ? '?' : '&';
+		$img .= $sep . 'v=' . rawurlencode($ver);
+	}
+	$sr_home_testimonial_item['image'] = $img;
+}
+unset($sr_home_testimonial_item);
 ?>
 <div class="pbmit-slider-area pbmit-slider-two">
 	<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false"
@@ -170,7 +200,7 @@ if ($sr_db_home instanceof mysqli) {
 				}
 			}
 
-			if (!$slides) {
+			if (!$slides && $sr_use_fallback) {
 				$bannerDir = __DIR__ . '/images/banner-slider-img';
 				$patterns = ['Slider*.jpg','Slider*.jpeg','Slider*.png','Slider*.JPG','Slider*.JPEG','Slider*.PNG'];
 				$files = [];
@@ -197,9 +227,9 @@ if ($sr_db_home instanceof mysqli) {
 			}
 
 			foreach ($slides as $slide):
-				$rel = trim((string)($slide['image'] ?? ''));
+				$rel = sr_cms_public_asset_url(trim((string)($slide['image'] ?? '')));
 				if ($rel === '') {
-					$rel = 'images/banner-slider-img/Slider02-1.jpg';
+					$rel = sr_cms_public_asset_url('images/banner-slider-img/Slider02-1.jpg');
 				}
 				$kicker = trim((string)($slide['kicker'] ?? '')) !== '' ? (string)$slide['kicker'] : $sr_home_kicker;
 				$title = trim((string)($slide['title'] ?? '')) !== '' ? (string)$slide['title'] : $sr_home_title;
@@ -384,7 +414,7 @@ if ($sr_db_home instanceof mysqli) {
 							</div>
 						</article>
 					<?php } ?>
-				<?php } else { ?>
+				<?php } elseif ($sr_use_fallback) { ?>
 				<article class="pbmit-service-style-4 col-md-6 col-lg-4 col-xl-3" data-aos="fade-up"
 					data-aos-duration="800" data-aos-delay="0">
 					<div class="pbminfotech-post-item">
@@ -829,7 +859,7 @@ if ($sr_db_home instanceof mysqli) {
 								</div>
 							</article>
 						<?php } ?>
-					<?php } else { ?>
+					<?php } elseif ($sr_use_fallback) { ?>
 					<!-- Slide1 -->
 					<article class="pbmit-portfolio-style-1 swiper-slide">
 						<div class="pbminfotech-post-content">
@@ -2002,7 +2032,7 @@ if ($sr_db_home instanceof mysqli) {
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-10 col-xl-9">
-					<?php if ($sr_home_testimonials) { ?>
+					<?php if (isset($sr_home_testimonials) && count($sr_home_testimonials) > 0) { ?>
 						<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
 							data-columns="1" data-margin="30" data-effect="slide">
 							<div class="swiper-wrapper">
@@ -2148,7 +2178,7 @@ if ($sr_db_home instanceof mysqli) {
 							</article>
 						</div>
 					<?php } ?>
-				<?php } else { ?>
+				<?php } elseif ($sr_use_fallback) { ?>
 				<div class="col-md-6 col-lg-4">
 					<article class="pbmit-blog-style-4">
 						<div class="post-item">

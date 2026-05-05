@@ -20,7 +20,7 @@ if ($sr_db instanceof mysqli && $sr_slug !== '') {
 				'category' => (string)$rcat,
 				'date' => (string)$rdate,
 				'read_time' => (string)$rread,
-				'image' => (string)$rimg,
+				'image' => sr_cms_public_asset_url((string)$rimg),
 				'title' => (string)$rtitle,
 				'html' => (string)$rcontent,
 			];
@@ -36,7 +36,7 @@ if ($sr_post === null) {
 		'category' => 'Solar Basics',
 		'date' => 'Apr 2026',
 		'read_time' => '8 min read',
-		'image' => 'images/blog/blog-01.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-01.jpg'),
 		'title' => 'How Much Can You Really Save with Rooftop Solar in Nashik?',
 		'html' => '<p>Rooftop solar savings depend on your electricity tariff, system size, roof orientation, and the portion of consumption you can offset during the day. In Nashik, a well-designed rooftop system can reduce a large share of monthly electricity bills and offer a predictable payback period.</p>
 <h2>What Affects Savings the Most?</h2>
@@ -51,7 +51,7 @@ if ($sr_post === null) {
 		'category' => 'Government Schemes',
 		'date' => 'Apr 2026',
 		'read_time' => '10 min read',
-		'image' => 'images/blog/blog-02.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-02.jpg'),
 		'title' => 'PM Surya Ghar Yojana 2024: Who Qualifies and How to Apply',
 		'html' => '<p>The PM Surya Ghar scheme supports residential rooftop solar with a structured subsidy process. The exact eligibility and subsidy workflow can vary based on DISCOM requirements and documentation.</p>
 <h2>Eligibility Basics</h2>
@@ -66,7 +66,7 @@ if ($sr_post === null) {
 		'category' => 'Case Studies',
 		'date' => 'Apr 2026',
 		'read_time' => '12 min read',
-		'image' => 'images/blog/blog-03.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-03.jpg'),
 		'title' => 'Open Access Solar for Industries: A Complete Guide for Maharashtra',
 		'html' => '<p>Open Access solar can help larger consumers procure power at competitive rates by purchasing directly from a generator. The model involves approvals, wheeling, banking rules, and forecasting considerations.</p>
 <h2>When Open Access Makes Sense</h2>
@@ -81,7 +81,7 @@ if ($sr_post === null) {
 		'category' => 'FAQs',
 		'date' => 'Apr 2026',
 		'read_time' => '8 min read',
-		'image' => 'images/blog/blog-04.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-04.jpg'),
 		'title' => '5 Mistakes to Avoid When Choosing a Solar EPC Company',
 		'html' => '<p>Choosing the right EPC partner is as important as choosing the right components. A good EPC ensures correct design, safe installation, and long-term performance.</p>
 <h2>Top 5 Mistakes</h2>
@@ -94,7 +94,7 @@ if ($sr_post === null) {
 		'category' => 'Solar Basics',
 		'date' => 'Apr 2026',
 		'read_time' => '7 min read',
-		'image' => 'images/blog/blog-05.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-05.jpg'),
 		'title' => 'Net Metering in Maharashtra: How to Earn from Your Solar System',
 		'html' => '<p>Net metering allows you to export excess solar energy to the grid and receive credit based on energy accounting rules. The goal is to maximize self-consumption and use export credits effectively.</p>
 <h2>How It Works</h2>
@@ -107,7 +107,7 @@ if ($sr_post === null) {
 		'category' => 'Industry News',
 		'date' => 'Apr 2026',
 		'read_time' => '9 min read',
-		'image' => 'images/blog/blog-06.jpg',
+		'image' => sr_cms_public_asset_url('images/blog/blog-06.jpg'),
 		'title' => 'What is a Solar PPA and Is It Right for Your Business?',
 		'html' => '<p>A Power Purchase Agreement (PPA) is a model where you consume solar energy and pay per unit, often with little or no upfront investment. The PPA provider owns and maintains the plant.</p>
 <h2>PPA vs CAPEX (Simple View)</h2>
