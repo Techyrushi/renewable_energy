@@ -5,6 +5,10 @@ ErrorDocument 404 /404.php
 RewriteRule ^robots\.txt$ robots.php [L]
 RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
+RewriteCond %{REQUEST_URI} ^/images/(products|testimonials)/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^images/(products|testimonials)/.*$ images/fallback.svg [L]
+
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
