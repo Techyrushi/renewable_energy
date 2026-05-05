@@ -5956,6 +5956,11 @@ form .form-check-input[type="checkbox"] {
   background-color: var(--pbmit-white-color);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
+.site-header.pbmit-header-style-2 .pbmit-main-header-area,
+.site-header.pbmit-header-style-2 .pbmit-header-content,
+.site-header.pbmit-header-style-2 .pbmit-header-content .pbmit-header-content{
+  background-color: var(--pbmit-white-color);
+}
 .site-header.pbmit-header-style-2 .pbmit-pre-header-wrapper{
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -5969,7 +5974,11 @@ form .form-check-input[type="checkbox"] {
 }
 .site-header.pbmit-header-style-2 .site-navigation ul.navigation > li > a:hover,
 .site-header.pbmit-header-style-2 .site-navigation ul.navigation > li.active > a{
-  color: var(--pbmit-secondary-color) !important;
+  color: rgba(var(--bs-primary-rgb), 1) !important;
+}
+.site-header.pbmit-header-style-2 .site-navigation ul.navigation > li > ul a,
+.site-header.pbmit-header-style-2 .main-menu .navigation > li > ul a{
+  color: rgba(var(--bs-primary-rgb), 1) !important;
 }
 .site-header.pbmit-header-style-2 .pbmit-header-search-btn a{
   --bs-text-opacity: 1;
@@ -6000,7 +6009,11 @@ form .form-check-input[type="checkbox"] {
 }
 .site-header.pbmit-header-style-2.pbmit-fixed-header .pbmit-sticky-header .site-navigation ul.navigation > li > a:hover,
 .site-header.pbmit-header-style-2.pbmit-fixed-header .pbmit-sticky-header .site-navigation ul.navigation > li.active > a{
-  color: var(--pbmit-secondary-color) !important;
+  color: rgba(var(--bs-primary-rgb), 1) !important;
+}
+.site-header.pbmit-header-style-2.pbmit-fixed-header .pbmit-sticky-header .site-navigation ul.navigation > li > ul a,
+.site-header.pbmit-header-style-2.pbmit-fixed-header .pbmit-sticky-header .main-menu .navigation > li > ul a{
+  color: rgba(var(--bs-primary-rgb), 1) !important;
 }
 .site-header.pbmit-header-style-2.pbmit-fixed-header .pbmit-sticky-header .pbmit-header-search-btn a{
   --bs-text-opacity: 1;

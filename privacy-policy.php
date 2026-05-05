@@ -5,7 +5,7 @@ $sr_page = sr_cms_page_get('privacy-policy');
 $sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Privacy Policy';
 $sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'This Privacy Policy explains how Shivanjali Renewables (“Shivanjali Renewables”, “we”, “us”, “our”) collects, uses, shares, and protects information when you visit our website, request a quote, or contact our team.';
 $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l7 4v6c0 5-3.6 9.4-7 10-3.4-.6-7-5-7-10V6l7-4zm0 2.2L7 6.8V12c0 3.9 2.7 7.3 5 7.9 2.3-.6 5-4 5-7.9V6.8l-5-2.6zm2.9 5.6l1.2 1.2-4.6 4.6-2.5-2.5 1.2-1.2 1.3 1.3 3.4-3.4z"/></svg>';
-$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', 'images/fallback.svg');
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $pp_defaults = [

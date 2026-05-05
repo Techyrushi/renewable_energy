@@ -559,3 +559,56 @@ function sr_cms_slugify(string $s): string
 	$s = trim($s, '-');
 	return $s !== '' ? $s : 'item';
 }
+
+function sr_cms_asset_url(string $path, string $fallback = '', bool $cacheBust = true): string
+{
+	$path = trim($path);
+	$fallback = trim($fallback);
+
+	if ($path !== '' && preg_match('~^https?://~i', $path) === 1) {
+		return $path;
+	}
+	if ($fallback !== '' && preg_match('~^https?://~i', $fallback) === 1) {
+		return $path !== '' ? $path : $fallback;
+	}
+
+	$baseDir = dirname(__DIR__);
+	$normalize = static function (string $p) use ($baseDir): string {
+		$p = ltrim(str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $p), DIRECTORY_SEPARATOR);
+		return $baseDir . DIRECTORY_SEPARATOR . $p;
+	};
+
+	$selected = '';
+	if ($path !== '') {
+		$abs = $normalize($path);
+		if (is_file($abs)) {
+			$selected = str_replace('\\', '/', ltrim($path, '/\\'));
+		}
+	}
+	if ($selected === '' && $fallback !== '') {
+		$abs = $normalize($fallback);
+		if (is_file($abs)) {
+			$selected = str_replace('\\', '/', ltrim($fallback, '/\\'));
+		}
+	}
+	if ($selected === '') {
+		$selected = str_replace('\\', '/', ltrim($fallback !== '' ? $fallback : $path, '/\\'));
+	}
+	if ($selected === '') {
+		return '';
+	}
+
+	if (!$cacheBust || strpos($selected, '?') !== false) {
+		return $selected;
+	}
+
+	$selectedAbs = $normalize($selected);
+	if (!is_file($selectedAbs)) {
+		return $selected;
+	}
+	$ver = @filemtime($selectedAbs);
+	if (!$ver) {
+		return $selected;
+	}
+	return $selected . '?v=' . rawurlencode((string) $ver);
+}

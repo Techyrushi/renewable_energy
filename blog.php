@@ -60,7 +60,7 @@ $sr_blog_posts_fallback = [
 $sr_blog_page = sr_cms_page_get('blog');
 $sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : 'Solar Knowledge Hub';
 $sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : 'Stay informed with the latest news, guides, and insights from India&#8217;s solar industry.';
-$sr_banner_image = $sr_blog_page && trim((string)($sr_blog_page['banner_image'] ?? '')) !== '' ? (string)$sr_blog_page['banner_image'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_blog_page ? (string)($sr_blog_page['banner_image'] ?? '') : '', 'images/fallback.svg');
 $sr_page_override = $sr_blog_page && trim((string)($sr_blog_page['content'] ?? '')) !== '' ? (string)$sr_blog_page['content'] : '';
 
 $sr_blog_categories_title = sr_cms_setting_get('blog_categories_title', 'Browse Categories');

@@ -2,6 +2,26 @@
 ob_start(function ($buffer) {
 	return preg_replace_callback('/<img\\b[^>]*>/i', function ($m) {
 		$tag = $m[0];
+
+		$fallbackSrc = sr_cms_asset_url('images/fallback.svg', '', false);
+		if ($fallbackSrc !== '' && stripos($tag, ' onerror=') === false) {
+			$onError = "this.onerror=null;this.src='" . htmlspecialchars($fallbackSrc, ENT_QUOTES, 'UTF-8') . "';";
+			if (preg_match('/\\s*>\\s*$/', $tag)) {
+				$tag = preg_replace('/\\s*>\\s*$/', ' onerror="' . $onError . '">', $tag, 1);
+			}
+		}
+
+		if (preg_match('/\\ssrc\\s*=\\s*([\'"])(.*?)\\1/i', $tag, $srcM)) {
+			$srcRaw = trim((string) ($srcM[2] ?? ''));
+			if ($srcRaw !== '' && preg_match('~^data:~i', $srcRaw) !== 1) {
+				$srcResolved = sr_cms_asset_url($srcRaw, $fallbackSrc);
+				if ($srcResolved !== '' && $srcResolved !== $srcRaw) {
+					$srcEsc = htmlspecialchars($srcResolved, ENT_QUOTES, 'UTF-8');
+					$tag = preg_replace('/\\ssrc\\s*=\\s*([\'"])(.*?)\\1/i', ' src="' . $srcEsc . '"', $tag, 1);
+				}
+			}
+		}
+
 		if (stripos($tag, ' loading=') !== false) {
 			return $tag;
 		}
@@ -40,6 +60,8 @@ $sr_site_favicon = sr_cms_setting_get('site_favicon', 'images/fevicon.png');
 
 $sr_site_logo = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp)$/i', $sr_site_logo) === 1) ? $sr_site_logo : 'images/Shivanjali_Logo.jpg';
 $sr_site_favicon = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp|ico)$/i', $sr_site_favicon) === 1) ? $sr_site_favicon : 'images/fevicon.png';
+$sr_site_logo = sr_cms_asset_url($sr_site_logo, 'images/fallback.svg');
+$sr_site_favicon = sr_cms_asset_url($sr_site_favicon, 'images/fallback.svg');
 
 $sr_req_path = (string) (parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?? '/');
 $sr_base_path = rtrim(str_replace('\\', '/', (string) dirname((string) ($_SERVER['SCRIPT_NAME'] ?? '/'))), '/');
@@ -203,6 +225,7 @@ if ($sr_meta_image !== '') {
 	if (preg_match('~^https?://~i', $sr_meta_image) === 1) {
 		$sr_meta_image_abs = $sr_meta_image;
 	} else {
+		$sr_meta_image = sr_cms_asset_url($sr_meta_image, 'images/fallback.svg');
 		$sr_meta_image_abs = $sr_site_base . '/' . ltrim($sr_meta_image, '/');
 	}
 }

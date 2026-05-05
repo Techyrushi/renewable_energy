@@ -3,7 +3,7 @@
 $sr_page = sr_cms_page_get('about');
 $sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Illuminating the Path to a Sustainable Future';
 $sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Born in Nashik. Built for India. Driven by a clean-energy mission.';
-$sr_banner_image = $sr_page && trim((string)($sr_page['banner_image'] ?? '')) !== '' ? (string)$sr_page['banner_image'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', 'images/fallback.svg');
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $sr_story_subtitle = sr_cms_setting_get('about_story_subtitle', 'About Us');
