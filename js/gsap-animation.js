@@ -90,6 +90,29 @@
 		jQuery('#menu-toggle').on('click', function() {
 			jQuery("body:not(.mega-menu-pbminfotech-top) .pbmit-navbar > div, body:not(.mega-menu-pbminfotech-top)").toggleClass("active");
 		})
+
+		// Mobile submenu toggle for dropdown navigation items.
+		var $mobileDropdownLinks = jQuery('.pbmit-navbar .navigation > li.dropdown > a');
+		$mobileDropdownLinks.each(function() {
+			var $link = jQuery(this);
+			if ($link.find('.righticon').length === 0) {
+				$link.append('<span class="righticon"><i class="pbmit-base-icon-down-arrow"></i></span>');
+			}
+		});
+		jQuery(document).off('click.pbmitMobileNavToggle').on('click.pbmitMobileNavToggle', '.pbmit-navbar .navigation > li.dropdown > a .righticon', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var $li = jQuery(this).closest('li.dropdown');
+			var $submenu = $li.children('ul');
+			$li.toggleClass('menu-open');
+			$submenu.toggleClass('open');
+		});
+
+		// Close menu when dark overlay is clicked.
+		jQuery(document).off('click.pbmitMobileNavOverlay').on('click.pbmitMobileNavOverlay', '.pbmit-mobile-menu-bg', function() {
+			jQuery(".pbmit-navbar > div, body, .mega-menu-wrap").removeClass("active");
+		});
+
 		if (jQuery('.pbmit-navbar > div > .closepanel').length == 0) {
 			jQuery('.pbmit-navbar > div').append('<span class="closepanel"><svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="20.163" height="20.163" viewBox="0 0 26.163 26.163"><rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect><rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect></svg></span>');
 			jQuery('.pbmit-navbar > div > .closepanel, .mega-menu-pbminfotech-top .nav-menu-toggle').on('click', function() {

@@ -1,9 +1,9 @@
 <?php include 'includes/header.php'; ?>
 <?php
 $sr_home_page = sr_cms_page_get('home');
-$sr_home_kicker = sr_cms_setting_get('home_kicker', 'Maharashtra’s Trusted Solar EPC Partner');
-$sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== '' ? (string)$sr_home_page['hero_title'] : 'Powering a Greener Tomorrow — One Solar Panel at a Time';
-$sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== '' ? (string)$sr_home_page['hero_subtitle'] : 'Shivanjali Renewables is Maharashtra\'s trusted Solar EPC partner for homes, businesses, industries, and large-scale solar parks. Clean energy. Real savings. Lasting impact.';
+$sr_home_kicker = sr_cms_setting_get('home_kicker', '');
+$sr_home_title = $sr_home_page && trim((string)$sr_home_page['hero_title']) !== '' ? (string)$sr_home_page['hero_title'] : '';
+$sr_home_subtitle = $sr_home_page && trim((string)$sr_home_page['hero_subtitle']) !== '' ? (string)$sr_home_page['hero_subtitle'] : '';
 
 $sr_home_stat1_title = sr_cms_setting_get('home_stat1_title', 'Projects<br>Completed');
 $sr_home_stat1_to = sr_cms_setting_get('home_stat1_to', '500');

@@ -12,10 +12,10 @@ function sr_cms_db_try(): ?mysqli
 	}
 	$attempted = true;
 
-	$host = (string)(getenv('SR_DB_HOST') ?: 'localhost');
-	$user = (string)(getenv('SR_DB_USER') ?: 'root');
-	$pass = (string)(getenv('SR_DB_PASS') ?: '');
-	$name = (string)(getenv('SR_DB_NAME') ?: 'renewable');
+	$host = (string)(getenv('SR_DB_HOST') ?: (getenv('DB_HOST') ?: 'localhost'));
+	$user = (string)(getenv('SR_DB_USER') ?: (getenv('DB_USER') ?: 'root'));
+	$pass = (string)(getenv('SR_DB_PASS') ?: (getenv('DB_PASS') ?: ''));
+	$name = (string)(getenv('SR_DB_NAME') ?: (getenv('DB_NAME') ?: 'renewable'));
 
 	mysqli_report(MYSQLI_REPORT_OFF);
 	$conn = @mysqli_connect($host, $user, $pass, $name);
@@ -249,6 +249,46 @@ function sr_cms_migrate(mysqli $db): void
 	$db->query("ALTER TABLE cms_projects ADD UNIQUE KEY uniq_slug (slug)");
 
 	$db->query("ALTER TABLE cms_pages ADD COLUMN banner_image VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_pages ADD COLUMN title VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_pages ADD COLUMN hero_title VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_pages ADD COLUMN hero_subtitle TEXT NOT NULL");
+	$db->query("ALTER TABLE cms_pages ADD COLUMN content LONGTEXT NOT NULL");
+	$db->query("ALTER TABLE cms_pages ADD UNIQUE KEY uniq_slug (slug)");
+
+	$db->query("ALTER TABLE cms_services ADD COLUMN image VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_services ADD COLUMN icon_svg TEXT NOT NULL");
+	$db->query("ALTER TABLE cms_services ADD COLUMN content LONGTEXT NOT NULL");
+	$db->query("ALTER TABLE cms_services ADD COLUMN published TINYINT(1) NOT NULL DEFAULT 1");
+	$db->query("ALTER TABLE cms_services ADD COLUMN sort_order INT NOT NULL DEFAULT 0");
+	$db->query("ALTER TABLE cms_services ADD UNIQUE KEY uniq_slug (slug)");
+
+	$db->query("ALTER TABLE cms_products ADD COLUMN category_anchor VARCHAR(80) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_products ADD COLUMN badge_label VARCHAR(120) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_products ADD COLUMN range_label VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_products ADD COLUMN bullets TEXT NOT NULL");
+	$db->query("ALTER TABLE cms_products ADD COLUMN content LONGTEXT NOT NULL");
+	$db->query("ALTER TABLE cms_products ADD COLUMN published TINYINT(1) NOT NULL DEFAULT 1");
+	$db->query("ALTER TABLE cms_products ADD COLUMN sort_order INT NOT NULL DEFAULT 0");
+	$db->query("ALTER TABLE cms_products ADD UNIQUE KEY uniq_slug (slug)");
+
+	$db->query("ALTER TABLE cms_projects ADD COLUMN category VARCHAR(60) NOT NULL DEFAULT 'rooftop'");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN category_label VARCHAR(120) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN location_label VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN capacity_label VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN savings_label VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN outcome_label VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN image VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN featured TINYINT(1) NOT NULL DEFAULT 1");
+	$db->query("ALTER TABLE cms_projects ADD COLUMN sort_order INT NOT NULL DEFAULT 0");
+
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN category VARCHAR(120) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN date_label VARCHAR(60) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN read_time VARCHAR(40) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN cover_image VARCHAR(255) NOT NULL DEFAULT ''");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN excerpt TEXT NOT NULL");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN content LONGTEXT NOT NULL");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN published TINYINT(1) NOT NULL DEFAULT 1");
+	$db->query("ALTER TABLE cms_blog_posts ADD COLUMN published_at DATETIME NULL");
 }
 
 function sr_cms_phpmailer_load(): bool
@@ -388,6 +428,13 @@ function sr_cms_send_mail(string $toEmail, string $toName, string $subject, stri
 
 function sr_cms_setting_get(string $key, string $default = ''): string
 {
+	// Frontend should render only DB-backed content (no hardcoded fallbacks).
+	$script = str_replace('\\', '/', (string)($_SERVER['SCRIPT_NAME'] ?? ''));
+	$isAdmin = strpos($script, '/admin/') !== false;
+	if (!$isAdmin) {
+		$default = '';
+	}
+
 	$db = sr_cms_db_try();
 	if (!$db instanceof mysqli) {
 		return $default;
@@ -413,26 +460,99 @@ function sr_cms_page_get(string $slug): ?array
 	if (!$db instanceof mysqli) {
 		return null;
 	}
-	$stmt = $db->prepare('SELECT slug, title, hero_title, hero_subtitle, banner_image, content FROM cms_pages WHERE slug = ? LIMIT 1');
+
+	$rawSlug = trim($slug);
+	if ($rawSlug === '') {
+		return null;
+	}
+
+	$normalized = strtolower($rawSlug);
+	$normalized = ltrim($normalized, '/');
+	$normalized = preg_replace('/\.php$/', '', $normalized) ?? $normalized;
+	$normalized = rtrim($normalized, '/');
+	if ($normalized === '') {
+		$normalized = 'home';
+	}
+
+	$candidates = [$normalized];
+	$pushCandidate = static function (string $candidate) use (&$candidates): void {
+		$candidate = trim(strtolower($candidate));
+		if ($candidate === '' || in_array($candidate, $candidates, true)) {
+			return;
+		}
+		$candidates[] = $candidate;
+	};
+
+	$aliases = [
+		'about' => ['about-us'],
+		'about-us' => ['about'],
+		'contact' => ['contact-us'],
+		'contact-us' => ['contact'],
+		'service' => ['services'],
+		'services' => ['service'],
+		'product' => ['products'],
+		'products' => ['product'],
+		'project' => ['projects'],
+		'projects' => ['project'],
+		'terms' => ['terms-of-use', 'terms.php'],
+		'terms-of-use' => ['terms', 'terms.php'],
+		'privacy-policy' => ['privacy-policy.php'],
+		'privacy-policy.php' => ['privacy-policy'],
+		'home' => ['index', 'index.php'],
+		'index' => ['home', 'index.php'],
+		'index.php' => ['home', 'index'],
+	];
+	if (isset($aliases[$normalized])) {
+		foreach ($aliases[$normalized] as $alt) {
+			$pushCandidate($alt);
+		}
+	}
+	foreach ($aliases as $canonical => $alts) {
+		if (in_array($normalized, $alts, true)) {
+			$pushCandidate($canonical);
+			foreach ($alts as $alt) {
+				$pushCandidate($alt);
+			}
+		}
+	}
+
+	$placeholders = implode(',', array_fill(0, count($candidates), '?'));
+	$sql = 'SELECT slug, title, hero_title, hero_subtitle, banner_image, content FROM cms_pages WHERE slug IN (' . $placeholders . ')';
+	$stmt = $db->prepare($sql);
 	if (!$stmt) {
 		return null;
 	}
-	$stmt->bind_param('s', $slug);
+	$types = str_repeat('s', count($candidates));
+	$stmt->bind_param($types, ...$candidates);
 	$stmt->execute();
-	$stmt->bind_result($rSlug, $title, $heroTitle, $heroSubtitle, $bannerImage, $content);
-	$page = null;
-	if ($stmt->fetch()) {
-		$page = [
-			'slug' => (string)$rSlug,
-			'title' => (string)$title,
-			'hero_title' => (string)$heroTitle,
-			'hero_subtitle' => (string)$heroSubtitle,
-			'banner_image' => (string)$bannerImage,
-			'content' => (string)$content,
-		];
+	$res = $stmt->get_result();
+	$rows = [];
+	if ($res) {
+		while ($row = $res->fetch_assoc()) {
+			$key = strtolower(trim((string)($row['slug'] ?? '')));
+			if ($key === '') {
+				continue;
+			}
+			$rows[$key] = $row;
+		}
 	}
 	$stmt->close();
-	return $page;
+
+	foreach ($candidates as $candidate) {
+		if (isset($rows[$candidate])) {
+			$row = $rows[$candidate];
+			return [
+				'slug' => (string)($row['slug'] ?? ''),
+				'title' => (string)($row['title'] ?? ''),
+				'hero_title' => (string)($row['hero_title'] ?? ''),
+				'hero_subtitle' => (string)($row['hero_subtitle'] ?? ''),
+				'banner_image' => (string)($row['banner_image'] ?? ''),
+				'content' => (string)($row['content'] ?? ''),
+			];
+		}
+	}
+
+	return null;
 }
 
 /**

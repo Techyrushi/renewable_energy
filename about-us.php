@@ -1,9 +1,9 @@
 <?php include 'includes/header.php'; ?>
 <?php
 $sr_page = sr_cms_page_get('about');
-$sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Illuminating the Path to a Sustainable Future';
-$sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'Born in Nashik. Built for India. Driven by a clean-energy mission.';
-$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', 'images/fallback.svg');
+$sr_hero_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : '';
+$sr_hero_subtitle = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', '');
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $sr_story_subtitle = sr_cms_setting_get('about_story_subtitle', 'About Us');
@@ -80,7 +80,7 @@ $sr_h6_img = sr_cms_setting_get('about_history6_image', 'images/history/history-
 				</div>
 				<div class="pbmit-breadcrumb">
 					<div class="pbmit-breadcrumb-inner">
-						<span><a title="" href="./" class="home"><span>Home</span></a></span>
+						<span><a title="" href="./" class="home" style="color: #fff;"><span>Home</span></a></span>
 						<i class="pbmit-base-icon-arrow-right-2"></i>
 						<span><span class="post-root post post-post current-item"> About Us</span></span>
 					</div>

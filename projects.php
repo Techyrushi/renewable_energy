@@ -1,10 +1,10 @@
 <?php include 'includes/header.php'; ?>
 <?php
 $sr_projects_page = sr_cms_page_get('projects');
-$sr_projects_intro_title = $sr_projects_page && trim((string)$sr_projects_page['hero_title']) !== '' ? (string)$sr_projects_page['hero_title'] : 'Projects That Prove Our Promise';
-$sr_projects_intro_desc = $sr_projects_page && trim((string)$sr_projects_page['hero_subtitle']) !== '' ? (string)$sr_projects_page['hero_subtitle'] : 'From rooftop systems in Nashik to megawatt-scale solar farms, every project reflects our commitment to quality, efficiency, and clean energy.';
-$sr_banner_image = sr_cms_asset_url($sr_projects_page ? (string)($sr_projects_page['banner_image'] ?? '') : '', 'images/fallback.svg');
-$sr_projects_tbar = $sr_projects_page && trim((string)($sr_projects_page['title'] ?? '')) !== '' ? (string)$sr_projects_page['title'] : 'Projects';
+$sr_projects_intro_title = $sr_projects_page && trim((string)$sr_projects_page['hero_title']) !== '' ? (string)$sr_projects_page['hero_title'] : '';
+$sr_projects_intro_desc = $sr_projects_page && trim((string)$sr_projects_page['hero_subtitle']) !== '' ? (string)$sr_projects_page['hero_subtitle'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_projects_page ? (string)($sr_projects_page['banner_image'] ?? '') : '', '');
+$sr_projects_tbar = $sr_projects_page && trim((string)($sr_projects_page['title'] ?? '')) !== '' ? (string)$sr_projects_page['title'] : '';
 $sr_page_override = $sr_projects_page && trim((string)($sr_projects_page['content'] ?? '')) !== '' ? (string)$sr_projects_page['content'] : '';
 
 $sr_card1_badge = sr_cms_setting_get('projects_card1_badge', 'ROOFTOP');

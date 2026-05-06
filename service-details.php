@@ -127,6 +127,32 @@ include 'includes/header.php';
 		margin: 2px 0 0;
 		opacity: .82;
 	}
+	.sr-service-detail-actions > .pbmit-btn,
+	.sr-service-action-card .pbmit-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+	}
+	.sr-service-action-card .pbmit-btn {
+		min-width: 156px;
+		flex-shrink: 0;
+	}
+	.sr-service-detail-actions > .pbmit-btn .pbmit-button-text,
+	.sr-service-action-card .pbmit-btn .pbmit-button-text {
+		white-space: nowrap;
+	}
+	@media (max-width: 575.98px) {
+		.sr-service-action-card {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		.sr-service-action-card .pbmit-btn,
+		.sr-service-detail-actions > .pbmit-btn {
+			width: 100%;
+			min-width: 0;
+		}
+	}
 	.sr-service-content img {
 		max-width: 100%;
 		height: auto;

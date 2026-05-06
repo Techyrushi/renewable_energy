@@ -2,10 +2,10 @@
 </header>
 <?php
 $sr_page = sr_cms_page_get('terms-of-use');
-$sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : 'Terms of Use';
-$sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : 'These Terms of Use govern access to and use of the Shivanjali Renewables website. By using this website, you agree to these terms.';
+$sr_legal_title = $sr_page && trim((string)$sr_page['hero_title']) !== '' ? (string)$sr_page['hero_title'] : '';
+$sr_legal_lead = $sr_page && trim((string)$sr_page['hero_subtitle']) !== '' ? (string)$sr_page['hero_subtitle'] : '';
 $sr_legal_icon_svg = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V6h2.5L14 3.5zM7 9h10v1.8H7V9zm0 4h10v1.8H7V13zm0 4h7v1.8H7V17z"/></svg>';
-$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', 'images/fallback.svg');
+$sr_banner_image = sr_cms_asset_url($sr_page ? (string)($sr_page['banner_image'] ?? '') : '', '');
 $sr_page_override = $sr_page && trim((string)($sr_page['content'] ?? '')) !== '' ? (string)$sr_page['content'] : '';
 
 $tou_defaults = [
@@ -82,7 +82,7 @@ $tou_s11 = sr_cms_setting_get('tou_law_html', $tou_defaults['tou_law_html']);
 $tou_s12 = sr_cms_setting_get('tou_changes_html', $tou_defaults['tou_changes_html']);
 $tou_s13 = sr_cms_setting_get('tou_contact_html', $tou_defaults['tou_contact_html']);
 ?>
-<div class="pbmit-title-bar-wrapper"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
+<div class="pbmit-title-bar-wrapper sr-why-hero"<?php echo $sr_banner_image !== '' ? (' style="background-image:url(' . htmlspecialchars($sr_banner_image, ENT_QUOTES, 'UTF-8') . ');"') : ''; ?>>
 	<div class="container">
 		<div class="pbmit-title-bar-content">
 			<div class="pbmit-title-bar-content-inner">

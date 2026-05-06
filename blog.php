@@ -1,66 +1,11 @@
 <?php include 'includes/header.php'; ?>
 <?php
-$sr_blog_posts_fallback = [
-	[
-		'slug' => 'rooftop-solar-nashik-savings',
-		'category' => 'Solar Basics',
-		'date' => 'Apr 2026',
-		'read_time' => '8 min read',
-		'image' => 'images/blog/blog-01.jpg',
-		'title' => 'How Much Can You Really Save with Rooftop Solar in Nashik?',
-		'excerpt' => 'A practical breakdown of system sizing, monthly bills, subsidy impact, and typical payback for Nashik homes.',
-	],
-	[
-		'slug' => 'pm-surya-ghar-yojana-2024-guide',
-		'category' => 'Government Schemes',
-		'date' => 'Apr 2026',
-		'read_time' => '10 min read',
-		'image' => 'images/blog/blog-02.jpg',
-		'title' => 'PM Surya Ghar Yojana 2024: Who Qualifies and How to Apply',
-		'excerpt' => 'Eligibility, documents, subsidy flow, and a step-by-step checklist to apply without confusion.',
-	],
-	[
-		'slug' => 'open-access-solar-guide-maharashtra',
-		'category' => 'Case Studies',
-		'date' => 'Apr 2026',
-		'read_time' => '12 min read',
-		'image' => 'images/blog/blog-03.jpg',
-		'title' => 'Open Access Solar for Industries: A Complete Guide for Maharashtra',
-		'excerpt' => 'Learn when Open Access makes sense, how billing works, key approvals, and common project risks.',
-	],
-	[
-		'slug' => 'mistakes-choosing-solar-epc',
-		'category' => 'FAQs',
-		'date' => 'Apr 2026',
-		'read_time' => '8 min read',
-		'image' => 'images/blog/blog-04.jpg',
-		'title' => '5 Mistakes to Avoid When Choosing a Solar EPC Company',
-		'excerpt' => 'From Tier-1 components to warranty clarity—use this checklist to select the right EPC partner.',
-	],
-	[
-		'slug' => 'net-metering-maharashtra-explained',
-		'category' => 'Solar Basics',
-		'date' => 'Apr 2026',
-		'read_time' => '7 min read',
-		'image' => 'images/blog/blog-05.jpg',
-		'title' => 'Net Metering in Maharashtra: How to Earn from Your Solar System',
-		'excerpt' => 'Understand approvals, net meter installation, export credits, and how billing is calculated.',
-	],
-	[
-		'slug' => 'solar-ppa-explained-business',
-		'category' => 'Industry News',
-		'date' => 'Apr 2026',
-		'read_time' => '9 min read',
-		'image' => 'images/blog/blog-06.jpg',
-		'title' => 'What is a Solar PPA and Is It Right for Your Business?',
-		'excerpt' => 'A clear explanation of PPA models, pricing, contract terms, and when it outperforms CAPEX.',
-	],
-];
+$sr_blog_posts_fallback = [];
 
 $sr_blog_page = sr_cms_page_get('blog');
-$sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : 'Solar Knowledge Hub';
-$sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : 'Stay informed with the latest news, guides, and insights from India&#8217;s solar industry.';
-$sr_banner_image = sr_cms_asset_url($sr_blog_page ? (string)($sr_blog_page['banner_image'] ?? '') : '', 'images/fallback.svg');
+$sr_blog_hero_title = $sr_blog_page ? (string)$sr_blog_page['hero_title'] : '';
+$sr_blog_hero_subtitle = $sr_blog_page ? (string)$sr_blog_page['hero_subtitle'] : '';
+$sr_banner_image = sr_cms_asset_url($sr_blog_page ? (string)($sr_blog_page['banner_image'] ?? '') : '', '');
 $sr_page_override = $sr_blog_page && trim((string)($sr_blog_page['content'] ?? '')) !== '' ? (string)$sr_blog_page['content'] : '';
 
 $sr_blog_categories_title = sr_cms_setting_get('blog_categories_title', 'Browse Categories');

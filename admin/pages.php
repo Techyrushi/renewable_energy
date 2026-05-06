@@ -1949,16 +1949,22 @@ if ($editing && $editing['slug'] === 'home') {
 												<div class="row g-3">
 													<input type="hidden" class="form-control" name="slug" required
 														value="<?php echo htmlspecialchars($editing['slug'], ENT_QUOTES, 'UTF-8'); ?>">
-													<!-- <div class="col-lg-8">
-														<label class="form-label">Page title (optional)</label>
+													<div class="col-lg-8">
+														<label class="form-label">Page title</label>
 														<input class="form-control" name="title"
-															value="<?php echo htmlspecialchars($editing['title'], ENT_QUOTES, 'UTF-8'); ?>">
+															value="<?php echo htmlspecialchars((string) ($editing['title'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+														<div class="form-text">Stored in `cms_pages.title` and used for page-level metadata/listing.</div>
+													</div>
+													<div class="col-lg-4">
+														<label class="form-label">Page slug</label>
+														<input class="form-control" value="<?php echo htmlspecialchars((string) ($editing['slug'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" readonly>
 													</div>
 													<div class="col-12">
-														<label class="form-label">Page content (optional, HTML allowed)</label>
+														<label class="form-label">Page content (HTML)</label>
 														<textarea class="form-control" name="content"
-															rows="10"><?php echo htmlspecialchars($editing['content'], ENT_QUOTES, 'UTF-8'); ?></textarea>
-													</div> -->
+															rows="8"><?php echo htmlspecialchars((string) ($editing['content'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></textarea>
+														<div class="form-text">Stored in `cms_pages.content`. Leave empty if this page is fully section-driven below.</div>
+													</div>
 													<?php if ($editing['slug'] === 'services') { ?>
 														<div class="col-12">
 															<div class="p-3 rounded-3 border bg-light">
@@ -3000,7 +3006,7 @@ if ($editing && $editing['slug'] === 'home') {
 														$sr_banner_preview = preg_match('#^https?://#i', $sr_banner_preview) ? $sr_banner_preview : ('../' . ltrim($sr_banner_preview, '/')); ?>
 														<div class="col-12">
 															<div class="p-3 rounded-3 border bg-light">
-																<div class="fw-bold mb-2">Current banner preview</div>
+																<div class="fw-bold mb-2 text-dark">Current banner preview</div>
 																<img src="<?php echo htmlspecialchars($sr_banner_preview, ENT_QUOTES, 'UTF-8'); ?>"
 																	alt="Banner preview"
 																	style="width:100%;max-width:680px;height:220px;object-fit:cover;border-radius:16px;border:1px solid rgba(10,25,38,.12);background:#fff;">

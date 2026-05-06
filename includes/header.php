@@ -50,18 +50,18 @@ $sr_social_instagram_enabled = sr_cms_setting_get('social_instagram_enabled', '1
 $sr_social_linkedin_enabled = sr_cms_setting_get('social_linkedin_enabled', '1') === '1';
 $sr_social_youtube_enabled = sr_cms_setting_get('social_youtube_enabled', '1') === '1';
 $sr_social_whatsapp_enabled = sr_cms_setting_get('social_whatsapp_enabled', '1') === '1';
-$sr_social_facebook_url = sr_cms_setting_get('social_facebook_url', '');
-$sr_social_instagram_url = sr_cms_setting_get('social_instagram_url', '');
-$sr_social_linkedin_url = sr_cms_setting_get('social_linkedin_url', '');
-$sr_social_youtube_url = sr_cms_setting_get('social_youtube_url', '');
+$sr_social_facebook_url = sr_cms_setting_get('social_facebook_url', sr_cms_setting_get('social_facebook', ''));
+$sr_social_instagram_url = sr_cms_setting_get('social_instagram_url', sr_cms_setting_get('social_instagram', ''));
+$sr_social_linkedin_url = sr_cms_setting_get('social_linkedin_url', sr_cms_setting_get('social_linkedin', ''));
+$sr_social_youtube_url = sr_cms_setting_get('social_youtube_url', sr_cms_setting_get('social_youtube', ''));
 $sr_social_whatsapp_url = sr_cms_setting_get('social_whatsapp_url', '');
 $sr_site_logo = sr_cms_setting_get('site_logo', 'images/Shivanjali_Logo.jpg');
 $sr_site_favicon = sr_cms_setting_get('site_favicon', 'images/fevicon.png');
 
 $sr_site_logo = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp)$/i', $sr_site_logo) === 1) ? $sr_site_logo : 'images/Shivanjali_Logo.jpg';
 $sr_site_favicon = (preg_match('/^images\\/[a-z0-9._\\/-]+\\.(png|jpe?g|webp|ico)$/i', $sr_site_favicon) === 1) ? $sr_site_favicon : 'images/fevicon.png';
-$sr_site_logo = sr_cms_asset_url($sr_site_logo, 'images/fallback.svg');
-$sr_site_favicon = sr_cms_asset_url($sr_site_favicon, 'images/fallback.svg');
+// $sr_site_logo = sr_cms_asset_url($sr_site_logo, 'images/fallback.svg');
+// $sr_site_favicon = sr_cms_asset_url($sr_site_favicon, 'images/fallback.svg');
 
 $sr_req_path = (string) (parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?? '/');
 $sr_base_path = rtrim(str_replace('\\', '/', (string) dirname((string) ($_SERVER['SCRIPT_NAME'] ?? '/'))), '/');
@@ -469,6 +469,21 @@ if ($sr_nav_db instanceof mysqli) {
 	<link rel="stylesheet" href="css/style.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
 	<!-- Responsive CSS -->
 	<link rel="stylesheet" href="css/responsive.css?v=<?php echo rawurlencode($sr_css_ver); ?>">
+	<style>
+		.site-header,
+		.site-header .pbmit-header-overlay,
+		.site-header .pbmit-main-header-area,
+		.site-header .pbmit-header-content {
+			background-color: #fff !important;
+		}
+
+		.site-header .navigation>li>a,
+		.site-header .navigation li a,
+		.site-header .pbmit-contact-info a,
+		.site-header .pbmit-contact-info li {
+			color: rgba(var(--bs-primary-rgb), 1) !important;
+		}
+	</style>
 
 </head>
 
@@ -565,15 +580,6 @@ if ($sr_nav_db instanceof mysqli) {
 																				href="services/<?php echo htmlspecialchars(rawurlencode((string) $s['slug']), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $s['title'], ENT_QUOTES, 'UTF-8'); ?></a>
 																		</li>
 																	<?php } ?>
-																<?php } else { ?>
-																	<li><a href="services/solar-installation">Solar Module
-																			&amp; System Installation</a></li>
-																	<li><a href="services/operations-maintenance">Operations
-																			&amp; Maintenance</a></li>
-																	<li><a href="services/energy-consulting">Energy
-																			Efficiency Consulting</a></li>
-																	<li><a href="services/open-access-ppa">Open Access
-																			&amp; Power Purchase</a></li>
 																<?php } ?>
 															</ul>
 														</li>
@@ -586,15 +592,6 @@ if ($sr_nav_db instanceof mysqli) {
 																				href="products?open=<?php echo htmlspecialchars(rawurlencode((string) $p['slug']), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $p['title'], ENT_QUOTES, 'UTF-8'); ?></a>
 																		</li>
 																	<?php } ?>
-																<?php } else { ?>
-																	<li><a href="products#residential">Residential (3–19
-																			kW)</a></li>
-																	<li><a href="products#commercial">Commercial (20–200
-																			kW)</a></li>
-																	<li><a href="products#ht-consumer">HT Consumer (200–990
-																			kW)</a></li>
-																	<li><a href="products#open-access">Open Access (1–20
-																			MW)</a></li>
 																<?php } ?>
 															</ul>
 														</li>
@@ -607,13 +604,6 @@ if ($sr_nav_db instanceof mysqli) {
 																				href="projects/<?php echo htmlspecialchars(rawurlencode((string) $p['slug']), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $p['title'], ENT_QUOTES, 'UTF-8'); ?></a>
 																		</li>
 																	<?php } ?>
-																<?php } else { ?>
-																	<li><a href="projects#rooftop-solar">Rooftop Solar</a>
-																	</li>
-																	<li><a href="projects#solar-farming-parks">Solar
-																			Farming &amp; Parks</a></li>
-																	<li><a href="projects#open-access-captive">Open Access
-																			Captive</a></li>
 																<?php } ?>
 															</ul>
 														</li>
@@ -627,12 +617,6 @@ if ($sr_nav_db instanceof mysqli) {
 																				href="blog/<?php echo htmlspecialchars(rawurlencode((string) $b['slug']), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $b['title'], ENT_QUOTES, 'UTF-8'); ?></a>
 																		</li>
 																	<?php } ?>
-																<?php } else { ?>
-																	<li><a href="blog#solar-guides">Solar Guides</a></li>
-																	<li><a href="blog#news">News</a>
-																	</li>
-																	<li><a href="blog#faqs">FAQs</a>
-																	</li>
 																<?php } ?>
 															</ul>
 														</li>
